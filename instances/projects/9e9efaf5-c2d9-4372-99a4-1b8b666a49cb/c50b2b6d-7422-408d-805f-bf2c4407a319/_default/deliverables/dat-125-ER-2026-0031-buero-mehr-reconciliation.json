@@ -1,0 +1,76 @@
+{
+  "issueIdentifier": "DAT-125",
+  "status": "blocked_missing_payment_evidence",
+  "document": {
+    "extractionArtifact": "deliverables/dat-134-telegram-intake-ER-2026-0031-extraction.json",
+    "documentId": "217f0b0e-c3d1-4c9e-9def-ed2a287c0fb0",
+    "submissionId": "1d3c503a-1ddd-4746-bdd6-fe0327ff11db",
+    "sourcePdfPath": "showcase/runtime/telegram-files/BQACAgIAAxkBAANJajK9tY1esvK4UVNgon6uMOPA3NgAAkebAALGnpFJORflYfD1I1E8BA/ER-2026-0031_Eingangsrechnung_Buero-Mehr.pdf",
+    "sourcePdfSha256": "fd0408bc27ff864dcaf74b2c26c8551cab1ad6d0948fcbfa79b6a8a42295e867",
+    "parentIssueId": "eb4b8f63-1236-4c47-bcaf-96fb185927bb",
+    "internalDocumentNumber": "ER-2026-0031",
+    "originalInvoiceNumber": "BM-2026-8834",
+    "originalInvoiceDate": "2026-05-16",
+    "performancePeriod": "2026-05",
+    "mandant": "Berg & Tal Eventtechnik GmbH",
+    "supplierName": "Büro & Mehr GmbH",
+    "currency": "EUR",
+    "bookingScheme": "SKR03"
+  },
+  "bookingProposal": {
+    "netAmountEur": 148.0,
+    "vatAmountEur": 28.12,
+    "grossAmountEur": 176.12,
+    "vatRatePercent": 19,
+    "lines": [
+      {
+        "entryDirection": "debit",
+        "accountCode": "4780",
+        "accountName": "Bürobedarf",
+        "amountEur": 148.0,
+      "evidence": "DATEV-Buchungsvorschlag: Soll 4780 Bürobedarf 148,00 EUR (per DAT-134 extraction)."
+      },
+      {
+        "entryDirection": "debit",
+        "accountCode": "1576",
+        "accountName": "Abziehbare Vorsteuer 19 %",
+        "amountEur": 28.12,
+      "evidence": "DATEV-Buchungsvorschlag: Soll 1576 Abziehbare Vorsteuer 19 % 28,12 EUR (per DAT-134 extraction)."
+      },
+      {
+        "entryDirection": "credit",
+        "accountCode": "70200",
+        "accountName": "Kreditor Büro & Mehr GmbH",
+        "amountEur": 176.12,
+      "evidence": "DATEV-Buchungsvorschlag: Haben 70200 Kreditor Büro & Mehr GmbH 176,12 EUR (per DAT-134 extraction)."
+      }
+    ]
+  },
+  "paymentReconciliation": {
+    "status": "pending_evidence",
+    "matchedPayment": null,
+    "evidenceSourcesSearched": [
+      "May 2026 packet reconciliation: deliverables/dat-97-eingangsbelege-mai2026-reconciliation.json",
+      "Showcase Telegram runtime PDFs under showcase/runtime/telegram-files"
+    ],
+    "notes": [
+      "No ledger export or bank statement for Berg & Tal Eventtechnik GmbH is available in this workspace for May/June 2026.",
+      "Existing packet reconciliation DAT-97 covers ProAudio Nord invoice and a separate cash receipt from Büro & Mehr GmbH, but not this Eingangsrechnung ER-2026-0031.",
+      "Without concrete payment evidence, this invoice must remain an open creditor position on account 70200 and cannot be marked as paid or fully reconciled."
+    ]
+  },
+  "exceptions": [
+    {
+      "code": "missing_payment_evidence",
+      "severity": "medium",
+      "description": "No bank, cash, or card payment matching 176,12 EUR to Büro & Mehr GmbH (invoice BM-2026-8834, ER-2026-0031) is accessible in this workspace.",
+      "requiredEvidence": [
+        "Bank statement or payment advice for Berg & Tal Eventtechnik GmbH covering May–June 2026 showing a 176,12 EUR payment to Büro & Mehr GmbH, including value date and payment reference.",
+        "Alternatively, written confirmation that the invoice is still unpaid as of today so it remains as open accounts payable."
+      ],
+      "nextOwner": "Client Communication Agent",
+      "nextAction": "Request the specified payment evidence or unpaid confirmation from the mandant / Kanzlei and attach it to the case so booking reconciliation can be completed."
+    }
+  ],
+  "nextAction": "Waiting for Client Communication Agent to supply payment evidence or unpaid confirmation. Once available, Bookkeeping Reconciliation should match the DATEV booking proposal against the actual ledger/payment and update this artifact to either posted_and_reconciled or open_payable_no_payment."
+}

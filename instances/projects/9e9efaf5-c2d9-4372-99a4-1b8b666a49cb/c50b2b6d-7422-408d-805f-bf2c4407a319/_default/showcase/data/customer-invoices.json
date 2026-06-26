@@ -1,0 +1,26 @@
+[
+  {
+    "invoiceNumber": "RE-24041",
+    "customer": "Eventhaus Bonn GmbH",
+    "grossEur": 4165.0,
+    "status": "matched"
+  },
+  {
+    "invoiceNumber": "RE-24044",
+    "customer": "Hochzeit Mayer GbR",
+    "grossEur": 2975.0,
+    "status": "matched"
+  },
+  {
+    "invoiceNumber": "RE-24047",
+    "customer": "Messebau Rhein AG",
+    "grossEur": 5950.0,
+    "status": "matched"
+  },
+  {
+    "invoiceNumber": "RE-2026-0023",
+    "customer": "Hotel Alpenpanorama GmbH & Co. KG",
+    "grossEur": 654.5,
+    "status": "ready"
+  }
+]

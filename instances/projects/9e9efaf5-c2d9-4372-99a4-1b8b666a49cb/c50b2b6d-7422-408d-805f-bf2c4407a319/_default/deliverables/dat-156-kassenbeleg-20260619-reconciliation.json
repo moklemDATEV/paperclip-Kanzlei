@@ -1,0 +1,109 @@
+{
+  "issueIdentifier": "DAT-156",
+  "status": "posted_and_reconciled_against_ledger",
+  "documentScope": {
+    "sourceFileName": "Kassenbeleg_20260619.pdf",
+    "documentId": "68bcfdd7-8866-4ac2-84c9-1c734683489a",
+    "submissionId": "527e7f2f-af4a-409b-92cc-a261d90d2cc7",
+    "telegramFileId": "BQACAgIAAxkBAANTajULs2ZAIS1werybrxaxSrBvP2UAAjWfAALZ7ahJQiiQPuSv6zg8BA",
+    "receivedAt": "2026-06-19T09:28:19.000Z",
+    "documentDate": "2026-06-19",
+    "bookingMonth": "2026-06",
+    "sourceStoragePath": "/home/ubuntu/.paperclip/instances/default/projects/9e9efaf5-c2d9-4372-99a4-1b8b666a49cb/c50b2b6d-7422-408d-805f-bf2c4407a319/_default/showcase/runtime/telegram-files/BQACAgIAAxkBAANTajULs2ZAIS1werybrxaxSrBvP2UAAjWfAALZ7ahJQiiQPuSv6zg8BA/Kassenbeleg_20260619.pdf",
+    "extractionArtifact": "deliverables/dat-152-kassenbeleg-20260619-extraction.json",
+    "workflowArtifact": "showcase/runtime/telegram-workflow/2026-06-19T09-28-19-838Z-527e7f2f-af4a-409b-92cc-a261d90d2cc7.json"
+  },
+  "extractedReceipt": {
+    "receiptNumber": "Kassenbeleg_20260619",
+    "customerName": "Stadtwerke Rosenheim GmbH & Co. KG",
+    "customerNumber": "KD-00291",
+    "debitorAccountEvidence": "10291",
+    "servicePeriodStart": "2026-06-19",
+    "servicePeriodEnd": "2026-06-19",
+    "paymentMethod": "cash",
+    "usageReference": "Kassenbeleg_20260619 / KD-00291",
+    "currency": "EUR",
+    "netAmountEur": 210.0,
+    "vatRatePercent": 19,
+    "vatAmountEur": 39.9,
+    "grossAmountEur": 249.9
+  },
+  "matchedRecords": [
+    {
+      "matchType": "telegram_document_store",
+      "status": "matched_and_enriched",
+      "source": "showcase/runtime/shared-buchungsdaten.sqlite::telegram_documents",
+      "lookupKey": "id = 68bcfdd7-8866-4ac2-84c9-1c734683489a",
+      "matchedRecord": {
+        "documentType": "receipt",
+        "direction": "revenue",
+        "counterparty": "Stadtwerke Rosenheim GmbH & Co. KG",
+        "documentDate": "2026-06-19",
+        "grossAmountEur": 249.9,
+        "linkedBookingId": "dat-156-kassenbeleg-20260619-cash-revenue"
+      },
+      "evidence": "The shared telegram_documents row now carries the extracted date, customer, amounts, purpose key, reconciliation artifact reference, and linked_booking_id."
+    },
+    {
+      "matchType": "shared_ledger_booking",
+      "status": "added",
+      "source": "showcase/runtime/shared-buchungsdaten.sqlite::buchungen",
+      "lookupKey": "id = dat-156-kassenbeleg-20260619-cash-revenue",
+      "matchedRecord": {
+        "postingDate": "2026-06-19",
+        "sourceReference": "DAT-152",
+        "counterparty": "Stadtwerke Rosenheim GmbH & Co. KG",
+        "grossAmountEur": 249.9
+      },
+      "evidence": "The live shared ledger now contains the balanced cash-income posting from the receipt's DATEV proposal: 1000 Kasse debit 249.90 EUR, 8400 revenue credit 210.00 EUR, and 1776 VAT credit 39.90 EUR."
+    },
+    {
+      "matchType": "workflow_artifact_linkage",
+      "status": "matched",
+      "source": "showcase/runtime/telegram-workflow/2026-06-19T09-28-19-838Z-527e7f2f-af4a-409b-92cc-a261d90d2cc7.json",
+      "lookupKey": "routes[documentId=68bcfdd7-8866-4ac2-84c9-1c734683489a].linkedBookingId",
+      "matchedRecord": {
+        "linkedBookingId": "dat-156-kassenbeleg-20260619-cash-revenue"
+      },
+      "evidence": "The workflow trace now points the routed Telegram document to the live bookkeeping booking for downstream navigation."
+    }
+  ],
+  "verificationChecks": [
+    {
+      "checkType": "period_integrity",
+      "status": "matched",
+      "source": "deliverables/dat-152-kassenbeleg-20260619-extraction.json",
+      "result": {
+        "documentDate": "2026-06-19",
+        "postingDate": "2026-06-19",
+        "bookingMonth": "2026-06"
+      },
+      "evidence": "The receipt date, service period, Telegram submission timestamp, and booking date all fall inside the June 2026 bookkeeping period."
+    },
+    {
+      "checkType": "cash_revenue_booking_basis",
+      "status": "matched",
+      "source": "deliverables/dat-152-kassenbeleg-20260619-extraction.json::bookingProposal",
+      "result": {
+        "account1000DebitEur": 249.9,
+        "account8400CreditEur": 210.0,
+        "account1776CreditEur": 39.9
+      },
+      "evidence": "The source receipt itself already contains the DATEV booking proposal for a direct cash inflow, so no separate receivable or payment evidence is required to recognize the receipt in cash."
+    }
+  ],
+  "mismatchQueue": [
+    {
+      "severity": "medium",
+      "status": "open_for_workflow_followup_not_for_booking",
+      "code": "workflow_direction_mismatch",
+      "source": "deliverables/dat-152-kassenbeleg-20260619-extraction.json",
+      "description": "The Telegram workflow originally routed the document as an expense-side receipt with unspecified counterparty details.",
+      "bookkeepingImpact": "None after reconciliation; the booking and telegram document store now reflect a revenue cash receipt.",
+      "nextOwner": "CTO",
+      "nextAction": "Review the Telegram routing/classification logic so mandant-issued cash receipts are not sent downstream as expense extractions."
+    }
+  ],
+  "recommendedNextOwner": "Tax Preparation Agent",
+  "recommendedNextAction": "Use this reconciliation artifact together with DAT-152 to draft any downstream VAT/bookkeeping work for the June 2026 cash revenue receipt, while preserving the workflow-mismatch note as a non-blocking systems issue."
+}

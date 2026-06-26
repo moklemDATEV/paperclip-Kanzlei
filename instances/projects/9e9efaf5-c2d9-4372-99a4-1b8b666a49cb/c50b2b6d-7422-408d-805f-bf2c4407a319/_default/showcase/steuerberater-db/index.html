@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Steuerberater DB Frontend</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">EC2 PoC</p>
+          <h1>Steuerberater DB Frontend</h1>
+          <p class="lede">
+            Full CRUD access to the shared SQLite bookkeeping database, including changelog-safe
+            updates for <code>buchungen</code> and <code>buchung_lines</code>.
+          </p>
+        </div>
+        <div class="hero-actions">
+          <label>
+            Chart type
+            <select id="chart-type"></select>
+          </label>
+          <button id="refresh-button" type="button">Refresh data</button>
+        </div>
+      </header>
+
+      <section class="status-bar">
+        <div>
+          <strong>Health:</strong>
+          <span id="health-status">Loading...</span>
+        </div>
+        <div id="flash-message"></div>
+      </section>
+
+      <section class="grid">
+        <article class="panel">
+          <div class="panel-header">
+            <h2>Mandanten</h2>
+            <button type="button" data-action="new-mandant">New</button>
+          </div>
+          <form id="mandant-form" class="editor hidden"></form>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Display</th>
+                  <th>Entity</th>
+                  <th>Bookings</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="mandanten-table"></tbody>
+            </table>
+          </div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-header">
+            <h2>Account Catalog</h2>
+            <button type="button" data-action="new-account">New</button>
+          </div>
+          <form id="account-form" class="editor hidden"></form>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Code</th>
+                  <th>Purpose</th>
+                  <th>Name</th>
+                  <th>Category</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="accounts-table"></tbody>
+            </table>
+          </div>
+        </article>
+
+        <article class="panel panel-wide">
+          <div class="panel-header">
+            <h2>Buchungen</h2>
+            <div class="inline-controls">
+              <label>
+                Mandant filter
+                <select id="booking-mandant-filter"></select>
+              </label>
+              <button type="button" data-action="new-booking">New</button>
+            </div>
+          </div>
+          <form id="booking-form" class="editor hidden"></form>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Counterparty</th>
+                  <th>Status</th>
+                  <th>Gross</th>
+                  <th>Annotation</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="bookings-table"></tbody>
+            </table>
+          </div>
+        </article>
+
+        <article class="panel panel-wide">
+          <div class="panel-header">
+            <h2>Buchung Lines</h2>
+            <div class="inline-controls">
+              <label>
+                Booking filter
+                <select id="line-booking-filter"></select>
+              </label>
+              <button type="button" data-action="new-line">New</button>
+            </div>
+          </div>
+          <form id="line-form" class="editor hidden"></form>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Booking</th>
+                  <th>Line</th>
+                  <th>Purpose</th>
+                  <th>Direction</th>
+                  <th>Amount</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="lines-table"></tbody>
+            </table>
+          </div>
+        </article>
+
+        <article class="panel panel-wide">
+          <div class="panel-header">
+            <h2>Changelog</h2>
+            <label>
+              Limit
+              <select id="changelog-limit">
+                <option value="25">25</option>
+                <option value="50" selected>50</option>
+                <option value="100">100</option>
+              </select>
+            </label>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Changed At</th>
+                  <th>Target</th>
+                  <th>Field</th>
+                  <th>Old</th>
+                  <th>New</th>
+                  <th>Reason</th>
+                </tr>
+              </thead>
+              <tbody id="changelog-table"></tbody>
+            </table>
+          </div>
+        </article>
+
+        <article class="panel panel-wide">
+          <div class="panel-header">
+            <h2>Dokumente</h2>
+          </div>
+          <form id="document-form" class="editor hidden"></form>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Mandant</th>
+                  <th>Dateiname</th>
+                  <th>Typ</th>
+                  <th>Empfangen</th>
+                  <th>Status</th>
+                  <th>Buchung</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="documents-table"></tbody>
+            </table>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+  </html>

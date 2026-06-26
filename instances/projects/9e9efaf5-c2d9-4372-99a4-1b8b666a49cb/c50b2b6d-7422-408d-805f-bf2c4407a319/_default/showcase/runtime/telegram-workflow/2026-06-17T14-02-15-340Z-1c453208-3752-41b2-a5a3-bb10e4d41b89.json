@@ -1,0 +1,58 @@
+{
+  "id": "96a2705c-1f8c-451b-a29e-89f836530d45",
+  "workflow": "telegram_invoice_intake",
+  "routingRuleVersion": "dat-22-v1",
+  "createdAt": "2026-06-17T14:02:15.340Z",
+  "chartType": "SKR03",
+  "trigger": "telegram_webhook",
+  "source": {
+    "channel": "telegram",
+    "sourceLabel": "Telegram webhook intake",
+    "botKey": "mandant"
+  },
+  "submission": {
+    "id": "1c453208-3752-41b2-a5a3-bb10e4d41b89",
+    "mandantId": "berg-und-tal-eventtechnik-gmbh",
+    "channel": "telegram",
+    "sourceLabel": "Telegram webhook intake",
+    "telegramChatId": "8695197922",
+    "senderName": "Moritz",
+    "submittedAt": "2026-06-17T14:02:14.000Z",
+    "documentCount": 1,
+    "createdAt": "2026-06-17T14:02:14.860Z",
+    "updatedAt": "2026-06-17T14:02:14.860Z"
+  },
+  "routes": [
+    {
+      "documentId": "5b7b4216-580b-48d2-8b7e-74c8f8d512c9",
+      "fileName": "GS-2026-0005_Gutschrift.pdf",
+      "documentType": "supplier_invoice",
+      "direction": "expense",
+      "status": "ready",
+      "counterparty": "Unspecified counterparty",
+      "linkedBookingId": null,
+      "routedToAgent": "bookkeeping_agent",
+      "downstreamPath": "bookkeeping:extract_fields",
+      "queue": "extraction_queue",
+      "reason": "Telegram expense documents without a linked booking need bookkeeping extraction before posting."
+    }
+  ],
+  "summary": {
+    "documentCount": 1,
+    "queueCounts": {
+      "extraction_queue": 1
+    }
+  },
+  "activations": [
+    {
+      "stage": "paperclip_issue_created",
+      "route": "bookkeeping:extract_fields",
+      "assigneeAgentId": "ce1da1bc-9a98-4ca9-9a61-7b83e266c066",
+      "assigneeAgentName": "Document Ingestion",
+      "issueId": "c28da251-5e80-4e0a-b9a7-7fd5add2eb23",
+      "issueIdentifier": "DAT-119",
+      "issueTitle": "Telegram intake: GS-2026-0005_Gutschrift.pdf",
+      "createdAt": "2026-06-17T14:02:15.407Z"
+    }
+  ]
+}

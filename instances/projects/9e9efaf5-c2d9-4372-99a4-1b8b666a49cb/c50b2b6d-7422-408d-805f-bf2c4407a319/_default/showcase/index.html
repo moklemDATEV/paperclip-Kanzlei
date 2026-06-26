@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Steuerkanzlei Showcase</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="background-orb orb-a"></div>
+    <div class="background-orb orb-b"></div>
+    <main class="shell">
+      <header class="hero">
+        <p class="eyebrow">DAT-16 Live Agent Run</p>
+        <div class="hero-copy">
+          <div>
+            <h1>Steuerkanzlei month-close showcase</h1>
+            <p class="lede">
+              A narrow but real run path for one GmbH, one month, and one
+              tax-sensitive exception executed by live agent steps.
+            </p>
+          </div>
+          <div class="hero-actions">
+            <button id="run-demo-button" class="primary-button">
+              Run live April 2026 flow
+            </button>
+            <button id="load-latest-button" class="secondary-button">
+              Load latest runtime artifact
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <section class="usage-panel">
+        <div>
+          <p class="usage-label">Usage</p>
+          <p id="fixture-status">
+            No live run loaded. Start the April 2026 source bundle to generate
+            fresh workflow output.
+          </p>
+        </div>
+        <div class="usage-steps">
+          <span>1. Start live run</span>
+          <span>2. Review generated outputs</span>
+          <span>3. Check the exception</span>
+          <span>4. Inspect runtime trace</span>
+        </div>
+      </section>
+
+      <nav class="screen-nav" aria-label="Showcase screens">
+        <a href="#/intake" data-route="intake">Intake</a>
+        <a href="#/review" data-route="review">Review & Extraction</a>
+        <a href="#/summary" data-route="summary">Monthly Package</a>
+        <a href="#/trace" data-route="trace">Runtime Trace</a>
+      </nav>
+
+      <section class="layout">
+        <aside class="sidebar">
+          <div class="sidebar-card">
+            <p class="sidebar-label">Client</p>
+            <h2 id="client-name">No client loaded</h2>
+            <p id="client-period" class="muted">Awaiting fixture</p>
+          </div>
+          <div class="sidebar-card metrics-grid" id="metrics-grid">
+            <div>
+              <p class="metric-label">Bank lines</p>
+              <p class="metric-value">0</p>
+            </div>
+            <div>
+              <p class="metric-label">Invoices</p>
+              <p class="metric-value">0</p>
+            </div>
+            <div>
+              <p class="metric-label">Auto-matched</p>
+              <p class="metric-value">0</p>
+            </div>
+            <div>
+              <p class="metric-label">Exceptions</p>
+              <p class="metric-value">0</p>
+            </div>
+          </div>
+          <div class="sidebar-card">
+            <p class="sidebar-label">Operator note</p>
+            <p id="operator-note" class="muted">
+              Run the live flow to generate the current case summary and next
+              action.
+            </p>
+          </div>
+          <div class="sidebar-card">
+            <p class="sidebar-label">Runtime evidence</p>
+            <div class="stack-list">
+              <div>
+                <p id="runtime-status" class="metric-value">Idle</p>
+                <p id="runtime-meta" class="muted">
+                  No live run has completed yet.
+                </p>
+              </div>
+              <div>
+                <p class="metric-label">Artifact</p>
+                <a id="artifact-link" class="inline-link" href="./runtime/latest-run.json">
+                  runtime/latest-run.json
+                </a>
+              </div>
+              <div>
+                <p class="metric-label">Run ID</p>
+                <p id="runtime-run-id" class="muted">Awaiting execution</p>
+              </div>
+            </div>
+          </div>
+        </aside>
+
+        <section class="screen-frame">
+          <article class="screen active" data-screen="intake">
+            <div class="screen-heading">
+              <div>
+                <p class="screen-kicker">Screen 1</p>
+                <h3>Client intake overview</h3>
+              </div>
+              <p class="screen-caption">
+                Coverage of the monthly upload before bookkeeping starts.
+              </p>
+            </div>
+            <div class="panel-grid two-up">
+              <section class="panel">
+                <div class="panel-header">
+                  <h4>Source bundle</h4>
+                  <span id="completeness-pill" class="pill neutral">Waiting</span>
+                </div>
+                <ul id="bundle-list" class="document-list empty-state">
+                  <li>Run the live flow to inspect the source bundle.</li>
+                </ul>
+              </section>
+              <section class="panel">
+                <div class="panel-header">
+                  <h4>Completion snapshot</h4>
+                </div>
+                <div id="coverage-cards" class="coverage-cards">
+                  <div class="coverage-card">
+                    <p>Matched automatically</p>
+                    <strong>0</strong>
+                  </div>
+                  <div class="coverage-card">
+                    <p>Needs review</p>
+                    <strong>0</strong>
+                  </div>
+                  <div class="coverage-card">
+                    <p>Documents parsed</p>
+                    <strong>0</strong>
+                  </div>
+                </div>
+              </section>
+            </div>
+            <section class="panel">
+              <div class="panel-header">
+                <h4>Representative bank activity</h4>
+              </div>
+              <div class="table-wrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Date</th>
+                      <th>Counterparty</th>
+                      <th>Gross EUR</th>
+                      <th>Treatment</th>
+                      <th>Match</th>
+                    </tr>
+                  </thead>
+                  <tbody id="transaction-table">
+                    <tr>
+                      <td colspan="5">No transactions loaded.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+          </article>
+
+          <article class="screen" data-screen="review">
+            <div class="screen-heading">
+              <div>
+                <p class="screen-kicker">Screen 2</p>
+                <h3>Review and extraction</h3>
+              </div>
+              <p class="screen-caption">
+                Parsed fields, confidence, and the one exception that still needs
+                tax judgment.
+              </p>
+            </div>
+            <div class="panel-grid two-up">
+              <section class="panel">
+                <div class="panel-header">
+                  <h4>Extracted documents</h4>
+                </div>
+                <div id="document-cards" class="stack-list empty-state">
+                  No live extraction output loaded.
+                </div>
+              </section>
+              <section class="panel alert-panel">
+                <div class="panel-header">
+                  <h4>Exception review</h4>
+                  <span id="exception-pill" class="pill neutral">No exception</span>
+                </div>
+                <div id="exception-card" class="exception-card empty-state">
+                  Run the live flow to inspect the flagged posting.
+                </div>
+              </section>
+            </div>
+          </article>
+
+          <article class="screen" data-screen="summary">
+            <div class="screen-heading">
+              <div>
+                <p class="screen-kicker">Screen 3</p>
+                <h3>Monthly closing package</h3>
+              </div>
+              <p class="screen-caption">
+                Review-ready summary, VAT totals, and the final clerk action.
+              </p>
+            </div>
+            <div class="panel-grid">
+              <section class="panel">
+                <div class="panel-header">
+                  <h4>Accounting totals</h4>
+                </div>
+                <div id="totals-grid" class="totals-grid">
+                  <div class="total-card">
+                    <p>Revenue gross</p>
+                    <strong>0.00 EUR</strong>
+                  </div>
+                </div>
+              </section>
+              <section class="panel">
+                <div class="panel-header">
+                  <h4>Export package</h4>
+                </div>
+                <div id="package-card" class="package-card empty-state">
+                  Run the live flow to inspect the package output.
+                </div>
+              </section>
+              <section class="panel">
+                <div class="panel-header">
+                  <h4>Clerk follow-up</h4>
+                </div>
+                <ul id="clerk-task-list" class="document-list empty-state">
+                  <li>The clerk task list will appear after a live run.</li>
+                </ul>
+              </section>
+            </div>
+          </article>
+
+          <article class="screen" data-screen="trace">
+            <div class="screen-heading">
+              <div>
+                <p class="screen-kicker">Screen 4</p>
+                <h3>Runtime trace</h3>
+              </div>
+              <p class="screen-caption">
+                Inspect the live agent steps, response IDs, and the persisted
+                artifact written during the run.
+              </p>
+            </div>
+            <div class="panel-grid two-up">
+              <section class="panel">
+                <div class="panel-header">
+                  <h4>Agent stages</h4>
+                </div>
+                <div id="stage-list" class="stage-list empty-state">
+                  No stage output recorded yet.
+                </div>
+              </section>
+              <section class="panel">
+                <div class="panel-header">
+                  <h4>Artifact preview</h4>
+                </div>
+                <pre id="artifact-preview" class="trace-pre">Run the live flow to inspect the latest runtime artifact.</pre>
+              </section>
+            </div>
+          </article>
+        </section>
+      </section>
+    </main>
+
+    <script src="./app.js" defer></script>
+  </body>
+</html>

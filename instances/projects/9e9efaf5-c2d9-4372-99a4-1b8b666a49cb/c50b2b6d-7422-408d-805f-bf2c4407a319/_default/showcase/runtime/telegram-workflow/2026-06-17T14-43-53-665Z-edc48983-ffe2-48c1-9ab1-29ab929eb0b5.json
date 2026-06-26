@@ -1,0 +1,69 @@
+{
+  "id": "0b197c1b-845e-4d00-b21d-a4585e4c50ea",
+  "workflow": "telegram_invoice_intake",
+  "routingRuleVersion": "dat-22-v1",
+  "createdAt": "2026-06-17T14:43:53.665Z",
+  "chartType": "SKR03",
+  "trigger": "telegram_webhook",
+  "source": {
+    "channel": "telegram",
+    "sourceLabel": "Telegram webhook intake",
+    "botKey": "mandant"
+  },
+  "submission": {
+    "id": "edc48983-ffe2-48c1-9ab1-29ab929eb0b5",
+    "mandantId": "berg-und-tal-eventtechnik-gmbh",
+    "channel": "telegram",
+    "sourceLabel": "Telegram webhook intake",
+    "telegramChatId": "8695197922",
+    "senderName": "Moritz",
+    "submittedAt": "2026-06-17T14:43:53.000Z",
+    "documentCount": 1,
+    "createdAt": "2026-06-17T14:43:53.434Z",
+    "updatedAt": "2026-06-17T14:43:53.434Z"
+  },
+  "routes": [
+    {
+      "documentId": "8a7241c0-c463-45a8-b809-2632090a84f7",
+      "fileName": "GS-2026-0005_Gutschrift.pdf",
+      "sourceLink": "/home/ubuntu/.paperclip/instances/default/projects/9e9efaf5-c2d9-4372-99a4-1b8b666a49cb/c50b2b6d-7422-408d-805f-bf2c4407a319/_default/showcase/runtime/telegram-files/BQACAgIAAxkBAANDajKyqaZRQ0BlZ0zUK_l7BI1juz8AApiaAALGnpFJIAaHNHIAAaR7PAQ/GS-2026-0005_Gutschrift.pdf",
+      "documentType": "supplier_invoice",
+      "direction": "expense",
+      "status": "ready",
+      "counterparty": "Unspecified counterparty",
+      "linkedBookingId": null,
+      "routedToAgent": "bookkeeping_agent",
+      "downstreamPath": "bookkeeping:extract_fields",
+      "queue": "extraction_queue",
+      "reason": "Telegram expense documents without a linked booking need bookkeeping extraction before posting."
+    }
+  ],
+  "summary": {
+    "documentCount": 1,
+    "queueCounts": {
+      "extraction_queue": 1
+    }
+  },
+  "activations": [
+    {
+      "stage": "paperclip_issue_created",
+      "route": "bookkeeping:extract_fields",
+      "attachments": [
+        {
+          "fileName": "GS-2026-0005_Gutschrift.pdf",
+          "sourceLink": "/home/ubuntu/.paperclip/instances/default/projects/9e9efaf5-c2d9-4372-99a4-1b8b666a49cb/c50b2b6d-7422-408d-805f-bf2c4407a319/_default/showcase/runtime/telegram-files/BQACAgIAAxkBAANDajKyqaZRQ0BlZ0zUK_l7BI1juz8AApiaAALGnpFJIAaHNHIAAaR7PAQ/GS-2026-0005_Gutschrift.pdf"
+        }
+      ],
+      "assigneeAgentId": "ce1da1bc-9a98-4ca9-9a61-7b83e266c066",
+      "assigneeAgentName": "Document Ingestion",
+      "issueId": "77b53f49-d5e7-4fcc-9e4a-5c16000a8681",
+      "issueIdentifier": "DAT-127",
+      "issueTitle": "Telegram intake: GS-2026-0005_Gutschrift.pdf",
+      "createdAt": "2026-06-17T14:43:53.714Z"
+    }
+  ],
+  "artifacts": {
+    "relativePath": "./runtime/telegram-workflow/2026-06-17T14-43-53-665Z-edc48983-ffe2-48c1-9ab1-29ab929eb0b5.json",
+    "latestRelativePath": "./runtime/telegram-workflow/latest.json"
+  }
+}

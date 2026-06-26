@@ -1,0 +1,165 @@
+{
+  "issueIdentifier": "DAT-127",
+  "status": "ready_for_downstream_handoff",
+  "document": {
+    "documentId": "8a7241c0-c463-45a8-b809-2632090a84f7",
+    "submissionId": "edc48983-ffe2-48c1-9ab1-29ab929eb0b5",
+    "mandantId": "berg-und-tal-eventtechnik-gmbh",
+    "sourceFileName": "GS-2026-0005_Gutschrift.pdf",
+    "sourcePdfPath": "showcase/runtime/telegram-files/BQACAgIAAxkBAANDajKyqaZRQ0BlZ0zUK_l7BI1juz8AApiaAALGnpFJIAaHNHIAAaR7PAQ/GS-2026-0005_Gutschrift.pdf",
+    "sourceStoragePath": "/home/ubuntu/.paperclip/instances/default/projects/9e9efaf5-c2d9-4372-99a4-1b8b666a49cb/c50b2b6d-7422-408d-805f-bf2c4407a319/_default/showcase/runtime/telegram-files/BQACAgIAAxkBAANDajKyqaZRQ0BlZ0zUK_l7BI1juz8AApiaAALGnpFJIAaHNHIAAaR7PAQ/GS-2026-0005_Gutschrift.pdf",
+    "sourcePdfSha256": "6f199795fd186f4607d91e17399172c2257ac2c1a15981c6ff642a34fbae993c",
+    "sourceChannel": "telegram_mandant",
+    "sourceSystem": "Telegram",
+    "telegramChatId": "8695197922",
+    "telegramMessageId": "67",
+    "telegramFileId": "BQACAgIAAxkBAANDajKyqaZRQ0BlZ0zUK_l7BI1juz8AApiaAALGnpFJIAaHNHIAAaR7PAQ",
+    "receivedAt": "2026-06-17T14:43:53.000Z",
+    "recoveredAt": "2026-06-17T14:43:53.434Z",
+    "documentDate": "2026-05-19",
+    "servicePeriodStart": "2026-05-11",
+    "servicePeriodEnd": "2026-05-11",
+    "bookingMonth": "2026-05",
+    "mandantNumber": "58734"
+  },
+  "mandant": {
+    "displayName": "Berg & Tal Eventtechnik GmbH",
+    "legalName": "Berg-und-Tal-Eventtechnik GmbH",
+    "vatId": "DE298765432",
+    "taxNumber": "109/240/12345",
+    "hrb": "HRB 15234, Amtsgericht Rosenheim",
+    "managingDirector": "Markus Bergmann",
+    "accountingBasis": "SKR03 monthly bookkeeping (Mandantennr. 58734)"
+  },
+  "classification": {
+    "documentType": {
+      "value": "credit_note",
+      "confidence": "high",
+      "evidence": "The headline reads 'GUTSCHRIFT', followed by 'Gutschriftnummer: GS-2026-0005'."
+    },
+    "direction": {
+      "value": "revenue",
+      "confidence": "high",
+      "evidence": "The document reverses the earlier supplier invoice RE-2026-0023 and reduces revenue by debiting Erlöse and the customer account."
+    },
+    "purposeKey": {
+      "value": "REVENUE_REFUND",
+      "confidence": "high",
+      "evidence": "A Teilgutschrift für den Verleih der Lichtanlage mindert den Erlös aus Lieferungen und Leistungen."
+    }
+  },
+  "merchant": {
+    "name": {
+      "value": "Hotel Alpenpanorama GmbH & Co. KG",
+      "confidence": "high",
+      "evidence": "The customer name sits under the mandant address block on the cover page."
+    },
+    "address": {
+      "value": "Maximilianstraße 24, 80539 München",
+      "confidence": "high",
+      "evidence": "The header shows the hotel address directly adjacent to the mandant's."
+    },
+    "customerNumber": {
+      "value": "KD-00182",
+      "confidence": "high",
+      "evidence": "The document explicitly prints 'Kundennummer: KD-00182'."
+    },
+    "debitorAccount": {
+      "value": "10182",
+      "confidence": "high",
+      "evidence": "The DATEV-Debitorenkto. is 10182 and appears again in the booking proposal."
+    }
+  },
+  "creditNote": {
+    "creditNoteNumber": "GS-2026-0005",
+    "creditNoteDate": "2026-05-19",
+    "referenceInvoiceNumber": "RE-2026-0023",
+    "referenceInvoiceDate": "2026-05-12",
+    "reason": "Teilweise Gutschrift für den zweiten Veranstaltungstag (11.05.2026), da der zusätzliche Bedarf kurzfristig entfiel."
+  },
+  "amounts": {
+    "currency": {
+      "value": "EUR",
+      "confidence": "high",
+      "evidence": "Alle Beträge werden in EUR ausgewiesen."
+    },
+    "netAmountEur": {
+      "value": 550,
+      "confidence": "high",
+      "evidence": "Die Gutschrift listet einen Nettobetrag von 550,00 EUR."
+    },
+    "vatRatePercent": {
+      "value": 19,
+      "confidence": "high",
+      "evidence": "Die MwSt. wird mit 19% auf den Nettobetrag berechnet."
+    },
+    "vatAmountEur": {
+      "value": 104.5,
+      "confidence": "high",
+      "evidence": "19% von 550,00 EUR ergibt 104,50 EUR laut Drucktext."
+    },
+    "grossAmountEur": {
+      "value": 654.5,
+      "confidence": "high",
+      "evidence": "Der Gesamtbetrag inklusive MwSt. ist 654,50 EUR."
+    }
+  },
+  "lineItems": [
+    {
+      "line": 1,
+      "description": "Teilgutschrift Verleih Lichtanlage (LED-Moving-Head 12×, Par-Scheinwerfer, DMX-Controller) – Differenz für 11.05.2026",
+      "quantity": 1,
+      "unit": "Pausch.",
+      "unitPriceNetEur": 550,
+      "netAmountEur": 550,
+      "vatRatePercent": 19,
+      "vatAmountEur": 104.5
+    }
+  ],
+  "bookingProposal": [
+    {
+      "type": "debit",
+      "account": "8400",
+      "accountName": "Erlöse aus Lieferungen/Leistungen 19 %",
+      "amountEur": 550,
+      "evidence": "DATEV-Buchungsvorschlag: Soll 8400 mit 550,00 EUR, um die Einnahmen zu reduzieren."
+    },
+    {
+      "type": "debit",
+      "account": "1776",
+      "accountName": "Umsatzsteuer 19 %",
+      "amountEur": 104.5,
+      "evidence": "DATEV-Buchungsvorschlag: Soll 1776 mit 104,50 EUR wegen der rückgängigen Umsatzsteuer."
+    },
+    {
+      "type": "credit",
+      "account": "10182",
+      "accountName": "Debitor Hotel Alpenpanorama GmbH & Co. KG",
+      "amountEur": 654.5,
+      "evidence": "DATEV-Buchungsvorschlag: Haben 10182 mit 654,50 EUR zum Ausgleich der Kundenforderung."
+    }
+  ],
+  "sourceEvidence": [
+    "Gutschriftnummer: GS-2026-0005 (Headline neben mandant details).",
+    "Gutschriftdatum: 19.05.2026 und Bezugsrechnung RE-2026-0023 vom 12.05.2026 sind im Kopfteil angegeben.",
+    "Die Gutschrift ist eine Teilgutschrift für den zweiten Veranstaltungstag (11.05.2026) und bezieht sich auf die Lichtanlage RE-2026-0023 Pos. 2.",
+    "DATEV-Buchungsvorschlag und Mandantendetails weisen auf SKR03-Buchführung mit Mandantennr. 58734 hin."
+  ],
+  "extractionMethod": {
+    "value": "pdftotext -layout GS-2026-0005_Gutschrift.pdf followed by manual verification of the DATEV booking text.",
+    "confidence": "high",
+    "notes": [
+      "PDF downloaded from the Telegram runtime store via recover-telegram-attachments before extraction.",
+      "Text was parsed from the body and booking proposal segments; amounts were cross-checked with the numeric summary at the bottom."
+    ]
+  },
+  "downstreamHandoff": {
+    "ready": true,
+    "recommendedNextOwner": "Bookkeeping Reconciliation Agent",
+    "notes": [
+      "Apply this credit to reverse part of invoice RE-2026-0023 (KD-00182) using the provided SKR03 entry lines.",
+      "Verify that the net 550,00 EUR reduction and the associated 19% VAT are captured in the May 2026 posting batch before closing DAT-127.",
+      "Treat GS-2026-0005 as completed once the adjusted customer balance (10182) reflects the 654,50 EUR credit."
+    ]
+  }
+}

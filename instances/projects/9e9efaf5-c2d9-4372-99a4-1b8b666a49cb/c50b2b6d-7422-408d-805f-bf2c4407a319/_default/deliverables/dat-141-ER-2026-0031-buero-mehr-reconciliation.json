@@ -1,0 +1,76 @@
+{
+  "issueIdentifier": "DAT-141",
+  "status": "blocked_missing_payment_evidence",
+  "document": {
+    "extractionArtifact": "deliverables/dat-139-telegram-intake-ER-2026-0031-extraction.json",
+    "documentId": "e84376b0-55cf-47cc-8c04-68075f95a3e3",
+    "submissionId": "67b532e2-ea21-430b-b2cc-c38176689e77",
+    "sourcePdfPath": "showcase/runtime/telegram-files/BQACAgIAAxkBAANNajOp2Pc-svSRb3wBS_9PhAfzzLIAAjKTAALGnplJ-JCqSycRk4k8BA/ER-2026-0031_Eingangsrechnung_Buero-Mehr.pdf",
+    "sourcePdfSha256": "fd0408bc27ff864dcaf74b2c26c8551cab1ad6d0948fcbfa79b6a8a42295e867",
+    "sourceStoragePath": "showcase/runtime/telegram-files/BQACAgIAAxkBAANNajOp2Pc-svSRb3wBS_9PhAfzzLIAAjKTAALGnplJ-JCqSycRk4k8BA/ER-2026-0031_Eingangsrechnung_Buero-Mehr.pdf",
+    "internalDocumentNumber": "ER-2026-0031",
+    "originalInvoiceNumber": "BM-2026-8834",
+    "originalInvoiceDate": "2026-05-16",
+    "performancePeriod": "2026-05",
+    "mandant": "Berg & Tal Eventtechnik GmbH",
+    "supplierName": "Büro & Mehr GmbH",
+    "currency": "EUR",
+    "bookingScheme": "SKR03"
+  },
+  "bookingProposal": {
+    "netAmountEur": 148.0,
+    "vatAmountEur": 28.12,
+    "grossAmountEur": 176.12,
+    "vatRatePercent": 19,
+    "lines": [
+      {
+        "entryDirection": "debit",
+        "accountCode": "4780",
+        "accountName": "Bürobedarf",
+        "amountEur": 148.0,
+        "evidence": "DATEV-Buchungsvorschlag: Soll 4780 Bürobedarf 148,00 EUR (per DAT-139 extraction)."
+      },
+      {
+        "entryDirection": "debit",
+        "accountCode": "1576",
+        "accountName": "Abziehbare Vorsteuer 19 %",
+        "amountEur": 28.12,
+        "evidence": "DATEV-Buchungsvorschlag: Soll 1576 Abziehbare Vorsteuer 19 % 28,12 EUR (per DAT-139 extraction)."
+      },
+      {
+        "entryDirection": "credit",
+        "accountCode": "70200",
+        "accountName": "Kreditor Büro & Mehr GmbH",
+        "amountEur": 176.12,
+        "evidence": "DATEV-Buchungsvorschlag: Haben 70200 Kreditor Büro & Mehr GmbH 176,12 EUR (per DAT-139 extraction)."
+      }
+    ]
+  },
+  "paymentReconciliation": {
+    "status": "pending_evidence",
+    "matchedPayment": null,
+    "evidenceSourcesSearched": [
+      "May 2026 packet reconciliation: deliverables/dat-97-eingangsbelege-mai2026-reconciliation.json",
+      "Shared ledger query (showcase/runtime/shared-buchungsdaten.sqlite) for gross_amount_eur = 176.12 or counterparty referencing Büro & Mehr GmbH",
+      "Telegram runtime PDFs under showcase/runtime/telegram-files plus their metadata for any matching payment or cash proof"
+    ],
+    "notes": [
+      "The shared ledger currently has no buchungen row for gross_amount_eur = 176.12 EUR or any creditor entry mentioning Büro & Mehr GmbH, so the open supplier balance remains uncaptured.",
+      "There are no bank, card, or cash export files covering the May/June 2026 timeframe in this workspace, so no payment advice for 176.12 EUR can be attached to the issue."
+    ]
+  },
+  "exceptions": [
+    {
+      "code": "missing_payment_evidence",
+      "severity": "medium",
+      "description": "No bank, ledger, or cash evidence was found for the 176,12 EUR creditor balance to Büro & Mehr GmbH, so the invoice remains an open payable.",
+      "requiredEvidence": [
+        "Bank statement or payment advice for Berg & Tal Eventtechnik GmbH covering May–June 2026 showing a 176,12 EUR payment to Büro & Mehr GmbH, including value date and payment reference.",
+        "Alternatively, written confirmation that the invoice BM-2026-8834 is still unpaid so the creditor can stay open."
+      ],
+      "nextOwner": "Client Communication Agent",
+      "nextAction": "Request the specified payment evidence or unpaid confirmation from the mandant/Kanzlei and attach it to the case so bookkeeping reconciliation can be completed."
+    }
+  ],
+  "nextAction": "Waiting for Client Communication Agent to supply payment evidence or unpaid confirmation. Once available, Bookkeeping Reconciliation should match the DATEV booking proposal against the actual ledger/payment and update this artifact to either posted_and_reconciled or open_payable_no_payment."
+}

@@ -1,0 +1,89 @@
+{
+  "issueIdentifier": "DAT-97",
+  "status": "reconciled",
+  "packetScope": {
+    "coverLetterSource": "deliverables/dat-90-telegram-intake-extraction.json",
+    "coverLetterPdf": "deliverables/dat-90-20260615-anschreiben-eingangsbelege-mai2026-source.pdf",
+    "bookingPeriod": "2026-05",
+    "mandant": "Berg & Tal Eventtechnik GmbH"
+  },
+  "packetTotals": {
+    "netAmountEur": 2440.0,
+    "vatAmountEur": 463.6,
+    "grossAmountEur": 2903.6,
+    "vatRatePercent": 19
+  },
+  "receipts": [
+    {
+      "receiptIdentifier": "DAT-95",
+      "counterparty": "ProAudio Nord GmbH",
+      "documentType": "Eingangsrechnung",
+      "fileName": "ER-2026-0031_Eingangsrechnung_ProAudioNord.pdf",
+      "source": {
+        "issue": "DAT-95",
+        "sourceStoragePath": "/home/ubuntu/.paperclip/instances/default/projects/9e9efaf5-c2d9-4372-99a4-1b8b666a49cb/c50b2b6d-7422-408d-805f-bf2c4407a319/_default/showcase/runtime/telegram-files/BQACAgIAAxkBAAM0ajKLkGcGgZybpdTkTo91eFb2lc8AAoeYAALGnpFJij8s1YKatNM8BA/ER-2026-0031_Eingangsrechnung_ProAudioNord.pdf",
+        "coverLetterReference": "DAT-90",
+        "coverLetterExtraction": "deliverables/dat-90-telegram-intake-extraction.json"
+      },
+      "bookingProposal": {
+        "bookingPeriod": "2026-05",
+        "netAmountEur": 2400.0,
+        "vatAmountEur": 456.0,
+        "grossAmountEur": 2856.0,
+        "vatRatePercent": 19,
+        "ska03Proposal": "Letter states that the invoice already carries DATEV SKR03 booking proposals (fully deductible per § 15 Abs. 1 UStG)."
+      },
+      "status": "reconciled",
+      "exception": null,
+      "nextAction": "None; DAT-95 completed the document-level extraction and handed this invoice back to the packet-level reconciliation."
+    },
+    {
+      "receiptIdentifier": "DAT-96",
+      "counterparty": "Büro & Mehr GmbH",
+      "documentType": "Kassenbeleg",
+      "fileName": "Kassenbeleg_20260512.pdf",
+      "source": {
+        "issue": "DAT-96",
+        "extractionArtifact": "deliverables/dat-94-kassenbeleg-20260512-extraction.json",
+        "reconciliationArtifact": "deliverables/dat-96-kassenbeleg-20260512-reconciliation.json",
+        "sourceStoragePath": "/home/ubuntu/.paperclip/instances/default/projects/9e9efaf5-c2d9-4372-99a4-1b8b666a49cb/c50b2b6d-7422-408d-805f-bf2c4407a319/_default/showcase/runtime/telegram-files/BQACAgIAAxkBAAM1ajKLkDo_x8neLGb8Xw8HHwpW-JcAAoaYAALGnpFJPy_1mtsF4L08BA/Kassenbeleg_20260512.pdf"
+      },
+      "bookingSummary": {
+        "postingDate": "2026-05-12",
+        "netAmountEur": 40.0,
+        "vatAmountEur": 7.6,
+        "grossAmountEur": 47.6,
+        "vatRatePercent": 19,
+        "accounts": [
+          {
+            "accountCode": "4930",
+            "accountName": "Buerobedarf",
+            "entryDirection": "debit",
+            "amountEur": 40.0
+          },
+          {
+            "accountCode": "1576",
+            "accountName": "Vorsteuer 19%",
+            "entryDirection": "debit",
+            "amountEur": 7.6
+          },
+          {
+            "accountCode": "1000",
+            "accountName": "Kasse",
+            "entryDirection": "credit",
+            "amountEur": 47.6
+          }
+        ]
+      },
+      "status": "posted_and_reconciled",
+      "exception": null,
+      "nextAction": "None; DAT-96 posted the cash receipt into the shared ledger and linked the Telegram document to booking `058cdb36-8946-4ad6-bdbd-97bb0ad2d1f6`."
+    }
+  ],
+  "notes": [
+    "Cover letter DAT-90 ties the May 2026 receipts together and documents that each already carries SKR03 proposals, so the reconciliation links the packet totals back to the receipt-level evidence in DAT-95 and DAT-96.",
+    "DAT-95 completed the ProAudio invoice extraction with net 2.400,00 EUR, VAT 456,00 EUR, gross 2.856,00 EUR, and DAT-96 completed the Kassenbeleg posting with net 40,00 EUR, VAT 7,60 EUR, gross 47,60 EUR.",
+    "The two receipt-level outcomes sum exactly to the DAT-90 packet totals: net 2.440,00 EUR, VAT 463,60 EUR, gross 2.903,60 EUR."
+  ],
+  "nextAction": "None; packet-level reconciliation is complete and DAT-97 can be closed."
+}

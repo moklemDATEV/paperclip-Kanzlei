@@ -1,0 +1,214 @@
+{
+  "issueIdentifier": "DAT-27",
+  "status": "ready_for_downstream_handoff",
+  "document": {
+    "documentId": "506d0719-ef68-4c1e-9654-50ab5e2274e4",
+    "submissionId": "eed1a29a-f5b1-4305-b192-84b19a8bf150",
+    "sourceFileName": "Kassenbeleg_20241122.pdf",
+    "sourceStoragePath": "/home/ubuntu/.paperclip/instances/default/data/storage/9e9efaf5-c2d9-4372-99a4-1b8b666a49cb/issues/9a99590e-9c23-4413-8a2e-b9593e442681/2026/06/01/442d5fa9-5ac0-4e04-b243-f1e321ec5f89-Kassenbeleg_20241122.pdf",
+    "sourceChannel": "mandant",
+    "sourceSystem": "Telegram",
+    "telegramChatId": "8695197922",
+    "telegramMessageId": "40",
+    "telegramFileId": "BQACAgIAAxkBAAMoah6pozj75vbFGTnCztI_46aVidMAAtakAAK8-vFINGvGvsUGnHI7BA",
+    "senderName": "Moritz",
+    "receivedAt": "2026-06-02T10:00:03.000Z"
+  },
+  "classification": {
+    "documentType": {
+      "value": "receipt",
+      "confidence": "high",
+      "evidence": "KASSENBON"
+    },
+    "direction": {
+      "value": "expense",
+      "confidence": "high",
+      "evidence": "Cash receipt for office supplies purchased from merchant."
+    },
+    "purposeKey": {
+      "value": "OFFICE_SUPPLIES",
+      "confidence": "high",
+      "evidence": "Line items are toner, copier paper, Post-it notes, labels, pens, tape, document sleeves, and hole punch."
+    }
+  },
+  "merchant": {
+    "name": {
+      "value": "B\\u00fcro & Mehr GmbH",
+      "confidence": "high",
+      "evidence": "B\\u00fcro & Mehr GmbH"
+    },
+    "address": {
+      "value": "Kufsteiner Str. 45, 83022 Rosenheim",
+      "confidence": "high",
+      "evidence": "Kufsteiner Str. 45 | 83022 Rosenheim"
+    },
+    "phone": {
+      "value": "+49 8031 9988-0",
+      "confidence": "high",
+      "evidence": "Tel: +49 8031 9988-0"
+    },
+    "vatId": {
+      "value": "DE145678901",
+      "confidence": "high",
+      "evidence": "USt-IdNr.: DE145678901"
+    },
+    "taxNumber": {
+      "value": "109/235/45678",
+      "confidence": "high",
+      "evidence": "Steuernr.: 109/235/45678"
+    }
+  },
+  "receipt": {
+    "documentDate": {
+      "value": "2024-11-22",
+      "confidence": "high",
+      "evidence": "22.11.2024 | 14:37 Uhr"
+    },
+    "documentTime": {
+      "value": "14:37",
+      "confidence": "high",
+      "evidence": "22.11.2024 | 14:37 Uhr"
+    },
+    "registerNumber": {
+      "value": "2",
+      "confidence": "high",
+      "evidence": "Kasse: 2 | Bon-Nr.: 2024-4418"
+    },
+    "receiptNumber": {
+      "value": "2024-4418",
+      "confidence": "high",
+      "evidence": "Kasse: 2 | Bon-Nr.: 2024-4418"
+    },
+    "merchantReference": {
+      "value": "2024-4418-BM-RO",
+      "confidence": "high",
+      "evidence": "2024-4418-BM-RO"
+    }
+  },
+  "amounts": {
+    "currency": {
+      "value": "EUR",
+      "confidence": "high",
+      "evidence": "All receipt totals shown in EUR."
+    },
+    "netAmountEur": {
+      "value": 73.78,
+      "confidence": "high",
+      "evidence": "Summe netto 73,78 EUR"
+    },
+    "vatRatePercent": {
+      "value": 19,
+      "confidence": "high",
+      "evidence": "MwSt 19 %"
+    },
+    "vatAmountEur": {
+      "value": 14.02,
+      "confidence": "high",
+      "evidence": "MwSt 19 % 14,02 EUR"
+    },
+    "grossAmountEur": {
+      "value": 87.8,
+      "confidence": "high",
+      "evidence": "GESAMT 87,80 EUR"
+    },
+    "amountTenderedEur": {
+      "value": 90.0,
+      "confidence": "high",
+      "evidence": "Bezahlt: Bar 90,00 EUR"
+    },
+    "changeEur": {
+      "value": 2.2,
+      "confidence": "high",
+      "evidence": "R\\u00fcckgeld 2,20 EUR"
+    }
+  },
+  "payment": {
+    "method": {
+      "value": "cash",
+      "confidence": "high",
+      "evidence": "Bezahlt: Bar"
+    }
+  },
+  "lineItems": [
+    {
+      "description": "Druckertoner HP 26A (2er Pack)",
+      "grossAmountEur": 39.9,
+      "confidence": "high",
+      "evidence": "1x Druckertoner HP 26A (2er Pack) 39,90 EUR"
+    },
+    {
+      "description": "Kopierpapier A4 80g (500 Bl.)",
+      "grossAmountEur": 9.98,
+      "confidence": "high",
+      "evidence": "2x Kopierpapier A4 80g (500 Bl.) 9,98 EUR"
+    },
+    {
+      "description": "Post-it Notes 76x76mm (12 Bl.)",
+      "grossAmountEur": 8.97,
+      "confidence": "high",
+      "evidence": "3x Post-it Notes 76x76mm (12 Bl.) 8,97 EUR"
+    },
+    {
+      "description": "Etiketten Avery 70x37 (100 Bl.)",
+      "grossAmountEur": 7.49,
+      "confidence": "high",
+      "evidence": "1x Etiketten Avery 70x37 (100 Bl.) 7,49 EUR"
+    },
+    {
+      "description": "Kugelschreiber Staedtler (10er)",
+      "grossAmountEur": 5.49,
+      "confidence": "high",
+      "evidence": "1x Kugelschreiber Staedtler (10er) 5,49 EUR"
+    },
+    {
+      "description": "Tixo-Klebeband (5er Pack)",
+      "grossAmountEur": 3.95,
+      "confidence": "high",
+      "evidence": "1x Tixo-Klebeband (5er Pack) 3,95 EUR"
+    },
+    {
+      "description": "Aktenh\\u00fclle A4 transparent (50er)",
+      "grossAmountEur": 5.49,
+      "confidence": "high",
+      "evidence": "1x Aktenh\\u00fclle A4 transparent (50er) 5,49 EUR"
+    },
+    {
+      "description": "Locher Leitz gelochert (1 Stk.)",
+      "grossAmountEur": 6.99,
+      "confidence": "high",
+      "evidence": "1x Locher Leitz gelochert (1 Stk.) 6,99 EUR"
+    }
+  ],
+  "duplicateCheck": {
+    "sameTelegramFileIdCount": 1,
+    "sameFileNameHistoricalCount": 5,
+    "confidence": "medium",
+    "notes": [
+      "This exact Telegram file id appears once in the mandant document store, so this intake event is unique by source id.",
+      "The file name appears in older historical submissions, so downstream dedupe must key on documentId, submissionId, or telegramFileId instead of fileName."
+    ]
+  },
+  "anomalies": [
+    {
+      "severity": "low",
+      "field": "historical_file_name_reuse",
+      "note": "Same file name exists in prior submissions, but not with the same Telegram file id."
+    }
+  ],
+  "extractionMethod": {
+    "value": "direct PDF content-stream decode",
+    "confidence": "high",
+    "notes": [
+      "Extraction came from embedded text in the original PDF content stream, not from guessed metadata.",
+      "No client follow-up is required for core bookkeeping fields."
+    ]
+  },
+  "downstreamHandoff": {
+    "ready": true,
+    "recommendedNextOwner": "Bookkeeping Reconciliation Agent",
+    "notes": [
+      "Source references are intact.",
+      "Amounts, merchant, tax, and payment method are extracted with high confidence."
+    ]
+  }
+}

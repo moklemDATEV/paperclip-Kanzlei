@@ -1,0 +1,193 @@
+{
+  "issueIdentifier": "DAT-29",
+  "status": "reconciled_with_workspace_ledger_exception",
+  "documentScope": {
+    "sourceFileName": "Kassenbeleg_20241122.pdf",
+    "documentId": "506d0719-ef68-4c1e-9654-50ab5e2274e4",
+    "submissionId": "eed1a29a-f5b1-4305-b192-84b19a8bf150",
+    "telegramFileId": "BQACAgIAAxkBAAMoah6pozj75vbFGTnCztI_46aVidMAAtakAAK8-vFINGvGvsUGnHI7BA",
+    "telegramMessageId": "40",
+    "senderName": "Moritz",
+    "receivedAt": "2026-06-02T10:00:03.000Z",
+    "extractionArtifact": "deliverables/dat-27-kassenbeleg-20241122-extraction.json",
+    "sourceStoragePath": "/home/ubuntu/.paperclip/instances/default/data/storage/9e9efaf5-c2d9-4372-99a4-1b8b666a49cb/issues/9a99590e-9c23-4413-8a2e-b9593e442681/2026/06/01/442d5fa9-5ac0-4e04-b243-f1e321ec5f89-Kassenbeleg_20241122.pdf"
+  },
+  "extractedReceipt": {
+    "merchantName": "B\u00fcro & Mehr GmbH",
+    "merchantVatId": "DE145678901",
+    "documentDate": "2024-11-22",
+    "documentTime": "14:37",
+    "receiptNumber": "2024-4418",
+    "merchantReference": "2024-4418-BM-RO",
+    "paymentMethod": "cash",
+    "purposeKey": "OFFICE_SUPPLIES",
+    "currency": "EUR",
+    "netAmountEur": 73.78,
+    "vatRatePercent": 19,
+    "vatAmountEur": 14.02,
+    "grossAmountEur": 87.8,
+    "amountTenderedEur": 90.0,
+    "changeEur": 2.2
+  },
+  "matchedRecords": [
+    {
+      "matchType": "document_store_row",
+      "status": "matched",
+      "source": "showcase/runtime/shared-buchungsdaten.sqlite::telegram_documents",
+      "lookupKey": "telegram_file_id = BQACAgIAAxkBAAMoah6pozj75vbFGTnCztI_46aVidMAAtakAAK8-vFINGvGvsUGnHI7BA",
+      "matchedRecord": {
+        "fileName": "Kassenbeleg_20241122.pdf",
+        "submissionId": "eed1a29a-f5b1-4305-b192-84b19a8bf150",
+        "status": "ready",
+        "purposeKey": "OFFICE_SUPPLIES",
+        "linkedBookingId": null
+      },
+      "evidence": "The Telegram document store contains the same telegram_file_id and submission_id, but it is not linked to any booking."
+    },
+    {
+      "matchType": "submission_row",
+      "status": "matched",
+      "source": "showcase/runtime/shared-buchungsdaten.sqlite::telegram_submissions",
+      "lookupKey": "id = eed1a29a-f5b1-4305-b192-84b19a8bf150",
+      "matchedRecord": {
+        "sourceLabel": "Telegram webhook intake",
+        "senderName": "Moritz",
+        "submittedAt": "2026-06-02T10:00:03.000Z"
+      },
+      "evidence": "The submission row ties the document to the mandant Telegram intake event."
+    },
+    {
+      "matchType": "cash_movement_evidence",
+      "status": "matched",
+      "source": "deliverables/dat-75-anlage2-kassenbewegungsnachweis-20241122-extraction.json",
+      "lookupKey": "relatedReceipt = Kassenbeleg_20241122 and cashDate = 2024-11-22 and cashOutflowEur = 87.80",
+      "matchedRecord": {
+        "sourceIssue": "DAT-75",
+        "cashDate": "2024-11-22",
+        "cashAccount": "1000 Kasse",
+        "balanceBeforeEur": 312.4,
+        "cashOutflowEur": 87.8,
+        "balanceAfterEur": 224.6,
+        "bookingStatus": "verbucht",
+        "postingProposalAccounts": [
+          "4780 Buerobedarf",
+          "1576 Abziehbare Vorsteuer 19 %",
+          "1000 Kasse"
+        ]
+      },
+      "evidence": "Annex 2 confirms the 2024-11-22 cash outflow of 87.80 EUR from account 1000 Kasse and reconciles the cash balance from 312.40 EUR to 224.60 EUR."
+    },
+    {
+      "matchType": "cashbook_line_evidence",
+      "status": "matched",
+      "source": "deliverables/dat-73-anlage1-kassenbuchauszug-20241122-extraction.json",
+      "lookupKey": "relatedReceipt = Kassenbeleg_20241122 and bookingDate = 2024-11-22 and grossAmountEur = 87.80",
+      "matchedRecord": {
+        "sourceIssue": "DAT-73",
+        "bookingDate": "2024-11-22",
+        "bookingNumberDatev": "BJ-2024-1147",
+        "bookingStatus": "verbucht",
+        "supplier": "Büro & Mehr GmbH",
+        "bookingText": "Bürobedarf",
+        "bookingType": "Barausgabe (Kassenausgang)",
+        "grossAmountEur": 87.8,
+        "netAmountEur": 73.78,
+        "vatAmountEur": 14.02,
+        "expenseAccount": "4780 Bürobedarf"
+      },
+      "evidence": "Annex 1 confirms the separate cashbook line for Kassenbeleg_20241122 on 2024-11-22, including DATEV booking number BJ-2024-1147 and status verbucht."
+    },
+    {
+      "matchType": "bookkeeping_correspondence",
+      "status": "matched",
+      "source": "deliverables/dat-71-20260606-anschreiben-kassenbeleg-20241122-extraction.json",
+      "lookupKey": "receiptReference = Kassenbeleg_20241122 and bookingNumberDatev = BJ-2024-1147 and grossAmountEur = 87.80",
+      "matchedRecord": {
+        "sourceIssue": "DAT-71",
+        "letterDate": "2026-06-06",
+        "documentId": "6fa8fa7f-9ce8-4e73-9099-6d8b79aa02bd",
+        "submissionId": "c9d5af09-b447-4784-a3a9-0aad77cec051",
+        "receiptReference": "Kassenbeleg_20241122",
+        "bookingDate": "2024-11-22",
+        "bookingNumberDatev": "BJ-2024-1147",
+        "mandantNumber": "58734",
+        "postingProposalAccounts": [
+          "4780 Buerobedarf",
+          "1576 Abziehbare Vorsteuer 19 %",
+          "1000 Kasse"
+        ]
+      },
+      "evidence": "DAT-71 is a recovered client cover letter that confirms the booking context and repeats the SKR03 posting proposal for the same receipt; it supports but does not replace the original receipt, Annex 1, or Annex 2 evidence."
+    }
+  ],
+  "unmatchedChecks": [
+    {
+      "checkType": "bookkeeping_ledger_match",
+      "status": "no_match",
+      "source": "showcase/runtime/shared-buchungsdaten.sqlite::buchungen",
+      "lookupLogic": "posting_date = 2024-11-22 OR counterparty like merchant name OR gross_amount_eur = 87.80",
+      "result": {
+        "matchingBookingCount": 0,
+        "availableBookingDateRange": {
+          "from": "2026-04-02",
+          "to": "2026-05-12"
+        },
+        "totalBookingRowsObserved": 15
+      },
+      "evidence": "No booking exists in the workspace ledger for the receipt date, merchant, or gross amount."
+    },
+    {
+      "checkType": "payment_evidence_match",
+      "status": "matched",
+      "source": "deliverables/dat-75-anlage2-kassenbewegungsnachweis-20241122-extraction.json",
+      "lookupLogic": "Annex 2 cash movement evidence for receipt date and amount",
+      "result": {
+        "paymentMethod": "cash",
+        "cashLedgerRecord": "Anlage 2 confirms cash outflow 87.80 EUR on 2024-11-22 from SKR03 account 1000 Kasse",
+        "cashCountOrSettlementEvidence": "Matched via DAT-75 Annex 2 extraction artifact"
+      },
+      "evidence": "The cash-movement evidence gap is resolved by DAT-75 Annex 2, which records the 87.80 EUR cash outflow on 2024-11-22 and the resulting cash balance."
+    },
+    {
+      "checkType": "cashbook_line_match",
+      "status": "matched",
+      "source": "deliverables/dat-73-anlage1-kassenbuchauszug-20241122-extraction.json",
+      "lookupLogic": "Kassenbuchauszug / Anlage 1 extraction tied to 2024-11-22 and 87.80 EUR receipt",
+      "result": {
+        "expectedSubmissionId": "b5fb9229-b469-4414-afef-039810976047",
+        "expectedDocumentId": "888c6739-4d1f-489b-a37f-00f1394ac5bd",
+        "extractionArtifact": "deliverables/dat-73-anlage1-kassenbuchauszug-20241122-extraction.json",
+        "acceptedCashbookLineEvidence": {
+          "bookingDate": "2024-11-22",
+          "bookingNumberDatev": "BJ-2024-1147",
+          "bookingStatus": "verbucht",
+          "grossAmountEur": 87.8,
+          "expenseAccount": "4780 Bürobedarf"
+        }
+      },
+      "evidence": "DAT-73 recovered and extracted Anlage1_Kassenbuchauszug_20241122.pdf; the artifact confirms the separate cashbook line for Kassenbeleg_20241122."
+    }
+  ],
+  "notes": [
+    {
+      "type": "dedupe_caution",
+      "severity": "low",
+      "detail": "The filename Kassenbeleg_20241122.pdf appears in five historical telegram_documents rows. Reconciliation must key on documentId, submissionId, or telegramFileId rather than filename."
+    },
+    {
+      "type": "supporting_correspondence",
+      "severity": "info",
+      "detail": "DAT-71 adds a separate 2026-06-06 client cover letter for the same Kassenbeleg_20241122. It confirms the booking date, DATEV booking number, VAT treatment, and SKR03 posting proposal but is not primary receipt evidence."
+    }
+  ],
+  "mismatchQueue": [
+    {
+      "severity": "medium",
+      "category": "workspace_ledger_not_yet_updated",
+      "owner": "CTO / bookkeeping workflow follow-up",
+      "detail": "Annex 1 and Annex 2 evidence are now available and both indicate booking status verbucht, but the workspace ledger still has no buchungen row for 2024-11-22 / 87.80 EUR. This is a workflow or data-model exception, not an evidence gap."
+    }
+  ],
+  "recommendedNextOwner": "CTO",
+  "recommendedNextAction": "Investigate why the shared bookkeeping store has no corresponding buchungen row despite matched Annex 1 and Annex 2 evidence, and decide whether the workflow should import, link, or explicitly exclude this historical booking."
+}

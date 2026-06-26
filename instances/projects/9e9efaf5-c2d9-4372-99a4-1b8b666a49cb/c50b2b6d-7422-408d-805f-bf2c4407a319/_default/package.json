@@ -1,0 +1,25 @@
+{
+  "name": "steuerkanzlei-onboarding",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Shared Buchungsdaten database and live showcase for the Steuerkanzlei onboarding workspace.",
+  "scripts": {
+    "serve:showcase": "node showcase/server.js",
+    "serve:steuerberater-db": "node showcase/steuerberater-db-server.js",
+    "deploy:steuerberater-db": "bash scripts/deploy-steuerberater-db.sh",
+    "db:seed": "node showcase/scripts/seed-database.js",
+    "db:inspect": "node showcase/scripts/inspect-database.js",
+    "steuerberater-db:smoke": "node showcase/scripts/run-steuerberater-db-frontend-smoke.js",
+    "telegram:intake:demo": "node showcase/scripts/run-telegram-intake-demo.js",
+    "telegram:intake:handoff": "node showcase/scripts/handoff-telegram-intake-issue.js",
+    "telegram:workflow:handoff": "node showcase/scripts/handoff-paperclip-workflow-issue.js",
+    "telegram:workflow:smoke": "node showcase/scripts/run-telegram-workflow-smoke.js",
+    "telegram:paperclip:smoke": "node showcase/scripts/run-telegram-paperclip-activation-smoke.js",
+    "telegram:routing:smoke": "node showcase/scripts/run-telegram-routing-tickets-smoke.js",
+    "telegram:bots:verify": "node showcase/scripts/verify-telegram-bots.js",
+    "telegram:bots:register": "node showcase/scripts/register-telegram-webhooks.js"
+  },
+  "dependencies": {
+    "sql.js": "^1.13.0"
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "id": "757cd9d4-dc58-4737-9d4d-73bf1ff15e2d",
+  "workflow": "telegram_invoice_intake",
+  "routingRuleVersion": "dat-22-v1",
+  "createdAt": "2026-06-17T13:28:32.361Z",
+  "chartType": "SKR03",
+  "trigger": "telegram_webhook",
+  "source": {
+    "channel": "telegram",
+    "sourceLabel": "Telegram webhook intake",
+    "botKey": "mandant"
+  },
+  "submission": {
+    "id": "6e500ae6-60e1-4389-8883-de5309eef679",
+    "mandantId": "berg-und-tal-eventtechnik-gmbh",
+    "channel": "telegram",
+    "sourceLabel": "Telegram webhook intake",
+    "telegramChatId": "8695197922",
+    "senderName": "Moritz",
+    "submittedAt": "2026-06-17T13:28:31.000Z",
+    "documentCount": 1,
+    "createdAt": "2026-06-17T13:28:31.749Z",
+    "updatedAt": "2026-06-17T13:28:31.749Z"
+  },
+  "routes": [
+    {
+      "documentId": "31c705cd-2f90-4873-a3f6-04042b4d8483",
+      "fileName": "GS-2026-0005_Gutschrift.pdf",
+      "documentType": "supplier_invoice",
+      "direction": "expense",
+      "status": "ready",
+      "counterparty": "Unspecified counterparty",
+      "linkedBookingId": null,
+      "routedToAgent": "bookkeeping_agent",
+      "downstreamPath": "bookkeeping:extract_fields",
+      "queue": "extraction_queue",
+      "reason": "Telegram expense documents without a linked booking need bookkeeping extraction before posting.",
+      "sourceLink": "/home/ubuntu/.paperclip/instances/default/projects/9e9efaf5-c2d9-4372-99a4-1b8b666a49cb/c50b2b6d-7422-408d-805f-bf2c4407a319/_default/showcase/runtime/telegram-files/BQACAgIAAxkBAAM3ajKg_ytYRJ88AufvtBgynb0Yp5sAAr2ZAALGnpFJsbYXArYOVOs8BA/GS-2026-0005_Gutschrift.pdf"
+    }
+  ],
+  "summary": {
+    "documentCount": 1,
+    "queueCounts": {
+      "extraction_queue": 1
+    }
+  },
+  "activations": [
+    {
+      "stage": "paperclip_issue_created",
+      "route": "bookkeeping:extract_fields",
+      "assigneeAgentId": "ce1da1bc-9a98-4ca9-9a61-7b83e266c066",
+      "assigneeAgentName": "Document Ingestion",
+      "issueId": "9358c4d2-ec75-4788-bb99-aecc200bb0b0",
+      "issueIdentifier": "DAT-103",
+      "issueTitle": "Telegram intake: GS-2026-0005_Gutschrift.pdf",
+      "createdAt": "2026-06-17T13:28:32.462Z"
+    }
+  ]
+}

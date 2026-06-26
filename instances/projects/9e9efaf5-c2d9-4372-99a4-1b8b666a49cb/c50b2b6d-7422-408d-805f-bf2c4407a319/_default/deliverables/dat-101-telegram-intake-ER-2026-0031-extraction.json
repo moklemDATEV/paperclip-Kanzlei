@@ -1,0 +1,76 @@
+{
+  "issueIdentifier": "DAT-101",
+  "status": "extraction_pending_handoff",
+  "document": {
+    "documentId": "1a98283d-f3fe-430e-aefe-1258e690e539",
+    "submissionId": "1283fc57-7fdf-4383-9b28-b0850bbad143",
+    "mandantId": "berg-und-tal-eventtechnik-gmbh",
+    "sourceFileName": "ER-2026-0031_Eingangsrechnung_Buero-Mehr.pdf",
+    "sourcePdfPath": "/home/ubuntu/.paperclip/instances/default/projects/9e9efaf5-c2d9-4372-99a4-1b8b666a49cb/c50b2b6d-7422-408d-805f-bf2c4407a319/_default/showcase/runtime/telegram-files/BQACAgIAAxkBAAM2ajKg_x56opBw1Nay7t1gi3MoDU8AAr6ZAALGnpFJuhOx4pfjewo8BA/ER-2026-0031_Eingangsrechnung_Buero-Mehr.pdf",
+    "sourcePdfSha256": "fd0408bc27ff864dcaf74b2c26c8551cab1ad6d0948fcbfa79b6a8a42295e867",
+    "sourceStoragePath": "/home/ubuntu/.paperclip/instances/default/projects/9e9efaf5-c2d9-4372-99a4-1b8b666a49cb/c50b2b6d-7422-408d-805f-bf2c4407a319/_default/showcase/runtime/telegram-files/BQACAgIAAxkBAAM2ajKg_x56opBw1Nay7t1gi3MoDU8AAr6ZAALGnpFJuhOx4pfjewo8BA/ER-2026-0031_Eingangsrechnung_Buero-Mehr.pdf",
+    "sourceLink": "/home/ubuntu/.paperclip/instances/default/projects/9e9efaf5-c2d9-4372-99a4-1b8b666a49cb/c50b2b6d-7422-408d-805f-bf2c4407a319/_default/showcase/runtime/telegram-files/BQACAgIAAxkBAAM2ajKg_x56opBw1Nay7t1gi3MoDU8AAr6ZAALGnpFJuhOx4pfjewo8BA/ER-2026-0031_Eingangsrechnung_Buero-Mehr.pdf",
+    "telegramChatId": "8695197922",
+    "telegramMessageId": "54",
+    "telegramFileId": "BQACAgIAAxkBAAM2ajKg_x56opBw1Nay7t1gi3MoDU8AAr6ZAALGnpFJuhOx4pfjewo8BA",
+    "receivedAt": "2026-06-17T13:28:31.000Z",
+    "recoveredAt": "2026-06-17T13:34:58Z",
+    "recoveryMethod": "Document metadata arrived via Telegram webhook; PDF contents have since been retrieved from Telegram using scripts/recover-telegram-attachments.js."
+  },
+  "classification": {
+    "documentType": {
+      "value": "supplier_invoice",
+      "confidence": "high",
+      "evidence": "Telegram intake metadata classifies ER-2026-0031 as an Eingangsrechnung (supplier invoice) from B\u00fcro & Mehr."
+    },
+    "direction": {
+      "value": "incoming_expense",
+      "confidence": "high",
+      "evidence": "Mandant sends an Eingangsrechnung for bookkeeping as part of the Telegram expense workflow."
+    }
+  },
+  "invoice": {
+    "invoiceNumber": { "value": null, "confidence": "unknown", "evidence": null },
+    "invoiceDate": { "value": null, "confidence": "unknown", "evidence": null },
+    "servicePeriodStart": { "value": null, "confidence": "unknown", "evidence": null },
+    "servicePeriodEnd": { "value": null, "confidence": "unknown", "evidence": null },
+    "supplierName": { "value": "B\u00fcro & Mehr GmbH", "confidence": "medium", "evidence": "Name present in the Anschreiben summary for Eingangsbelege Mai 2026 as the counterparty for a B\u00fcrobedarf document." },
+    "supplierVatId": { "value": null, "confidence": "unknown", "evidence": null },
+    "supplierAddress": { "value": null, "confidence": "unknown", "evidence": null },
+    "currency": { "value": "EUR", "confidence": "medium", "evidence": "Mandant books in EUR; other Eingangsbelege in the same batch are denominated in EUR." },
+    "netAmount": { "value": null, "confidence": "unknown", "evidence": null },
+    "vatAmount": { "value": null, "confidence": "unknown", "evidence": null },
+    "grossAmount": { "value": null, "confidence": "unknown", "evidence": null },
+    "vatRatePercent": { "value": null, "confidence": "unknown", "evidence": null },
+    "dueDate": { "value": null, "confidence": "unknown", "evidence": null },
+    "paymentReference": { "value": null, "confidence": "unknown", "evidence": null },
+    "iban": { "value": null, "confidence": "unknown", "evidence": null },
+    "bic": { "value": null, "confidence": "unknown", "evidence": null }
+  },
+  "booking": {
+    "purposeKey": { "value": null, "confidence": "unknown", "evidence": null },
+    "chartType": { "value": null, "confidence": "unknown", "evidence": null },
+    "suggestedBooking": {
+      "value": [],
+      "confidence": "unknown",
+      "evidence": "Booking lines require the invoice's net, VAT, and gross amounts plus DATEV booking proposal; these are not accessible in this heartbeat."
+    }
+  },
+  "anomalies": [
+    {
+      "code": "content_unavailable",
+      "severity": "blocking",
+      "description": "OCR/text extraction has not yet been run for ER-2026-0031_Eingangsrechnung_Buero-Mehr.pdf even though the PDF is now stored locally.",
+      "impact": "All numeric fields and booking proposals must remain unset until field values can be extracted."
+    }
+  ],
+  "downstreamHandoff": {
+    "ready": false,
+    "recommendedNextOwner": "Bookkeeping Reconciliation Agent",
+    "notes": [
+      "ER-2026-0031_Eingangsrechnung_Buero-Mehr.pdf now lives at the Telegram runtime path above; the downloaded PDF should be the source for downstream extraction and booking checks.",
+      "Run OCR or text extraction on this file to populate the invoice and booking fields before generating SKR03/SKR04 proposals, while retaining the Telegram metadata as chain-of-custody evidence.",
+      "Do not create ledger postings or reconcile balances until the extracted values are confirmed against the recovered PDF."
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "update_id": 900100002,
+  "message": {
+    "message_id": 701,
+    "date": 1777662600,
+    "chat": {
+      "id": -5180198176,
+      "type": "supergroup",
+      "title": "Kanzlei Nordstern Review"
+    },
+    "from": {
+      "id": 712345001,
+      "is_bot": false,
+      "first_name": "Maria",
+      "last_name": "Schneider",
+      "username": "maria_schneider"
+    },
+    "text": "/review_queue"
+  }
+}

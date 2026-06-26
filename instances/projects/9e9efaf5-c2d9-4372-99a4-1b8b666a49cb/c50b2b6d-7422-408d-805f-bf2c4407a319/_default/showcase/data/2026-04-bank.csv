@@ -1,0 +1,10 @@
+date,counterparty,gross_eur,expected_treatment,matching_document
+2026-04-02,Stadtwerke Koeln,428.40,Utilities expense input VAT 19%,supplier invoice
+2026-04-03,Eventhaus Bonn GmbH,4165.00,Customer payment output VAT 19%,RE-24041
+2026-04-05,Amazon EU S.a r.l.,238.91,Office supplies input VAT 19%,beleg-2026-04-amazon
+2026-04-08,Telekom Deutschland GmbH,154.70,Telecom expense input VAT 19%,beleg-2026-04-telekom
+2026-04-12,Metro Deutschland GmbH,119.84,Mixed expense requires review,beleg-2026-04-metro
+2026-04-14,Hochzeit Mayer GbR,2975.00,Customer payment output VAT 19%,RE-24044
+2026-04-18,Van4Event GmbH,892.50,Vehicle rental input VAT 19%,beleg-2026-04-van-rental
+2026-04-24,Berg & Tal Eventtechnik GmbH,1500.00,Owner cash injection no VAT,none
+2026-04-28,Messebau Rhein AG,5950.00,Customer payment output VAT 19%,RE-24047

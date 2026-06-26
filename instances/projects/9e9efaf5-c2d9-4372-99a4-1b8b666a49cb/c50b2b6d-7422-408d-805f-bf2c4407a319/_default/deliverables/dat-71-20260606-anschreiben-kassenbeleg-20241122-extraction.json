@@ -1,0 +1,120 @@
+{
+  "issueIdentifier": "DAT-71",
+  "status": "ready_for_downstream_handoff",
+  "document": {
+    "documentId": "6fa8fa7f-9ce8-4e73-9099-6d8b79aa02bd",
+    "submissionId": "c9d5af09-b447-4784-a3a9-0aad77cec051",
+    "mandantId": "berg-und-tal-eventtechnik-gmbh",
+    "sourceFileName": "20260606_Anschreiben_Kassenbeleg_20241122.pdf",
+    "sourcePdfPath": "deliverables/dat-71-20260606-anschreiben-kassenbeleg-20241122-source.pdf",
+    "sourcePdfSha256": "24d39684348df8b48b1ceab33d9d5113754853c875b4418b1ade642c5308719b",
+    "pageCount": 2,
+    "telegramChatId": "8695197922",
+    "telegramMessageId": "45",
+    "telegramFileId": "BQACAgIAAxkBAAMtaiQ63CtxbW6QfL7MDKaa54Rry0EAAsyWAAKVBCFJBZ_ZnDbKdxY7BA",
+    "senderName": "Moritz",
+    "receivedAt": "2026-06-06T15:21:00.000Z",
+    "recoveredAt": "2026-06-09T15:27:00Z",
+    "recoveryMethod": "Telegram getFile download using configured Mandant bot secret, followed by direct PDF stream decoding"
+  },
+  "classification": {
+    "submittedDocumentType": "receipt",
+    "extractedDocumentType": "bookkeeping_correspondence",
+    "direction": "supporting_evidence",
+    "currency": "EUR",
+    "confidence": "high",
+    "reason": "The PDF is a two-page client cover letter / response that supplies bookkeeping context and a DATEV posting proposal for Kassenbeleg_20241122; it is not the original cash receipt."
+  },
+  "correspondence": {
+    "letterDate": "2026-06-06",
+    "senderCompany": "Berg-und-Tal-Eventtechnik GmbH",
+    "senderAddress": "Stadtplatz 8, 83022 Rosenheim",
+    "recipientName": "DATEV Lab Kanzlei",
+    "recipientAddress": "Bahnhofstrasse 21, 83022 Rosenheim",
+    "subject": "Nachlieferung Anlagen zu Kassenbeleg_20241122 - Buero & Mehr GmbH, 87,80 EUR",
+    "signatory": "Markus Bergmann",
+    "signatoryRole": "Geschaeftsfuehrer - Berg-und-Tal-Eventtechnik GmbH"
+  },
+  "referencedReceipt": {
+    "receiptReference": "Kassenbeleg_20241122",
+    "merchantName": "Buero & Mehr GmbH",
+    "merchantAddress": "Kufsteiner Str. 45, 83022 Rosenheim",
+    "grossAmountEur": 87.8,
+    "bookingDate": "2024-11-22",
+    "bookingYear": 2024,
+    "bookingMonth": "November",
+    "datevBookingNumber": "BJ-2024-1147",
+    "mandantNumber": "58734",
+    "businessPurpose": "Buero- und Verwaltungsbedarf",
+    "paymentContext": "regulaere Barausgabe",
+    "vatTreatment": {
+      "vatRatePercent": 19,
+      "statement": "The letter states that input VAT deduction under Section 15(1) UStG is permissible."
+    }
+  },
+  "postingProposal": {
+    "chartType": "SKR03",
+    "lines": [
+      {
+        "entryDirection": "debit",
+        "account": "4780",
+        "label": "Buerobedarf",
+        "amountEur": 73.78
+      },
+      {
+        "entryDirection": "debit",
+        "account": "1576",
+        "label": "Abziehbare Vorsteuer 19 %",
+        "amountEur": 14.02,
+        "vatRatePercent": 19
+      },
+      {
+        "entryDirection": "credit",
+        "account": "1000",
+        "label": "Kasse",
+        "amountEur": 87.8
+      }
+    ]
+  },
+  "annexReferences": [
+    {
+      "label": "Anlage 1",
+      "description": "Kassenbuchauszug vom 22.11.2024 (Beleg Kassenbeleg_20241122, 87,80 EUR)",
+      "relatedIssue": "DAT-73"
+    },
+    {
+      "label": "Anlage 2",
+      "description": "Nachweis der Kassenbewegung vom 22.11.2024 (Barausgabe 87,80 EUR)",
+      "relatedIssue": "DAT-75"
+    }
+  ],
+  "bookkeepingHandoff": {
+    "targetIssue": "DAT-29",
+    "ready": true,
+    "resolvedEvidenceNeed": "Client correspondence confirms the booking date, DATEV booking number, business purpose, VAT treatment, and SKR03 posting proposal for the receipt already under DAT-29.",
+    "doNotPostFromThisArtifactAlone": true,
+    "notes": [
+      "Use this artifact as supporting context together with the original receipt extraction from DAT-27, Annex 1 from DAT-73, and Annex 2 from DAT-75.",
+      "This artifact does not replace the original receipt or annex evidence."
+    ]
+  },
+  "sourceEvidence": [
+    "Rosenheim, 06. Juni 2026",
+    "Betreff: Nachlieferung Anlagen zu Kassenbeleg_20241122 - Buero & Mehr GmbH, 87,80 EUR",
+    "Kassendatum / Buchungsdatum: 22.11.2024",
+    "Buchungsjahr / Buchungsmonat: 2024 / November",
+    "Buchungsnummer (DATEV): BJ-2024-1147",
+    "Belegnummer: Kassenbeleg_20241122",
+    "DATEV-Buchungsvorschlag (SKR03): Soll 4780 Buerobedarf 73,78 EUR; Soll 1576 Abziehbare Vorsteuer 19 % 14,02 EUR; Haben 1000 Kasse 87,80 EUR",
+    "Anlage 1: Kassenbuchauszug vom 22.11.2024 (Beleg Kassenbeleg_20241122, 87,80 EUR)",
+    "Anlage 2: Nachweis der Kassenbewegung vom 22.11.2024 (Barausgabe 87,80 EUR)"
+  ],
+  "extractionMethod": {
+    "value": "Telegram source recovery plus direct PDF content-stream decode",
+    "confidence": "high",
+    "notes": [
+      "The intake database row had no source_link, so the source PDF was recovered by telegramFileId.",
+      "The page text was decoded from ASCII85 and Flate-compressed PDF content streams; no OCR was required."
+    ]
+  }
+}

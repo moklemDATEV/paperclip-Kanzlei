@@ -1,0 +1,59 @@
+{
+  "id": "f277e893-86ae-44ea-b711-6277299e6e4d",
+  "workflow": "telegram_invoice_intake",
+  "routingRuleVersion": "dat-22-v1",
+  "createdAt": "2026-06-17T11:57:05.045Z",
+  "chartType": "SKR03",
+  "trigger": "telegram_webhook",
+  "source": {
+    "channel": "telegram",
+    "sourceLabel": "Telegram webhook intake",
+    "botKey": "mandant"
+  },
+  "submission": {
+    "id": "241ca94c-88e2-4f89-8be8-347acba0d9d5",
+    "mandantId": "berg-und-tal-eventtechnik-gmbh",
+    "channel": "telegram",
+    "sourceLabel": "Telegram webhook intake",
+    "telegramChatId": "8695197922",
+    "senderName": "Moritz",
+    "submittedAt": "2026-06-17T11:57:04.000Z",
+    "documentCount": 1,
+    "createdAt": "2026-06-17T11:57:04.975Z",
+    "updatedAt": "2026-06-17T11:57:04.975Z"
+  },
+  "routes": [
+    {
+      "documentId": "954fcdd9-1dbd-4b7e-837e-09ef6708abad",
+      "fileName": "20260615_Anschreiben_Eingangsbelege_Mai2026.pdf",
+      "documentType": "receipt",
+      "direction": "expense",
+      "status": "ready",
+      "counterparty": "Unspecified counterparty",
+      "linkedBookingId": null,
+      "routedToAgent": "bookkeeping_agent",
+      "downstreamPath": "bookkeeping:extract_fields",
+      "queue": "extraction_queue",
+      "reason": "Telegram expense documents without a linked booking need bookkeeping extraction before posting.",
+      "sourceLink": "/home/ubuntu/.paperclip/instances/default/projects/9e9efaf5-c2d9-4372-99a4-1b8b666a49cb/c50b2b6d-7422-408d-805f-bf2c4407a319/_default/showcase/runtime/telegram-files/BQACAgIAAxkBAAMzajKLkKMmv6Kd2d6zoy4cUuGPGfEAAoiYAALGnpFJiGoKxPQQkts8BA/20260615_Anschreiben_Eingangsbelege_Mai2026.pdf"
+    }
+  ],
+  "summary": {
+    "documentCount": 1,
+    "queueCounts": {
+      "extraction_queue": 1
+    }
+  },
+  "activations": [
+    {
+      "stage": "paperclip_issue_created",
+      "route": "bookkeeping:extract_fields",
+      "assigneeAgentId": "ce1da1bc-9a98-4ca9-9a61-7b83e266c066",
+      "assigneeAgentName": "Document Ingestion",
+      "issueId": "caf340d2-032e-4bbd-b9f5-49d52785ea08",
+      "issueIdentifier": "DAT-90",
+      "issueTitle": "Telegram intake: 20260615_Anschreiben_Eingangsbelege_Mai2026.pdf",
+      "createdAt": "2026-06-17T11:57:05.061Z"
+    }
+  ]
+}

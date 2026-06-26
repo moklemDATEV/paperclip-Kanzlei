@@ -1,0 +1,58 @@
+{
+  "id": "8d38db7d-7cdb-44ff-8ef3-fba82ea5c6a5",
+  "workflow": "telegram_invoice_intake",
+  "routingRuleVersion": "dat-22-v1",
+  "createdAt": "2026-06-17T13:28:33.202Z",
+  "chartType": "SKR03",
+  "trigger": "telegram_webhook",
+  "source": {
+    "channel": "telegram",
+    "sourceLabel": "Telegram webhook intake",
+    "botKey": "mandant"
+  },
+  "submission": {
+    "id": "79d527a4-fcb0-4711-890d-1f87aebb1451",
+    "mandantId": "berg-und-tal-eventtechnik-gmbh",
+    "channel": "telegram",
+    "sourceLabel": "Telegram webhook intake",
+    "telegramChatId": "8695197922",
+    "senderName": "Moritz",
+    "submittedAt": "2026-06-17T13:28:31.000Z",
+    "documentCount": 1,
+    "createdAt": "2026-06-17T13:28:32.794Z",
+    "updatedAt": "2026-06-17T13:28:32.794Z"
+  },
+  "routes": [
+    {
+      "documentId": "0dcf7515-3dbc-4157-b995-edaab8eb1b6c",
+      "fileName": "RE-2026-0023_Ausgangsrechnung.pdf",
+      "documentType": "customer_invoice",
+      "direction": "revenue",
+      "status": "ready",
+      "counterparty": "Unspecified counterparty",
+      "linkedBookingId": null,
+      "routedToAgent": "receivables_agent",
+      "downstreamPath": "receivables:extract_fields",
+      "queue": "receivables_extraction",
+      "reason": "Customer invoices without a linked booking first need receivables extraction."
+    }
+  ],
+  "summary": {
+    "documentCount": 1,
+    "queueCounts": {
+      "receivables_extraction": 1
+    }
+  },
+  "activations": [
+    {
+      "stage": "paperclip_issue_created",
+      "route": "receivables:extract_fields",
+      "assigneeAgentId": "ce1da1bc-9a98-4ca9-9a61-7b83e266c066",
+      "assigneeAgentName": "Document Ingestion",
+      "issueId": "e4f5e654-e7f2-421a-9a77-29d871af4d62",
+      "issueIdentifier": "DAT-105",
+      "issueTitle": "Telegram intake: RE-2026-0023_Ausgangsrechnung.pdf",
+      "createdAt": "2026-06-17T13:28:33.302Z"
+    }
+  ]
+}

@@ -1,0 +1,214 @@
+{
+  "issueIdentifier": "DAT-152",
+  "status": "ready_for_downstream_handoff",
+  "document": {
+    "documentId": "68bcfdd7-8866-4ac2-84c9-1c734683489a",
+    "submissionId": "527e7f2f-af4a-409b-92cc-a261d90d2cc7",
+    "workflowRunId": "69b3628d-4207-46f2-8351-1dfc8b711493",
+    "workflowArtifactPath": "showcase/runtime/telegram-workflow/2026-06-19T09-28-19-838Z-527e7f2f-af4a-409b-92cc-a261d90d2cc7.json",
+    "mandantId": "berg-und-tal-eventtechnik-gmbh",
+    "sourceFileName": "Kassenbeleg_20260619.pdf",
+    "sourceStoragePath": "/home/ubuntu/.paperclip/instances/default/projects/9e9efaf5-c2d9-4372-99a4-1b8b666a49cb/c50b2b6d-7422-408d-805f-bf2c4407a319/_default/showcase/runtime/telegram-files/BQACAgIAAxkBAANTajULs2ZAIS1werybrxaxSrBvP2UAAjWfAALZ7ahJQiiQPuSv6zg8BA/Kassenbeleg_20260619.pdf",
+    "sourceLink": "/home/ubuntu/.paperclip/instances/default/projects/9e9efaf5-c2d9-4372-99a4-1b8b666a49cb/c50b2b6d-7422-408d-805f-bf2c4407a319/_default/showcase/runtime/telegram-files/BQACAgIAAxkBAANTajULs2ZAIS1werybrxaxSrBvP2UAAjWfAALZ7ahJQiiQPuSv6zg8BA/Kassenbeleg_20260619.pdf",
+    "sourcePdfSha256": "6f784f3f1e708f1035ec9bc9bfafbd8497daf35f4751659ff8f54c836eb8d522",
+    "sourceChannel": "telegram_mandant",
+    "sourceSystem": "Telegram",
+    "telegramChatId": "8695197922",
+    "telegramFileId": "BQACAgIAAxkBAANTajULs2ZAIS1werybrxaxSrBvP2UAAjWfAALZ7ahJQiiQPuSv6zg8BA",
+    "receivedAt": "2026-06-19T09:28:19.000Z",
+    "documentDate": "2026-06-19",
+    "bookingMonth": "2026-06",
+    "mandantNumber": "58734"
+  },
+  "mandant": {
+    "displayName": "Berg & Tal Eventtechnik GmbH",
+    "legalName": "Berg-und-Tal-Eventtechnik GmbH",
+    "vatId": "DE298765432",
+    "taxNumber": "109/240/12345",
+    "hrb": "HRB 15234, AG Rosenheim",
+    "managingDirector": "Markus Bergmann",
+    "accountingBasis": "SKR03 monthly bookkeeping (Mandant 58734)"
+  },
+  "classification": {
+    "documentType": {
+      "value": "cash_receipt",
+      "confidence": "high",
+      "evidence": "Header reads 'KASSENBELEG' and the body confirms a cash amount was received."
+    },
+    "direction": {
+      "value": "income",
+      "confidence": "high",
+      "evidence": "The DATEV block labels the booking as 'Kassenzugang (Bareinnahme)' and the text says the amount was received in cash."
+    },
+    "workflowAssignedType": {
+      "value": "receipt",
+      "confidence": "low",
+      "evidence": "The Telegram route classifies the upload generically as 'receipt', but the source document is a mandant-issued revenue receipt rather than an expense voucher."
+    },
+    "purposeKey": {
+      "value": "CASH_REVENUE_19_VAT",
+      "confidence": "medium",
+      "evidence": "The DATEV booking proposal posts cash against account 8400 revenue with 19% VAT."
+    }
+  },
+  "customer": {
+    "name": {
+      "value": "Stadtwerke Rosenheim GmbH & Co. KG",
+      "confidence": "high",
+      "evidence": "Zahlender field lists 'Firma: Stadtwerke Rosenheim GmbH & Co. KG'."
+    },
+    "address": {
+      "value": "Aeussere Muenchener Str. 34, 83026 Rosenheim",
+      "confidence": "high",
+      "evidence": "Zahlender address line lists 'Aeußere Münchener Str. 34, 83026 Rosenheim'."
+    },
+    "customerNumber": {
+      "value": "KD-00291",
+      "confidence": "high",
+      "evidence": "Kunden-Nr.: KD-00291"
+    },
+    "datevDebtorAccount": {
+      "value": "10291",
+      "confidence": "high",
+      "evidence": "DATEV-Konto: 10291 (Debitor)"
+    }
+  },
+  "receipt": {
+    "receiptNumber": {
+      "value": "Kassenbeleg_20260619",
+      "confidence": "high",
+      "evidence": "Beleg-Nr.: Kassenbeleg_20260619"
+    },
+    "documentDate": {
+      "value": "2026-06-19",
+      "confidence": "high",
+      "evidence": "Datum: 19.06.2026"
+    },
+    "servicePeriodStart": {
+      "value": "2026-06-19",
+      "confidence": "high",
+      "evidence": "Leistungszeitraum: 19.06.2026"
+    },
+    "servicePeriodEnd": {
+      "value": "2026-06-19",
+      "confidence": "high",
+      "evidence": "Leistungszeitraum: 19.06.2026"
+    },
+    "paymentMethod": {
+      "value": "cash",
+      "confidence": "high",
+      "evidence": "Zahlungsart: Bar (Barzahlung)"
+    },
+    "usageReference": {
+      "value": "Kassenbeleg_20260619 / KD-00291",
+      "confidence": "high",
+      "evidence": "Verwendungszweck: Kassenbeleg_20260619 / KD-00291"
+    },
+    "machineGenerated": {
+      "value": true,
+      "confidence": "high",
+      "evidence": "The footer states the document was machine-generated and valid without signature."
+    }
+  },
+  "amounts": {
+    "currency": {
+      "value": "EUR",
+      "confidence": "high",
+      "evidence": "All positions and totals are denominated in EUR."
+    },
+    "netAmountEur": {
+      "value": 210.0,
+      "confidence": "high",
+      "evidence": "Nettobetrag: 210,00 EUR"
+    },
+    "vatRatePercent": {
+      "value": 19,
+      "confidence": "high",
+      "evidence": "Umsatzsteuer 19 %"
+    },
+    "vatAmountEur": {
+      "value": 39.9,
+      "confidence": "high",
+      "evidence": "Umsatzsteuer 19 %: 39,90 EUR"
+    },
+    "grossAmountEur": {
+      "value": 249.9,
+      "confidence": "high",
+      "evidence": "Gesamtbetrag: 249,90 EUR"
+    },
+    "amountReceivedEur": {
+      "value": 249.9,
+      "confidence": "high",
+      "evidence": "The receipt confirms that 249,90 EUR was received in cash."
+    }
+  },
+  "lineItems": [
+    {
+      "line": 1,
+      "description": "Verleih Mobiles Beschallungssystem; Bose L1 Compact PA-System, 2x Funkmikrofon Shure PGX inkl. Empfaenger, Kabelset (XLR / Klinke)",
+      "quantity": 1,
+      "unit": "Pauschale",
+      "unitPriceNetEur": 210.0,
+      "netAmountEur": 210.0,
+      "vatRatePercent": 19,
+      "vatAmountEur": 39.9
+    }
+  ],
+  "bookingProposal": [
+    {
+      "account": "1000",
+      "description": "Kasse",
+      "side": "debit",
+      "amountEur": 249.9,
+      "notes": "Soll 1000 Kasse 249,90 EUR"
+    },
+    {
+      "account": "8400",
+      "description": "Erloese Lief./Leistg. 19 % USt",
+      "side": "credit",
+      "amountEur": 210.0,
+      "notes": "Haben 8400 Erloese Lief./Leistg. 19 % USt 210,00 EUR"
+    },
+    {
+      "account": "1776",
+      "description": "Umsatzsteuer 19 %",
+      "side": "credit",
+      "amountEur": 39.9,
+      "notes": "Haben 1776 Umsatzsteuer 19 % 39,90 EUR"
+    }
+  ],
+  "duplicateCheck": {
+    "sameTelegramFileIdCount": 1,
+    "sameFileNameHistoricalCount": 1,
+    "confidence": "high",
+    "notes": [
+      "The Telegram file ID appears once in the runtime workflow artifacts.",
+      "The filename appears only in this 2026-06-19 submission, so no duplicate upload was found."
+    ]
+  },
+  "extractionMethod": {
+    "value": "pdftotext -layout on the stored PDF",
+    "confidence": "high",
+    "notes": [
+      "The PDF contains embedded text; OCR was not required.",
+      "Amounts, customer identity, and the DATEV booking proposal were taken directly from the source PDF."
+    ]
+  },
+  "anomalies": [
+    {
+      "code": "workflow_direction_mismatch",
+      "severity": "medium",
+      "description": "The Telegram workflow route describes this upload as an expense-document extraction, but the source file is a mandant-issued cash revenue receipt.",
+      "impact": "Downstream bookkeeping should reconcile this as a cash inflow with revenue/VAT credits, not as a supplier expense."
+    }
+  ],
+  "downstreamHandoff": {
+    "ready": true,
+    "recommendedNextOwner": "Bookkeeping Reconciliation Agent",
+    "notes": [
+      "Use the DATEV booking proposal as the primary posting basis for a 2026-06-19 cash inflow.",
+      "Keep the evidence chain tied to documentId 68bcfdd7-8866-4ac2-84c9-1c734683489a and Telegram fileId BQACAgIAAxkBAANTajULs2ZAIS1werybrxaxSrBvP2UAAjWfAALZ7ahJQiiQPuSv6zg8BA.",
+      "Preserve the routing mismatch note so no downstream owner treats this as an expense receipt."
+    ]
+  }
+}

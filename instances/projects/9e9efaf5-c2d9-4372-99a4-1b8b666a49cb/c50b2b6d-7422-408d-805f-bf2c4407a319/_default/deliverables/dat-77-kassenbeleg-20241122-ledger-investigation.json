@@ -1,0 +1,114 @@
+{
+  "issueIdentifier": "DAT-77",
+  "status": "investigated_no_workspace_ledger_mutation",
+  "target": {
+    "sourceFileName": "Kassenbeleg_20241122.pdf",
+    "documentId": "506d0719-ef68-4c1e-9654-50ab5e2274e4",
+    "submissionId": "eed1a29a-f5b1-4305-b192-84b19a8bf150",
+    "telegramFileId": "BQACAgIAAxkBAAMoah6pozj75vbFGTnCztI_46aVidMAAtakAAK8-vFINGvGvsUGnHI7BA",
+    "receiptDate": "2024-11-22",
+    "counterparty": "Büro & Mehr GmbH",
+    "grossAmountEur": 87.8,
+    "netAmountEur": 73.78,
+    "vatAmountEur": 14.02,
+    "vatRatePercent": 19,
+    "purposeKey": "OFFICE_SUPPLIES"
+  },
+  "workspaceStoreObservedState": {
+    "database": "showcase/runtime/shared-buchungsdaten.sqlite",
+    "bookingTable": "buchungen",
+    "totalBookingRowsObserved": 15,
+    "bookingDateRangeObserved": {
+      "from": "2026-04-02",
+      "to": "2026-05-12"
+    },
+    "matchingBookingCount": 0,
+    "matchingBookingLookup": "posting_date = '2024-11-22' OR counterparty LIKE target merchant OR gross_amount_eur = 87.80 OR source_reference contains target document identifiers",
+    "documentRowsForKassenbelegFilename": 5,
+    "targetDocumentRow": {
+      "id": "506d0719-ef68-4c1e-9654-50ab5e2274e4",
+      "fileName": "Kassenbeleg_20241122.pdf",
+      "status": "ready",
+      "counterparty": "Unspecified counterparty",
+      "documentDate": null,
+      "grossAmountEur": null,
+      "netAmountEur": null,
+      "vatAmountEur": null,
+      "purposeKey": "OFFICE_SUPPLIES",
+      "linkedBookingId": null
+    },
+    "sourceTypeBreakdown": [
+      {
+        "sourceType": "bank_fixture",
+        "count": 9,
+        "minPostingDate": "2026-04-02",
+        "maxPostingDate": "2026-04-28"
+      },
+      {
+        "sourceType": "telegram_document",
+        "count": 6,
+        "minPostingDate": "2026-05-02",
+        "maxPostingDate": "2026-05-12"
+      }
+    ]
+  },
+  "matchedExternalEvidence": {
+    "receiptExtractionArtifact": "deliverables/dat-27-kassenbeleg-20241122-extraction.json",
+    "cashbookLineArtifact": "deliverables/dat-73-anlage1-kassenbuchauszug-20241122-extraction.json",
+    "cashMovementArtifact": "deliverables/dat-75-anlage2-kassenbewegungsnachweis-20241122-extraction.json",
+    "reconciliationArtifact": "deliverables/dat-29-kassenbeleg-20241122-reconciliation.json",
+    "datevBookingNumber": "BJ-2024-1147",
+    "externalBookingStatus": "verbucht",
+    "externalPosting": [
+      {
+        "entryDirection": "debit",
+        "account": "4780",
+        "label": "Buerobedarf",
+        "amountEur": 73.78
+      },
+      {
+        "entryDirection": "debit",
+        "account": "1576",
+        "label": "Abziehbare Vorsteuer 19 %",
+        "amountEur": 14.02
+      },
+      {
+        "entryDirection": "credit",
+        "account": "1000",
+        "label": "Kasse",
+        "amountEur": 87.8
+      }
+    ]
+  },
+  "rootCause": {
+    "summary": "The shared workspace store never received the structured DAT-27 extraction fields for this historical PDF, so the intake row remained a metadata-only Telegram document and no bookingProposal was generated.",
+    "details": [
+      "The Telegram webhook payload persisted for the target document only contains message id, file id, file name, and MIME type.",
+      "The booking creation path in showcase/telegram-intake.js returns null when grossAmountEur or netAmountEur is missing.",
+      "The later DAT-27/DAT-29 evidence lives in deliverable artifacts, not in telegram_documents or buchungen.",
+      "The workspace booking table currently mirrors April/May 2026 fixture and Telegram demo bookings; it does not contain the historical 2024 external DATEV ledger."
+    ]
+  },
+  "dataModelConstraints": {
+    "cannotSafelyRepresentCurrentExternalPosting": [
+      "The account catalog has SKR03 BANK account 1200 and TRADE_PAYABLES 1600, but no CASH/Kasse purpose key for SKR03 account 1000.",
+      "The generic Telegram expense proposal credits TRADE_PAYABLES, which would mis-state this cash-paid receipt as an open payable.",
+      "buchungen has no explicit external DATEV booking number, external booked status, cash balance, or evidence-link fields for mirroring an already booked historical cashbook line."
+    ],
+    "dedupeConstraint": "Filename is not unique; any future import or link must key on documentId, submissionId, or telegramFileId."
+  },
+  "decision": {
+    "recommendedDisposition": "explicitly_exclude_from_current_workspace_ledger",
+    "doNotInsertHistoricalBuchungNow": true,
+    "reason": "The available evidence proves the external DATEV/cashbook booking, but the shared workspace ledger is a local operational store and does not yet model historical external cash postings accurately. Inserting a row with the current proposal path would create an inaccurate open-payable booking and could duplicate an already verbucht external record.",
+    "currentTraceSourceOfTruth": "deliverables/dat-29-kassenbeleg-20241122-reconciliation.json plus this DAT-77 investigation artifact",
+    "futureImplementationGate": "Only import or link this class of record after the store supports a cash/Kasse account purpose, external booking reference/status fields, and a post-extraction upsert/link path that is idempotent by documentId/submissionId/telegramFileId."
+  },
+  "verification": {
+    "commands": [
+      "node sql.js inspection of showcase/runtime/shared-buchungsdaten.sqlite for target bookings, target telegram_documents, source type breakdown, and SKR03 account catalog",
+      "jq inspection of DAT-27, DAT-29, DAT-73, and DAT-75 deliverable artifacts"
+    ],
+    "result": "No matching buchungen row exists; the target telegram_documents row exists but has null structured amounts/date and null linked_booking_id; external artifacts consistently show a booked 2024-11-22 cash posting."
+  }
+}

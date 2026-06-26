@@ -1,0 +1,221 @@
+{
+  "issueIdentifier": "DAT-147",
+  "status": "duplicate_detected_ready_for_downstream_handoff",
+  "document": {
+    "documentId": "6d1d3e78-e447-4ee6-9f26-8d345e09c419",
+    "submissionId": "62f3fa8c-3e12-43e8-b263-5deba1c27ca9",
+    "workflowRunId": "aa816c90-0774-40da-bbd8-8eb3ac2bbdc0",
+    "mandantId": "berg-und-tal-eventtechnik-gmbh",
+    "sourceFileName": "GS-2026-0005_Gutschrift.pdf",
+    "sourcePdfPath": "showcase/runtime/telegram-files/BQACAgIAAxkBAANRajUEwqbU8Ys1PLnLJRZON3lHySgAAqOeAALZ7ahJuQ1Mq-4Pjwg8BA/GS-2026-0005_Gutschrift.pdf",
+    "sourceStoragePath": "/home/ubuntu/.paperclip/instances/default/projects/9e9efaf5-c2d9-4372-99a4-1b8b666a49cb/c50b2b6d-7422-408d-805f-bf2c4407a319/_default/showcase/runtime/telegram-files/BQACAgIAAxkBAANRajUEwqbU8Ys1PLnLJRZON3lHySgAAqOeAALZ7ahJuQ1Mq-4Pjwg8BA/GS-2026-0005_Gutschrift.pdf",
+    "sourceLink": "/home/ubuntu/.paperclip/instances/default/projects/9e9efaf5-c2d9-4372-99a4-1b8b666a49cb/c50b2b6d-7422-408d-805f-bf2c4407a319/_default/showcase/runtime/telegram-files/BQACAgIAAxkBAANRajUEwqbU8Ys1PLnLJRZON3lHySgAAqOeAALZ7ahJuQ1Mq-4Pjwg8BA/GS-2026-0005_Gutschrift.pdf",
+    "sourcePdfSha256": "6f199795fd186f4607d91e17399172c2257ac2c1a15981c6ff642a34fbae993c",
+    "sourceChannel": "telegram_mandant",
+    "sourceSystem": "Telegram",
+    "telegramChatId": "8695197922",
+    "telegramMessageId": null,
+    "telegramFileId": "BQACAgIAAxkBAANRajUEwqbU8Ys1PLnLJRZON3lHySgAAqOeAALZ7ahJuQ1Mq-4Pjwg8BA",
+    "receivedAt": "2026-06-19T08:58:42.000Z",
+    "recoveredAt": "2026-06-19T08:58:42.928Z",
+    "workflowArtifactPath": "showcase/runtime/telegram-workflow/2026-06-19T08-58-42-928Z-62f3fa8c-3e12-43e8-b263-5deba1c27ca9.json",
+    "documentDate": "2026-05-19",
+    "servicePeriodStart": "2026-05-11",
+    "servicePeriodEnd": "2026-05-11",
+    "bookingMonth": "2026-05",
+    "mandantNumber": "58734"
+  },
+  "classification": {
+    "documentType": {
+      "value": "credit_note",
+      "confidence": "high",
+      "evidence": "The PDF headline is 'GUTSCHRIFT' and the header prints 'Gutschriftnummer: GS-2026-0005'."
+    },
+    "direction": {
+      "value": "revenue",
+      "confidence": "high",
+      "evidence": "The DATEV booking proposal debits revenue and output VAT while crediting Debitor 10182, which reverses part of a customer invoice."
+    },
+    "purposeKey": {
+      "value": "REVENUE_REFUND",
+      "confidence": "high",
+      "evidence": "The body states this is a partial credit for the cancelled second event day tied to invoice RE-2026-0023."
+    },
+    "workflowAssignedType": {
+      "value": "supplier_invoice",
+      "confidence": "low",
+      "evidence": "The Telegram workflow route classified the document as a supplier invoice even though the PDF itself is an outgoing credit note."
+    }
+  },
+  "mandant": {
+    "displayName": "Berg & Tal Eventtechnik GmbH",
+    "legalName": "Berg-und-Tal-Eventtechnik GmbH",
+    "vatId": "DE298765432",
+    "taxNumber": "109/240/12345",
+    "hrb": "HRB 15234, Amtsgericht Rosenheim",
+    "managingDirector": "Markus Bergmann",
+    "accountingBasis": "SKR03 monthly bookkeeping (Mandantennr. 58734)"
+  },
+  "counterparty": {
+    "name": {
+      "value": "Hotel Alpenpanorama GmbH & Co. KG",
+      "confidence": "high",
+      "evidence": "The customer block names Hotel Alpenpanorama GmbH & Co. KG."
+    },
+    "address": {
+      "value": "Maximilianstraße 24, 80539 München",
+      "confidence": "high",
+      "evidence": "The postal address is printed directly under the customer name."
+    },
+    "customerNumber": {
+      "value": "KD-00182",
+      "confidence": "high",
+      "evidence": "The header field states 'Kundennummer: KD-00182'."
+    },
+    "debitorAccount": {
+      "value": "10182",
+      "confidence": "high",
+      "evidence": "The header field states 'DATEV-Debitorenkto.: 10182'."
+    }
+  },
+  "creditNote": {
+    "creditNoteNumber": {
+      "value": "GS-2026-0005",
+      "confidence": "high",
+      "evidence": "The header prints 'Gutschriftnummer: GS-2026-0005'."
+    },
+    "creditNoteDate": {
+      "value": "2026-05-19",
+      "confidence": "high",
+      "evidence": "The header prints 'Gutschriftdatum: 19.05.2026'."
+    },
+    "referenceInvoiceNumber": {
+      "value": "RE-2026-0023",
+      "confidence": "high",
+      "evidence": "The header prints 'Bezugsrechnung: RE-2026-0023'."
+    },
+    "referenceInvoiceDate": {
+      "value": "2026-05-12",
+      "confidence": "high",
+      "evidence": "The body text references invoice RE-2026-0023 from 12.05.2026."
+    },
+    "reason": {
+      "value": "Teilweise Gutschrift fuer den zweiten Veranstaltungstag (11.05.2026), da der zusaetzliche Bedarf kurzfristig entfiel.",
+      "confidence": "high",
+      "evidence": "The body explains the second booked day was cancelled and therefore half of the daily rental fee is credited back."
+    }
+  },
+  "amounts": {
+    "currency": {
+      "value": "EUR",
+      "confidence": "high",
+      "evidence": "All totals use the EUR suffix."
+    },
+    "netAmountEur": {
+      "value": 550.0,
+      "confidence": "high",
+      "evidence": "The totals box shows 'Nettobetrag: 550,00 EUR'."
+    },
+    "vatRatePercent": {
+      "value": 19,
+      "confidence": "high",
+      "evidence": "The totals box shows 'zzgl. 19 % MwSt.'."
+    },
+    "vatAmountEur": {
+      "value": 104.5,
+      "confidence": "high",
+      "evidence": "The totals box shows '104,50 EUR' for VAT."
+    },
+    "grossAmountEur": {
+      "value": 654.5,
+      "confidence": "high",
+      "evidence": "The totals box shows 'Gesamtbetrag: 654,50 EUR'."
+    }
+  },
+  "lineItems": [
+    {
+      "line": 1,
+      "description": "Teilgutschrift Verleih Lichtanlage (LED-Moving-Head 12x, Par-Scheinwerfer, DMX-Controller) - Differenz fuer 1 Veranstaltungstag (11.05.2026)",
+      "quantity": 1,
+      "unit": "Pausch.",
+      "unitPriceNetEur": 550.0,
+      "netAmountEur": 550.0,
+      "vatRatePercent": 19,
+      "vatAmountEur": 104.5
+    }
+  ],
+  "bookingProposal": [
+    {
+      "type": "debit",
+      "account": "8400",
+      "accountName": "Erloese aus Lieferungen/Leistungen 19 %",
+      "amountEur": 550.0,
+      "evidence": "DATEV-Buchungsvorschlag line: Soll 8400 550,00 EUR."
+    },
+    {
+      "type": "debit",
+      "account": "1776",
+      "accountName": "Umsatzsteuer 19 %",
+      "amountEur": 104.5,
+      "evidence": "DATEV-Buchungsvorschlag line: Soll 1776 104,50 EUR."
+    },
+    {
+      "type": "credit",
+      "account": "10182",
+      "accountName": "Debitor Hotel Alpenpanorama GmbH & Co. KG",
+      "amountEur": 654.5,
+      "evidence": "DATEV-Buchungsvorschlag line: Haben 10182 654,50 EUR."
+    }
+  ],
+  "duplicateCheck": {
+    "status": {
+      "value": "exact_duplicate_of_prior_submission",
+      "confidence": "high",
+      "evidence": "The new PDF SHA256 6f199795fd186f4607d91e17399172c2257ac2c1a15981c6ff642a34fbae993c matches the previously extracted GS-2026-0005 artifact and the text content is unchanged."
+    },
+    "matchedIssueIdentifier": "DAT-127",
+    "matchedDocumentId": "8a7241c0-c463-45a8-b809-2632090a84f7",
+    "matchedSubmissionId": "edc48983-ffe2-48c1-9ab1-29ab929eb0b5",
+    "matchedArtifactPath": "deliverables/dat-127-telegram-intake-GS-2026-0005-extraction.json",
+    "matchedReconciliationIssueIdentifier": "DAT-145",
+    "matchedReconciliationArtifactPath": "deliverables/dat-145-GS-2026-0005-reconciliation.json",
+    "impact": "Downstream bookkeeping must not post this credit note again; reuse the prior reconciled booking lineage."
+  },
+  "sourceEvidence": [
+    "Header: Gutschriftnummer GS-2026-0005, Gutschriftdatum 19.05.2026, Bezugsrechnung RE-2026-0023, Kundennummer KD-00182, DATEV-Debitorenkto. 10182.",
+    "Body: partial credit because the second event day on 11.05.2026 was cancelled.",
+    "Totals: 550,00 EUR net, 104,50 EUR VAT, 654,50 EUR gross.",
+    "DATEV booking proposal: Soll 8400 / Soll 1776 / Haben 10182."
+  ],
+  "anomalies": [
+    {
+      "code": "duplicate_submission_exact_sha_match",
+      "severity": "medium",
+      "description": "The 2026-06-19 Telegram submission is byte-identical to the earlier GS-2026-0005 submission already extracted under DAT-127 and reconciled under DAT-145.",
+      "impact": "Without explicit duplicate handling, the workflow could double-count the same credit note."
+    },
+    {
+      "code": "workflow_route_misclassification",
+      "severity": "medium",
+      "description": "The Telegram workflow classified this file as supplier_invoice/expense even though the source document is an outgoing credit note tied to customer invoice RE-2026-0023.",
+      "impact": "Automated routing metadata understates the real document type and direction, so downstream should rely on the PDF evidence and this extraction."
+    }
+  ],
+  "extractionMethod": {
+    "value": "pdftotext -layout on the current source PDF followed by manual comparison against deliverables/dat-127-telegram-intake-GS-2026-0005-extraction.json and deliverables/dat-145-GS-2026-0005-reconciliation.json.",
+    "confidence": "high",
+    "notes": [
+      "Source PDF was read from the Telegram runtime store path linked in DAT-147.",
+      "Duplicate status was established by matching the SHA256 digest and reconciling the extracted fields against the prior artifact lineage."
+    ]
+  },
+  "downstreamHandoff": {
+    "ready": true,
+    "recommendedNextOwner": "Bookkeeping Reconciliation Agent",
+    "notes": [
+      "Treat this as a duplicate intake of GS-2026-0005, not as a new booking candidate.",
+      "Reuse DAT-145 and its linked ledger evidence when closing the duplicate bookkeeping path.",
+      "Do not post a second reversal entry for Debitor 10182; the May 2026 ledger already contains the credit note."
+    ]
+  }
+}

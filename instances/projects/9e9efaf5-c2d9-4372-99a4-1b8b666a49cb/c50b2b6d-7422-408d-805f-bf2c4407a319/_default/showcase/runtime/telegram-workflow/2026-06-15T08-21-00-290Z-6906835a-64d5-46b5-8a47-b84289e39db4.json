@@ -1,0 +1,58 @@
+{
+  "id": "6e436621-41e4-4fc0-b93c-fff9fdf0d714",
+  "workflow": "telegram_invoice_intake",
+  "routingRuleVersion": "dat-22-v1",
+  "createdAt": "2026-06-15T08:21:00.290Z",
+  "chartType": "SKR03",
+  "trigger": "telegram_webhook",
+  "source": {
+    "channel": "telegram",
+    "sourceLabel": "Telegram webhook intake",
+    "botKey": "mandant"
+  },
+  "submission": {
+    "id": "6906835a-64d5-46b5-8a47-b84289e39db4",
+    "mandantId": "berg-und-tal-eventtechnik-gmbh",
+    "channel": "telegram",
+    "sourceLabel": "Telegram webhook intake",
+    "telegramChatId": "8695197922",
+    "senderName": "Moritz",
+    "submittedAt": "2026-06-15T08:20:59.000Z",
+    "documentCount": 1,
+    "createdAt": "2026-06-15T08:21:00.145Z",
+    "updatedAt": "2026-06-15T08:21:00.145Z"
+  },
+  "routes": [
+    {
+      "documentId": "a2a34c63-57bc-439b-a903-c3e2948669f7",
+      "fileName": "ER-2026-0031_Eingangsrechnung_ProAudioNord.pdf",
+      "documentType": "supplier_invoice",
+      "direction": "expense",
+      "status": "ready",
+      "counterparty": "Unspecified counterparty",
+      "linkedBookingId": null,
+      "routedToAgent": "bookkeeping_agent",
+      "downstreamPath": "bookkeeping:extract_fields",
+      "queue": "extraction_queue",
+      "reason": "Telegram expense documents without a linked booking need bookkeeping extraction before posting."
+    }
+  ],
+  "summary": {
+    "documentCount": 1,
+    "queueCounts": {
+      "extraction_queue": 1
+    }
+  },
+  "activations": [
+    {
+      "stage": "paperclip_issue_created",
+      "route": "bookkeeping:extract_fields",
+      "assigneeAgentId": "ce1da1bc-9a98-4ca9-9a61-7b83e266c066",
+      "assigneeAgentName": "Document Ingestion",
+      "issueId": "59a17e84-a9bb-4c0a-b8d9-fec3b4a3f0fe",
+      "issueIdentifier": "DAT-85",
+      "issueTitle": "Telegram intake: ER-2026-0031_Eingangsrechnung_ProAudioNord.pdf",
+      "createdAt": "2026-06-15T08:21:00.393Z"
+    }
+  ]
+}

@@ -1,0 +1,99 @@
+{
+  "document": {
+    "sourceIssue": "DAT-75",
+    "sourceIntakeIssue": "DAT-74",
+    "downstreamReconciliationIssue": "DAT-29",
+    "documentId": "45c81ff4-0a54-4384-8ff2-2cb9d0548fae",
+    "submissionId": "93300819-1b00-40ed-9b45-6c48b06c87e0",
+    "mandantId": "berg-und-tal-eventtechnik-gmbh",
+    "fileName": "Anlage2_Kassenbewegungsnachweis_20241122.pdf",
+    "sourcePdfPath": "deliverables/dat-75-Anlage2_Kassenbewegungsnachweis_20241122-source.pdf",
+    "sourcePdfSha256": "e5592660881c14c9dfb2cd9ac7525a3103f226f149e41df6c9da56ed24efcb35",
+    "telegramChatId": "8695197922",
+    "telegramMessageId": "47",
+    "telegramFileId": "BQACAgIAAxkBAAMvaiQ63JovfUWNObs5BxBQWuPYwf4AAsuWAAKVBCFJotj5KkAqXP07BA",
+    "recoveredAt": "2026-06-09T08:52:00Z",
+    "recoveryMethod": "Telegram getFile download using configured Mandant bot secret, followed by direct PDF stream decoding"
+  },
+  "classification": {
+    "submittedDocumentType": "supplier_invoice",
+    "extractedDocumentType": "cash_movement_evidence",
+    "direction": "expense",
+    "currency": "EUR",
+    "confidence": "high",
+    "reason": "The document is titled Anlage 2 Nachweis der Kassenbewegung and contains cash account movement, cash balance proof, and a DATEV posting proposal for the referenced receipt."
+  },
+  "issuer": {
+    "name": "Berg-und-Tal-Eventtechnik GmbH",
+    "address": "Stadtplatz 8, 83022 Rosenheim",
+    "taxNumber": "109/240/12345",
+    "vatId": "DE298765432",
+    "commercialRegister": "HRB 15234 AG Rosenheim"
+  },
+  "cashMovement": {
+    "relatedReceipt": "Kassenbeleg_20241122",
+    "documentCreatedDate": "2026-06-06",
+    "bookingStatus": "verbucht",
+    "cashDate": "2024-11-22",
+    "cashAccount": {
+      "chartType": "SKR03",
+      "account": "1000",
+      "label": "Kasse"
+    },
+    "balanceBeforeEur": 312.40,
+    "cashOutflowEur": 87.80,
+    "balanceAfterEur": 224.60,
+    "calculationCheck": {
+      "formula": "312.40 - 87.80 = 224.60",
+      "matchesDocument": true
+    }
+  },
+  "postingProposal": {
+    "chartType": "SKR03",
+    "bookingText": "Buerobedarf, Barausgabe 22.11.2024, Beleg Kassenbeleg_20241122 (Mandant 58734, Lieferant: Buero & Mehr GmbH)",
+    "lines": [
+      {
+        "entryDirection": "debit",
+        "account": "4780",
+        "label": "Buerobedarf",
+        "amountEur": 73.78
+      },
+      {
+        "entryDirection": "debit",
+        "account": "1576",
+        "label": "Abziehbare Vorsteuer 19 %",
+        "amountEur": 14.02,
+        "vatRate": 19
+      },
+      {
+        "entryDirection": "credit",
+        "account": "1000",
+        "label": "Kasse",
+        "amountEur": 87.80
+      }
+    ]
+  },
+  "confirmation": {
+    "statement": "The document confirms that the stated data corresponds to Berg-und-Tal-Eventtechnik GmbH bookkeeping records as of 2024-11-22.",
+    "place": "Rosenheim",
+    "date": "2026-06-06",
+    "signatory": "Markus Bergmann",
+    "role": "Geschaeftsfuehrer - Berg-und-Tal-Eventtechnik GmbH"
+  },
+  "bookkeepingHandoff": {
+    "targetIssue": "DAT-29",
+    "resolvedEvidenceNeed": "Cash movement support tying the 87.80 EUR cash purchase to business cash records on 2024-11-22.",
+    "remainingKnownNeed": "DAT-29 should still verify the separate cashbook line / Kassenbuchauszug evidence from Anlage 1 before posting if that evidence has not already been accepted.",
+    "doNotPostFromThisArtifactAlone": true
+  },
+  "sourceEvidence": [
+    "ANLAGE 2 - NACHWEIS DER KASSENBEWEGUNG",
+    "Erstellt am: 06.06.2026 | Beleg: Kassenbeleg_20241122 | Status: verbucht",
+    "Kassendatum: 22.11.2024",
+    "Kassenkonto (SKR03): 1000 - Kasse",
+    "Kassensaldo vor Buchung: 312,40 EUR",
+    "Barausgabe (Abgang): -87,80 EUR",
+    "Kassensaldo nach Buchung: 224,60 EUR",
+    "DATEV-Buchungsvorschlag (SKR03): Soll 4780 Buerobedarf 73,78 EUR; Soll 1576 Abziehbare Vorsteuer 19 % 14,02 EUR; Haben 1000 Kasse 87,80 EUR"
+  ]
+}

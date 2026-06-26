@@ -1,0 +1,209 @@
+{
+  "issueIdentifier": "DAT-94",
+  "status": "ready_for_downstream_handoff",
+  "document": {
+    "documentId": "d735dbb0-6eac-4715-a0e8-6a974d6b22ed",
+    "submissionId": "476d9556-1fb2-4ecf-9a01-2b51deb055d2",
+    "mandantId": "berg-und-tal-eventtechnik-gmbh",
+    "sourceFileName": "Kassenbeleg_20260512.pdf",
+    "sourceStoragePath": "/home/ubuntu/.paperclip/instances/default/projects/9e9efaf5-c2d9-4372-99a4-1b8b666a49cb/c50b2b6d-7422-408d-805f-bf2c4407a319/_default/showcase/runtime/telegram-files/BQACAgIAAxkBAAM1ajKLkDo_x8neLGb8Xw8HHwpW-JcAAoaYAALGnpFJPy_1mtsF4L08BA/Kassenbeleg_20260512.pdf",
+    "sourcePdfSha256": "c04b23a097880ec88218de99bd56da8633ebd776a4b64b9d952351ec51400b6f",
+    "sourceChannel": "telegram_mandant",
+    "sourceSystem": "Telegram",
+    "telegramChatId": "8695197922",
+    "telegramMessageId": "53",
+    "telegramFileId": "BQACAgIAAxkBAAM1ajKLkDo_x8neLGb8Xw8HHwpW-JcAAoaYAALGnpFJPy_1mtsF4L08BA",
+    "receivedAt": "2026-06-17T11:57:04.000Z",
+    "documentDate": "2026-05-12",
+    "bookingMonth": "2026-05",
+    "mandantNumber": "58734"
+  },
+  "mandant": {
+    "displayName": "Berg & Tal Eventtechnik GmbH",
+    "legalName": "Berg-und-Tal-Eventtechnik GmbH",
+    "vatId": "DE298765432",
+    "taxNumber": "109/240/12345",
+    "hrb": "HRB 15234, Amtsgericht Rosenheim",
+    "managingDirector": "Markus Bergmann",
+    "accountingBasis": "SKR03 monthly bookkeeping (Mandantennr. 58734)"
+  },
+  "classification": {
+    "documentType": {
+      "value": "receipt",
+      "confidence": "high",
+      "evidence": "Headline 'Kassenbeleg' plus itemised Bürobedarf positions."
+    },
+    "direction": {
+      "value": "expense",
+      "confidence": "high",
+      "evidence": "Cash payment for Bürobedarf; title reads 'Kassenbeleg'."
+    },
+    "purposeKey": {
+      "value": "OFFICE_SUPPLIES",
+      "confidence": "high",
+      "evidence": "Says 'Artikel (Bürobedarf – betrieblich)' and DATEV suggests Konto 4780."
+    }
+  },
+  "merchant": {
+    "name": {
+      "value": "Büro & Mehr GmbH",
+      "confidence": "high",
+      "evidence": "Invoice header 'Büro & Mehr GmbH'."
+    },
+    "address": {
+      "value": "Kufsteiner Str. 45, 83022 Rosenheim",
+      "confidence": "high",
+      "evidence": "Address block on the receipt."
+    },
+    "supplierNumber": {
+      "value": "LF-BT-0200",
+      "confidence": "medium",
+      "evidence": "Lieferantennr.: LF-BT-0200"
+    },
+    "datevCreditorAccount": {
+      "value": "70200",
+      "confidence": "medium",
+      "evidence": "DATEV-Kreditorenkonto: 70200"
+    }
+  },
+  "receipt": {
+    "receiptNumber": {
+      "value": "Kassenbeleg_20260512",
+      "confidence": "high",
+      "evidence": "Belegnr.: Kassenbeleg_20260512"
+    },
+    "documentDate": {
+      "value": "2026-05-12",
+      "confidence": "high",
+      "evidence": "Datum: 12.05.2026"
+    },
+    "bookingMonth": {
+      "value": "Mai 2026",
+      "confidence": "high",
+      "evidence": "Buchungsmonat: Mai 2026"
+    },
+    "paymentMethod": {
+      "value": "cash",
+      "confidence": "high",
+      "evidence": "Zahlungsart: Barzahlung"
+    }
+  },
+  "amounts": {
+    "currency": {
+      "value": "EUR",
+      "confidence": "high",
+      "evidence": "All totals shown in EUR."
+    },
+    "netAmountEur": {
+      "value": 40.0,
+      "confidence": "high",
+      "evidence": "Nettobetrag: 40,00 EUR"
+    },
+    "vatRatePercent": {
+      "value": 19,
+      "confidence": "high",
+      "evidence": "MwSt. 19 %"
+    },
+    "vatAmountEur": {
+      "value": 7.6,
+      "confidence": "high",
+      "evidence": "19 % von 40,00 EUR ergibt 7,60 EUR"
+    },
+    "grossAmountEur": {
+      "value": 47.6,
+      "confidence": "high",
+      "evidence": "Kassenbetrag brutto (bar bezahlt): 47,60 EUR"
+    },
+    "amountTenderedEur": {
+      "value": 47.6,
+      "confidence": "high",
+      "evidence": "Barzahlung mit 47,60 EUR"
+    },
+    "changeEur": {
+      "value": 0.0,
+      "confidence": "high",
+      "evidence": "Kassenrechnung bestellt als exakter Betrag, kein Rückgeld ausgewiesen."
+    }
+  },
+  "lineItems": [
+    {
+      "line": 1,
+      "description": "Druckerpapier A4 80 g/m², 500 Blatt",
+      "quantity": 2,
+      "unit": "Pkg.",
+      "unitPriceNetEur": 7.5,
+      "netAmountEur": 15.0,
+      "vatRatePercent": 19,
+      "vatAmountEur": 2.85
+    },
+    {
+      "line": 2,
+      "description": "Tintenkassetten-Set (4-farbig, Herstellermarke)",
+      "quantity": 1,
+      "unit": "Set",
+      "unitPriceNetEur": 18.5,
+      "netAmountEur": 18.5,
+      "vatRatePercent": 19,
+      "vatAmountEur": 3.515
+    },
+    {
+      "line": 3,
+      "description": "Haftnotizen, Kugelschreiber, Klebefilm (Sortiment)",
+      "quantity": 1,
+      "unit": "Pauschal",
+      "unitPriceNetEur": 6.5,
+      "netAmountEur": 6.5,
+      "vatRatePercent": 19,
+      "vatAmountEur": 1.235
+    }
+  ],
+  "bookingProposal": [
+    {
+      "account": "4780",
+      "description": "Bürobedarf",
+      "side": "debit",
+      "amountEur": 40.0,
+      "notes": "Soll 4780 Bürobedarf 40,00 EUR"
+    },
+    {
+      "account": "1576",
+      "description": "Abziehbare Vorsteuer 19 %",
+      "side": "debit",
+      "amountEur": 7.6,
+      "notes": "Soll 1576 Abziehbare Vorsteuer 19 % 7,60 EUR"
+    },
+    {
+      "account": "1000",
+      "description": "Kasse",
+      "side": "credit",
+      "amountEur": 47.6,
+      "notes": "Haben 1000 Kasse 47,60 EUR"
+    }
+  ],
+  "duplicateCheck": {
+    "sameTelegramFileIdCount": 1,
+    "sameFileNameHistoricalCount": 1,
+    "confidence": "high",
+    "notes": [
+      "Der Telegram-FileId erscheint nur in diesem Submission-Event.",
+      "Der Dateiname wurde in früheren Workflows genutzt, daher sollten downstream Referenzen auf documentId oder telegramFileId erfolgen."
+    ]
+  },
+  "extractionMethod": {
+    "value": "pdftotext -layout auf der gespeicherten PDF",
+    "confidence": "high",
+    "notes": [
+      "Alle Inhalte lagen als eingebetteter Text vor; keine OCR nötig.",
+      "Zusätzliche Kontextinformationen (Buchungsvorschlag, Kassenstand) stammen aus der PDF-Rasterung."
+    ]
+  },
+  "downstreamHandoff": {
+    "ready": true,
+    "recommendedNextOwner": "Bookkeeping Reconciliation Agent",
+    "notes": [
+      "Beträge, Buchungsvorschlag und Zahlungsart sind vollständig dokumentiert und mit SKR03-Referenzen versehen.",
+      "Die Anlage kann direkt in den Mai-2026-Buchungsmonat eingebracht und mit dem Mandantenkonto 58734 verknüpft werden.",
+      "Referenz beibehalten: Telegram fileId BQACAgIAAxkBAAM1ajKLkDo_x8neLGb8Xw8HHwpW-JcAAoaYAALGnpFJPy_1mtsF4L08BA"
+    ]
+  }
+}

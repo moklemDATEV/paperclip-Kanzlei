@@ -1,0 +1,121 @@
+{
+  "issueIdentifier": "DAT-148",
+  "status": "duplicate_intake_with_ledger_parity_confirmed",
+  "documentScope": {
+    "sourceFileName": "GS-2026-0005_Gutschrift.pdf",
+    "documentId": "6d1d3e78-e447-4ee6-9f26-8d345e09c419",
+    "submissionId": "62f3fa8c-3e12-43e8-b263-5deba1c27ca9",
+    "telegramFileId": "BQACAgIAAxkBAANRajUEwqbU8Ys1PLnLJRZON3lHySgAAqOeAALZ7ahJuQ1Mq-4Pjwg8BA",
+    "receivedAt": "2026-06-19T08:58:42.000Z",
+    "bookingMonth": "2026-05",
+    "documentDate": "2026-05-19",
+    "sourceStoragePath": "/home/ubuntu/.paperclip/instances/default/projects/9e9efaf5-c2d9-4372-99a4-1b8b666a49cb/c50b2b6d-7422-408d-805f-bf2c4407a319/_default/showcase/runtime/telegram-files/BQACAgIAAxkBAANRajUEwqbU8Ys1PLnLJRZON3lHySgAAqOeAALZ7ahJuQ1Mq-4Pjwg8BA/GS-2026-0005_Gutschrift.pdf",
+    "extractionArtifact": "deliverables/dat-147-telegram-intake-GS-2026-0005-extraction.json",
+    "priorExtractionArtifact": "deliverables/dat-127-telegram-intake-GS-2026-0005-extraction.json",
+    "priorReconciliationArtifact": "deliverables/dat-145-GS-2026-0005-reconciliation.json"
+  },
+  "extractedCreditNote": {
+    "creditNoteNumber": "GS-2026-0005",
+    "creditNoteDate": "2026-05-19",
+    "referenceInvoiceNumber": "RE-2026-0023",
+    "referenceInvoiceDate": "2026-05-12",
+    "customerName": "Hotel Alpenpanorama GmbH & Co. KG",
+    "customerNumber": "KD-00182",
+    "debitorAccount": "10182",
+    "currency": "EUR",
+    "netAmountEur": 550.0,
+    "vatRatePercent": 19,
+    "vatAmountEur": 104.5,
+    "grossAmountEur": 654.5
+  },
+  "matchedRecords": [
+    {
+      "matchType": "duplicate_submission_sha_match",
+      "status": "matched",
+      "source": "deliverables/dat-147-telegram-intake-GS-2026-0005-extraction.json",
+      "lookupKey": "document.sourcePdfSha256 = 6f199795fd186f4607d91e17399172c2257ac2c1a15981c6ff642a34fbae993c",
+      "matchedRecord": {
+        "matchedIssueIdentifier": "DAT-127",
+        "matchedDocumentId": "8a7241c0-c463-45a8-b809-2632090a84f7",
+        "matchedSubmissionId": "edc48983-ffe2-48c1-9ab1-29ab929eb0b5",
+        "matchedReconciliationIssueIdentifier": "DAT-145"
+      },
+      "evidence": "DAT-147 already established that the 2026-06-19 submission is byte-identical to the earlier GS-2026-0005 intake and should reuse that lineage instead of creating a new booking candidate."
+    },
+    {
+      "matchType": "reference_invoice_fixture",
+      "status": "matched",
+      "source": "showcase/data/customer-invoices.json",
+      "lookupKey": "invoiceNumber = RE-2026-0023",
+      "matchedRecord": {
+        "invoiceNumber": "RE-2026-0023",
+        "customer": "Hotel Alpenpanorama GmbH & Co. KG",
+        "grossEur": 654.5,
+        "status": "ready"
+      },
+      "evidence": "The customer invoice fixture contains the referenced outgoing invoice with the same 654.50 EUR gross amount and customer name, so the business event behind the credit note is represented in the May 2026 source data."
+    },
+    {
+      "matchType": "telegram_document_store_duplicates",
+      "status": "matched",
+      "source": "showcase/runtime/shared-buchungsdaten.sqlite::telegram_documents",
+      "lookupKey": "file_name = GS-2026-0005_Gutschrift.pdf",
+      "matchedRecord": {
+        "duplicateRowCount": 6,
+        "firstSeenAt": "2026-06-17T13:28:31.749Z",
+        "lastSeenAt": "2026-06-19T08:58:42.629Z",
+        "linkedBookingIdsPresent": false
+      },
+      "evidence": "Six telegram_documents rows exist for this file name across repeated Telegram submissions, and every row still has linked_booking_id = null."
+    }
+  ],
+  "verificationChecks": [
+    {
+      "checkType": "workspace_ledger_posting_match",
+      "status": "matched",
+      "source": "showcase/runtime/shared-buchungsdaten.sqlite::buchungen",
+      "lookupLogic": "posting_date during 2026-05 and source_reference in (RE-2026-0023, GS-2026-0005) or counterparty like Alpenpanorama or description referencing either document number",
+      "result": {
+        "matchingBookingCount": 2,
+        "matchingBookingIds": [
+          "seed-2026-05-12-re-2026-0023",
+          "seed-2026-05-19-gs-2026-0005"
+        ],
+        "availableBookingDateRange": {
+          "from": "2026-04-02",
+          "to": "2026-06-17"
+        },
+        "totalBookingRowsObserved": 27
+      },
+      "evidence": "DAT-150 synchronized the receivables fixtures into the live workspace ledger, and the buchungen table now contains explicit rows for both RE-2026-0023 and GS-2026-0005."
+    },
+    {
+      "checkType": "document_store_classification_and_linkage",
+      "status": "no_match",
+      "source": "showcase/runtime/shared-buchungsdaten.sqlite::telegram_documents",
+      "lookupLogic": "all rows for GS-2026-0005_Gutschrift.pdf",
+      "result": {
+        "documentTypeStored": "supplier_invoice",
+        "directionStored": "expense",
+        "counterpartyStored": "Unspecified counterparty",
+        "linkedBookingId": null
+      },
+      "evidence": "The telegram document store still reflects the workflow misclassification noted in DAT-147 and does not carry a booking link, but DAT-150 established ledger parity independently through explicit receivables seed bookings."
+    }
+  ],
+  "notes": [
+    {
+      "type": "dedupe_rule",
+      "severity": "high",
+      "detail": "Treat DAT-148 as a duplicate intake only. No second posting, reversal, or customer-balance movement should be created from this submission."
+    },
+    {
+      "type": "resolution",
+      "severity": "medium",
+      "detail": "DAT-150 resolved the earlier ledger contradiction by adding an explicit receivables seed fixture and synchronizing the live shared-buchungsdaten.sqlite snapshot without creating a second duplicate posting."
+    }
+  ],
+  "mismatchQueue": [],
+  "recommendedNextOwner": "none",
+  "recommendedNextAction": "Reuse DAT-145 and DAT-150 ledger evidence for this duplicate intake and do not create a second receivables posting."
+}

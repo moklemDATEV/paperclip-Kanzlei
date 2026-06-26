@@ -1,0 +1,154 @@
+{
+  "issueIdentifier": "DAT-40",
+  "status": "blocked_pending_missing_annexes",
+  "document": {
+    "documentId": "637c59db-2d52-40ba-bc82-2fb4e08f35ec",
+    "submissionId": "57878e38-df15-47e8-a77d-b95249b22228",
+    "sourceFileName": "Uebersendungsschreiben_DATEV_Kassenbeleg_20241122.pdf",
+    "recoveredSourceArtifact": "deliverables/dat-40-source.pdf",
+    "sourceChannel": "mandant",
+    "sourceSystem": "Telegram",
+    "telegramChatId": "8695197922",
+    "telegramMessageId": "43",
+    "telegramFileId": "BQACAgIAAxkBAAMraiQjkY9AHxtu7EBS_rJgb6Czk9IAAp-VAAKVBCFJIvuX1_MFtrY7BA",
+    "senderName": "Moritz",
+    "receivedAt": "2026-06-06T13:41:38.000Z"
+  },
+  "classification": {
+    "documentType": {
+      "value": "supporting_correspondence",
+      "confidence": "high",
+      "evidence": "Betreff: Nachweise zu Kassenbeleg_20241122"
+    },
+    "direction": {
+      "value": "supporting_evidence",
+      "confidence": "high",
+      "evidence": "The PDF is a cover letter transmitting bookkeeping evidence, not the receipt itself."
+    },
+    "workflowAssignedType": {
+      "value": "receipt",
+      "confidence": "low",
+      "evidence": "The intake workflow routed this file as receipt despite the letter body identifying it as a transmittal letter."
+    }
+  },
+  "correspondence": {
+    "letterDate": {
+      "value": "2025-06-05",
+      "confidence": "high",
+      "evidence": "Rosenheim, 05. Juni 2025"
+    },
+    "senderCompany": {
+      "value": "Berg-und-Tal-Eventtechnik GmbH",
+      "confidence": "high",
+      "evidence": "Berg-und-Tal-Eventtechnik GmbH"
+    },
+    "senderAddress": {
+      "value": "Stadtplatz 8, 83022 Rosenheim",
+      "confidence": "high",
+      "evidence": "Berg-und-Tal-Eventtechnik GmbH · Stadtplatz 8 · 83022 Rosenheim"
+    },
+    "recipientName": {
+      "value": "DATEV Lab Kanzlei",
+      "confidence": "high",
+      "evidence": "DATEV Lab Kanzlei"
+    },
+    "recipientAddress": {
+      "value": "Bahnhofstraße 21, 83022 Rosenheim",
+      "confidence": "high",
+      "evidence": "Bahnhofstraße 21 / 83022 Rosenheim"
+    },
+    "subject": {
+      "value": "Nachweise zu Kassenbeleg_20241122 – Büro & Mehr GmbH, 87,80 EUR",
+      "confidence": "high",
+      "evidence": "Betreff: Nachweise zu Kassenbeleg_20241122 – Büro & Mehr GmbH, 87,80 EUR"
+    },
+    "signatory": {
+      "value": "Markus Bergmann",
+      "confidence": "high",
+      "evidence": "Mit freundlichen Grüßen / Markus Bergmann"
+    },
+    "signatoryRole": {
+      "value": "Geschäftsführer",
+      "confidence": "high",
+      "evidence": "Geschäftsführer · Berg-und-Tal-Eventtechnik GmbH"
+    }
+  },
+  "referencedEvidence": {
+    "referencedReceiptFileName": {
+      "value": "Kassenbeleg_20241122",
+      "confidence": "high",
+      "evidence": "Nachweise zu Kassenbeleg_20241122"
+    },
+    "referencedMerchant": {
+      "value": "Büro & Mehr GmbH",
+      "confidence": "high",
+      "evidence": "Büro & Mehr GmbH"
+    },
+    "referencedGrossAmountEur": {
+      "value": 87.8,
+      "confidence": "high",
+      "evidence": "87,80 EUR"
+    },
+    "annexesMentioned": [
+      {
+        "label": "Anlage 1",
+        "description": "Kassenbuchauszug vom 22.11.2024 (Beleg Kassenbeleg_20241122, 87,80 EUR)",
+        "confidence": "high",
+        "evidence": "Anlage 1: Kassenbuchauszug vom 22.11.2024"
+      },
+      {
+        "label": "Anlage 2",
+        "description": "Nachweis der Kassenbewegung vom 22.11.2024 (Barausgabe 87,80 EUR)",
+        "confidence": "high",
+        "evidence": "Anlage 2: Nachweis der Kassenbewegung vom 22.11.2024"
+      }
+    ],
+    "claimedBookkeepingState": {
+      "value": "The letter asserts the receipt is already captured and booked in the accounting records.",
+      "confidence": "medium",
+      "evidence": "Der Beleg ist in der Buchhaltung erfasst und verbucht."
+    }
+  },
+  "duplicateCheck": {
+    "sameTelegramFileIdCount": 1,
+    "sameFileNameHistoricalCount": 1,
+    "confidence": "high",
+    "notes": [
+      "This Telegram file id appears once in the document store.",
+      "This exact file name appears once in the document store."
+    ]
+  },
+  "anomalies": [
+    {
+      "severity": "high",
+      "field": "missing_annexed_sources",
+      "note": "The recovered PDF is a single-page cover letter that references Anlage 1 and Anlage 2, but those annexes are not present in the uploaded source."
+    },
+    {
+      "severity": "high",
+      "field": "workflow_misclassification",
+      "note": "Workflow classified the upload as a receipt, but the source itself is supporting correspondence about a receipt."
+    },
+    {
+      "severity": "medium",
+      "field": "no_embedded_source_link",
+      "note": "The intake persisted Telegram metadata only; the source PDF had to be recovered during this heartbeat using telegramFileId."
+    }
+  ],
+  "extractionMethod": {
+    "value": "Recovered original PDF from Telegram by telegramFileId, then extracted embedded text from the one-page PDF.",
+    "confidence": "high",
+    "notes": [
+      "The document was not available through a persisted sourceLink or issue attachment.",
+      "The recovered PDF contains one page of embedded text and no attached annex pages."
+    ]
+  },
+  "downstreamHandoff": {
+    "ready": false,
+    "recommendedNextOwner": "Client Communication Agent",
+    "notes": [
+      "Request Anlage 1 and Anlage 2, or a re-uploaded combined packet that actually includes the referenced bookkeeping evidence.",
+      "Do not hand this to Bookkeeping Reconciliation as sufficient cash evidence until the missing annexes are available with intact source references."
+    ]
+  }
+}

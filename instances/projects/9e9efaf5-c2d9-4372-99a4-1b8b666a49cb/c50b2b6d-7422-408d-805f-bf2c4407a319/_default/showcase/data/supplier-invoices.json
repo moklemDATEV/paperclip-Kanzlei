@@ -1,0 +1,34 @@
+[
+  {
+    "fileName": "beleg-2026-04-amazon.json",
+    "vendor": "Amazon EU S.a r.l.",
+    "netEur": 200.76,
+    "vatEur": 38.15,
+    "grossEur": 238.91,
+    "status": "ready"
+  },
+  {
+    "fileName": "beleg-2026-04-telekom.json",
+    "vendor": "Telekom Deutschland GmbH",
+    "netEur": 130.0,
+    "vatEur": 24.7,
+    "grossEur": 154.7,
+    "status": "ready"
+  },
+  {
+    "fileName": "beleg-2026-04-metro.json",
+    "vendor": "Metro Deutschland GmbH",
+    "netEur": 100.71,
+    "vatEur": 19.13,
+    "grossEur": 119.84,
+    "status": "needs_review"
+  },
+  {
+    "fileName": "beleg-2026-04-van-rental.json",
+    "vendor": "Van4Event GmbH",
+    "netEur": 750.0,
+    "vatEur": 142.5,
+    "grossEur": 892.5,
+    "status": "ready"
+  }
+]

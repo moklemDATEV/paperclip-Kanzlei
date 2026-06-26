@@ -1,0 +1,76 @@
+[
+  {
+    "id": "seed-2026-05-12-re-2026-0023",
+    "mandantId": "berg-und-tal-eventtechnik-gmbh",
+    "postingDate": "2026-05-12",
+    "counterparty": "Hotel Alpenpanorama GmbH & Co. KG",
+    "sourceType": "receivables_fixture",
+    "sourceReference": "RE-2026-0023",
+    "description": "Open receivable RE-2026-0023",
+    "status": "ready",
+    "grossAmountEur": 654.5,
+    "netAmountEur": 550,
+    "vatAmountEur": 104.5,
+    "currency": "EUR",
+    "annotation": "Telegram receivables fixture; source document carries Debitor 10182.",
+    "lines": [
+      {
+        "purposeKey": "TRADE_RECEIVABLES",
+        "entryDirection": "debit",
+        "amountEur": 654.5,
+        "memo": "Open receivable for Debitor 10182"
+      },
+      {
+        "purposeKey": "REVENUE_19",
+        "entryDirection": "credit",
+        "amountEur": 550,
+        "taxRate": 19,
+        "memo": "Revenue at 19% VAT"
+      },
+      {
+        "purposeKey": "OUTPUT_VAT_19",
+        "entryDirection": "credit",
+        "amountEur": 104.5,
+        "taxRate": 19,
+        "memo": "Output VAT from receivables fixture"
+      }
+    ]
+  },
+  {
+    "id": "seed-2026-05-19-gs-2026-0005",
+    "mandantId": "berg-und-tal-eventtechnik-gmbh",
+    "postingDate": "2026-05-19",
+    "counterparty": "Hotel Alpenpanorama GmbH & Co. KG",
+    "sourceType": "receivables_fixture",
+    "sourceReference": "GS-2026-0005",
+    "description": "Customer credit note GS-2026-0005 - partial reversal of RE-2026-0023",
+    "status": "ready",
+    "grossAmountEur": 654.5,
+    "netAmountEur": 550,
+    "vatAmountEur": 104.5,
+    "currency": "EUR",
+    "annotation": "Telegram receivables fixture; source document carries Debitor 10182 and references RE-2026-0023.",
+    "lines": [
+      {
+        "purposeKey": "REVENUE_19",
+        "entryDirection": "debit",
+        "amountEur": 550,
+        "taxRate": 19,
+        "memo": "Revenue reversal from customer credit note"
+      },
+      {
+        "purposeKey": "OUTPUT_VAT_19",
+        "entryDirection": "debit",
+        "amountEur": 104.5,
+        "taxRate": 19,
+        "memo": "Output VAT reversal from customer credit note"
+      },
+      {
+        "purposeKey": "TRADE_RECEIVABLES",
+        "entryDirection": "credit",
+        "amountEur": 654.5,
+        "memo": "Receivable reduction for Debitor 10182"
+      }
+    ]
+  }
+]

@@ -1,0 +1,79 @@
+{
+  "issueIdentifier": "DAT-160",
+  "status": "draft_prepared_for_compliance_review",
+  "draftScope": {
+    "sourceFileName": "Kassenbeleg_20260619.pdf",
+    "documentId": "68bcfdd7-8866-4ac2-84c9-1c734683489a",
+    "submissionId": "527e7f2f-af4a-409b-92cc-a261d90d2cc7",
+    "period": {
+      "documentDate": "2026-06-19",
+      "bookingMonth": "2026-06",
+      "vatReturnPeriod": "2026-06"
+    },
+    "workflow": "telegram_cash_receipt_tax_draft",
+    "sourceDataset": [
+      "showcase/runtime/telegram-files/BQACAgIAAxkBAANTajULs2ZAIS1werybrxaxSrBvP2UAAjWfAALZ7ahJQiiQPuSv6zg8BA/Kassenbeleg_20260619.pdf",
+      "deliverables/dat-152-kassenbeleg-20260619-extraction.json",
+      "deliverables/dat-156-kassenbeleg-20260619-reconciliation.json"
+    ]
+  },
+  "draftBookkeepingOutput": {
+    "status": "no_further_booking_change_proposed",
+    "linkedBookingId": "dat-156-kassenbeleg-20260619-cash-revenue",
+    "postingDate": "2026-06-19",
+    "postingText": "Kassenbeleg 19.06.2026 / Stadtwerke Rosenheim / KD-00291",
+    "accounts": [
+      {
+        "side": "debit",
+        "account": "1000",
+        "accountName": "Kasse",
+        "amountEur": 249.9
+      },
+      {
+        "side": "credit",
+        "account": "8400",
+        "accountName": "Erlöse 19 % USt",
+        "amountEur": 210.0
+      },
+      {
+        "side": "credit",
+        "account": "1776",
+        "accountName": "Umsatzsteuer 19 %",
+        "amountEur": 39.9
+      }
+    ],
+    "evidence": "The source receipt prints the DATEV booking proposal, and DAT-156 confirms the same entry was posted and linked in the shared ledger."
+  },
+  "draftVatOutput": {
+    "status": "draft_only_not_filed",
+    "jurisdiction": "DE",
+    "taxPointDate": "2026-06-19",
+    "supplyType": "domestic taxable revenue",
+    "vatRatePercent": 19,
+    "netAmountEur": 210.0,
+    "vatAmountEur": 39.9,
+    "grossAmountEur": 249.9,
+    "returnTreatment": "Include in the June 2026 VAT draft as domestic output taxed at 19% with 39.90 EUR output VAT."
+  },
+  "assumptions": [
+    "The cash receipt is the operative sales document for the performed service on 2026-06-19 and is not a duplicate of a separately recognized invoice.",
+    "The service was supplied in Germany and no special VAT regime or reduced rate applies beyond the printed 19% domestic VAT treatment.",
+    "The posted ledger entry dat-156-kassenbeleg-20260619-cash-revenue remains the intended bookkeeping record because DAT-156 reconciled it to the source document without unresolved amount differences."
+  ],
+  "openQuestions": [
+    "Was a separate invoice issued for the same service in addition to this cash receipt? If yes, reviewer should confirm no duplicate revenue recognition arises.",
+    "Compliance review should confirm whether any additional cash-register or archival formalities are required beyond the receipt and linked ledger evidence for this MVP workflow."
+  ],
+  "priorPeriodContinuity": {
+    "status": "out_of_scope_for_single_document_draft",
+    "note": "This draft covers one June 2026 cash receipt only. No period-over-period variance analysis was performed at the monthly return level."
+  },
+  "nonBlockingNotes": [
+    {
+      "issue": "DAT-159",
+      "type": "workflow_classification_defect",
+      "detail": "The document originally routed through the expense path before reconciliation corrected it to revenue. DAT-159 tracks the CTO follow-up and does not change this draft's tax treatment."
+    }
+  ],
+  "nextOwner": "Compliance Guard"
+}

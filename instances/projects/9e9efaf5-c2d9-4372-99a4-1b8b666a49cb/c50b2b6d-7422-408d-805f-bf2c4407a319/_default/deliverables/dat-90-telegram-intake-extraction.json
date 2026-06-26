@@ -1,0 +1,120 @@
+{
+  "issueIdentifier": "DAT-90",
+  "status": "ready_for_downstream_handoff",
+  "document": {
+    "documentId": "954fcdd9-1dbd-4b7e-837e-09ef6708abad",
+    "submissionId": "241ca94c-88e2-4f89-8be8-347acba0d9d5",
+    "mandantId": "berg-und-tal-eventtechnik-gmbh",
+    "sourceFileName": "20260615_Anschreiben_Eingangsbelege_Mai2026.pdf",
+    "sourcePdfPath": "deliverables/dat-90-20260615-anschreiben-eingangsbelege-mai2026-source.pdf",
+    "sourcePdfSha256": "595d702510ae3fb74f90da47d3de62c113f3d4eed3e015fc7be5f0be8c3ff69a",
+    "sourceStoragePath": "/home/ubuntu/.paperclip/instances/default/projects/9e9efaf5-c2d9-4372-99a4-1b8b666a49cb/c50b2b6d-7422-408d-805f-bf2c4407a319/_default/showcase/runtime/telegram-files/BQACAgIAAxkBAAMzajKLkKMmv6Kd2d6zoy4cUuGPGfEAAoiYAALGnpFJiGoKxPQQkts8BA/20260615_Anschreiben_Eingangsbelege_Mai2026.pdf",
+    "sourceLink": "/home/ubuntu/.paperclip/instances/default/projects/9e9efaf5-c2d9-4372-99a4-1b8b666a49cb/c50b2b6d-7422-408d-805f-bf2c4407a319/_default/showcase/runtime/telegram-files/BQACAgIAAxkBAAMzajKLkKMmv6Kd2d6zoy4cUuGPGfEAAoiYAALGnpFJiGoKxPQQkts8BA/20260615_Anschreiben_Eingangsbelege_Mai2026.pdf",
+    "telegramChatId": "8695197922",
+    "telegramMessageId": "51",
+    "telegramFileId": "BQACAgIAAxkBAAMzajKLkKMmv6Kd2d6zoy4cUuGPGfEAAoiYAALGnpFJiGoKxPQQkts8BA",
+    "receivedAt": "2026-06-17T11:57:04.975Z",
+    "recoveredAt": "2026-06-17T12:13:53.076Z",
+    "recoveryMethod": "Source copy pulled from the Telegram runtime store and read with poppler/pdftotext to capture the embedded letter."
+  },
+  "mandant": {
+    "displayName": "Berg & Tal Eventtechnik GmbH",
+    "legalName": "Berg & Tal Eventtechnik GmbH",
+    "vatId": "DE342198765",
+    "accountingBasis": "Standard monthly bookkeeping with DATEV export"
+  },
+  "classification": {
+    "documentType": {
+      "value": "bookkeeping_correspondence",
+      "confidence": "high",
+      "evidence": "Cover letter titled \"Übersendung von Eingangsbelegen – Buchungsmonat Mai 2026\""
+    },
+    "direction": {
+      "value": "supporting_evidence",
+      "confidence": "high",
+      "evidence": "The text says the attached files are Eingangsbelege (incoming receipts) for May 2026."
+    },
+    "workflowAssignedType": {
+      "value": "receipt",
+      "confidence": "low",
+      "evidence": "The intake pipeline classified the upload as a receipt despite the body identifying it as transmittal correspondence."
+    }
+  },
+  "correspondence": {
+    "letterDate": "2026-06-15",
+    "senderCompany": "Berg-und-Tal-Eventtechnik GmbH",
+    "senderAddress": "Stadtplatz 8, 83022 Rosenheim",
+    "recipientName": "DATEV Lab Kanzlei",
+    "recipientAddress": "Bahnhofstraße 21, 83022 Rosenheim",
+    "subject": "Übersendung von Eingangsbelegen – Buchungsmonat Mai 2026",
+    "signatory": "Markus Bergmann",
+    "signatoryRole": "Geschäftsführer / Sachbearbeiter",
+    "mandantennummer": "58734",
+    "sachbearbeiter": "Markus Bergmann",
+    "buchungsmonat": "Mai 2026"
+  },
+  "bookingPeriod": {
+    "value": "2026-05",
+    "confidence": "high",
+    "evidence": "Buchungsmonat: Mai 2026"
+  },
+  "referencedReceipts": [
+    {
+      "line": 1,
+      "documentType": "supplier_invoice",
+      "fileName": "ER-2026-0031_Eingangsrechnung_ProAudioNord.pdf",
+      "supplier": "ProAudio Nord GmbH",
+      "supplierVatId": "DE198754321",
+      "grossAmountEur": 2856.0,
+      "vatTreatment": "Full 19% Vorsteuerabzug nach § 15 Abs. 1 UStG",
+      "notes": "Letter states that every attached receipt already contains a DATEV SKR03 booking proposal; the first line references the ProAudio invoice and the seller's USt-IdNr."
+    },
+    {
+      "line": 2,
+      "documentType": "receipt",
+      "fileName": "Kassenbeleg_20260512.pdf",
+      "supplier": "Büro & Mehr GmbH",
+      "grossAmountEur": 47.6,
+      "vatTreatment": "Vorsteuerabzug anteilig; Kassenbeleg is labelled as Bürobedarf with § 15 Abs. 1 UStG",
+      "notes": "The second line outlines a kassenbeleg for office supplies and highlights the VAT deduction allowed under § 15 Abs. 1 UStG."
+    }
+  ],
+  "amountSummary": {
+    "totalGrossEur": 2903.6,
+    "totalVatEur": 463.6,
+    "vatRatePercent": 19,
+    "totalNetEur": 2440.0,
+    "evidence": "Gesamtbetrag brutto: 2.903,60 EUR; davon Vorsteuer gesamt (19 %): 463,60 EUR"
+  },
+  "sourceEvidence": [
+    "Datum: 15.06.2026",
+    "Mandantennummer: 58734",
+    "Sachbearbeiter: Markus Bergmann",
+    "Buchungsmonat: Mai 2026",
+    "Beigefügt sind folgende Belege: (1) ER-2026-0031_Eingangsrechnung_ProAudioNord.pdf, (2) Kassenbeleg_20260512.pdf",
+    "Alle Belege enthalten vollständige DATEV-Buchungsvorschläge nach SKR03.",
+    "Die Vorsteuer aus ER-2026-0031 (ProAudio Nord GmbH, USt-IdNr. DE198754321) ist vollständig abzugsfähig gem. § 15 Abs. 1 UStG.",
+    "Der Kassenbeleg Kassenbeleg_20260512 betrifft betrieblichen Bürobedarf; Vorsteuerabzug gem. § 15 Abs. 1 UStG."
+  ],
+  "referencedIssues": [
+    "DAT-85",
+    "DAT-87"
+  ],
+  "extractionMethod": {
+    "value": "Poppler/pdftotext -layout captured the embedded text from the two-page PDF",
+    "confidence": "high",
+    "notes": [
+      "The intake metadata (source_link, telegram ids) already persisted in the telegram_documents table.",
+      "No OCR was necessary; all content is accessible as searchable text."
+    ]
+  },
+  "downstreamHandoff": {
+    "ready": true,
+    "recommendedNextOwner": "Bookkeeping Reconciliation Agent",
+    "notes": [
+      "Use this cover letter as supporting correspondence for the May 2026 collection of receipts and feed the summarized totals (gross 2.903,60 EUR; VAT 463,60 EUR) into the monthly posting batch.",
+      "Link the referenced receipts from issues DAT-85 (ProAudio Nord invoice) and DAT-87 (Kassenbeleg_20260512) so their extracted field artifacts become the primary posting evidence.",
+      "Confirm that the reported VAT at 19% and SKR03 booking proposals for these two documents are reflected in the downstream booking issue before closing DAT-90."
+    ]
+  }
+}

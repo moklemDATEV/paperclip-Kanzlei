@@ -1,0 +1,69 @@
+{
+  "id": "69b3628d-4207-46f2-8351-1dfc8b711493",
+  "workflow": "telegram_invoice_intake",
+  "routingRuleVersion": "dat-22-v1",
+  "createdAt": "2026-06-19T09:28:19.838Z",
+  "chartType": "SKR03",
+  "trigger": "telegram_webhook",
+  "source": {
+    "channel": "telegram",
+    "sourceLabel": "Telegram webhook intake",
+    "botKey": "mandant"
+  },
+  "submission": {
+    "id": "527e7f2f-af4a-409b-92cc-a261d90d2cc7",
+    "mandantId": "berg-und-tal-eventtechnik-gmbh",
+    "channel": "telegram",
+    "sourceLabel": "Telegram webhook intake",
+    "telegramChatId": "8695197922",
+    "senderName": "Moritz",
+    "submittedAt": "2026-06-19T09:28:19.000Z",
+    "documentCount": 1,
+    "createdAt": "2026-06-19T09:28:19.754Z",
+    "updatedAt": "2026-06-19T09:28:19.754Z"
+  },
+  "routes": [
+    {
+      "documentId": "68bcfdd7-8866-4ac2-84c9-1c734683489a",
+      "fileName": "Kassenbeleg_20260619.pdf",
+      "sourceLink": "/home/ubuntu/.paperclip/instances/default/projects/9e9efaf5-c2d9-4372-99a4-1b8b666a49cb/c50b2b6d-7422-408d-805f-bf2c4407a319/_default/showcase/runtime/telegram-files/BQACAgIAAxkBAANTajULs2ZAIS1werybrxaxSrBvP2UAAjWfAALZ7ahJQiiQPuSv6zg8BA/Kassenbeleg_20260619.pdf",
+      "documentType": "receipt",
+      "direction": "expense",
+      "status": "ready",
+      "counterparty": "Unspecified counterparty",
+      "linkedBookingId": "dat-156-kassenbeleg-20260619-cash-revenue",
+      "routedToAgent": "bookkeeping_agent",
+      "downstreamPath": "bookkeeping:extract_fields",
+      "queue": "extraction_queue",
+      "reason": "Telegram expense documents without a linked booking need bookkeeping extraction before posting."
+    }
+  ],
+  "summary": {
+    "documentCount": 1,
+    "queueCounts": {
+      "extraction_queue": 1
+    }
+  },
+  "activations": [
+    {
+      "stage": "paperclip_issue_created",
+      "route": "bookkeeping:extract_fields",
+      "attachments": [
+        {
+          "fileName": "Kassenbeleg_20260619.pdf",
+          "sourceLink": "/home/ubuntu/.paperclip/instances/default/projects/9e9efaf5-c2d9-4372-99a4-1b8b666a49cb/c50b2b6d-7422-408d-805f-bf2c4407a319/_default/showcase/runtime/telegram-files/BQACAgIAAxkBAANTajULs2ZAIS1werybrxaxSrBvP2UAAjWfAALZ7ahJQiiQPuSv6zg8BA/Kassenbeleg_20260619.pdf"
+        }
+      ],
+      "assigneeAgentId": "ce1da1bc-9a98-4ca9-9a61-7b83e266c066",
+      "assigneeAgentName": "Document Ingestion",
+      "issueId": "b7f80c9d-e2c3-4971-b013-b5c5178bafd1",
+      "issueIdentifier": "DAT-152",
+      "issueTitle": "Telegram intake: Kassenbeleg_20260619.pdf",
+      "createdAt": "2026-06-19T09:29:16.812Z"
+    }
+  ],
+  "artifacts": {
+    "relativePath": "./runtime/telegram-workflow/2026-06-19T09-28-19-838Z-527e7f2f-af4a-409b-92cc-a261d90d2cc7.json",
+    "latestRelativePath": "./runtime/telegram-workflow/latest.json"
+  }
+}

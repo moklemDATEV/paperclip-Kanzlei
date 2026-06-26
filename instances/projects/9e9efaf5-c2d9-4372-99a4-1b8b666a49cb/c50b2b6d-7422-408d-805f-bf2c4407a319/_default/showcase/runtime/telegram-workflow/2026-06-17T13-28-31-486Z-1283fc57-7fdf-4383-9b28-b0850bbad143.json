@@ -1,0 +1,59 @@
+{
+  "id": "677fab27-4dd3-4402-92c6-e55e48efa950",
+  "workflow": "telegram_invoice_intake",
+  "routingRuleVersion": "dat-22-v1",
+  "createdAt": "2026-06-17T13:28:31.486Z",
+  "chartType": "SKR03",
+  "trigger": "telegram_webhook",
+  "source": {
+    "channel": "telegram",
+    "sourceLabel": "Telegram webhook intake",
+    "botKey": "mandant"
+  },
+  "submission": {
+    "id": "1283fc57-7fdf-4383-9b28-b0850bbad143",
+    "mandantId": "berg-und-tal-eventtechnik-gmbh",
+    "channel": "telegram",
+    "sourceLabel": "Telegram webhook intake",
+    "telegramChatId": "8695197922",
+    "senderName": "Moritz",
+    "submittedAt": "2026-06-17T13:28:31.000Z",
+    "documentCount": 1,
+    "createdAt": "2026-06-17T13:28:31.436Z",
+    "updatedAt": "2026-06-17T13:28:31.436Z"
+  },
+  "routes": [
+    {
+      "documentId": "1a98283d-f3fe-430e-aefe-1258e690e539",
+      "fileName": "ER-2026-0031_Eingangsrechnung_Buero-Mehr.pdf",
+      "documentType": "supplier_invoice",
+      "direction": "expense",
+      "status": "ready",
+      "counterparty": "Unspecified counterparty",
+      "linkedBookingId": null,
+      "routedToAgent": "bookkeeping_agent",
+      "downstreamPath": "bookkeeping:extract_fields",
+      "queue": "extraction_queue",
+      "reason": "Telegram expense documents without a linked booking need bookkeeping extraction before posting.",
+      "sourceLink": "/home/ubuntu/.paperclip/instances/default/projects/9e9efaf5-c2d9-4372-99a4-1b8b666a49cb/c50b2b6d-7422-408d-805f-bf2c4407a319/_default/showcase/runtime/telegram-files/BQACAgIAAxkBAAM2ajKg_x56opBw1Nay7t1gi3MoDU8AAr6ZAALGnpFJuhOx4pfjewo8BA/ER-2026-0031_Eingangsrechnung_Buero-Mehr.pdf"
+    }
+  ],
+  "summary": {
+    "documentCount": 1,
+    "queueCounts": {
+      "extraction_queue": 1
+    }
+  },
+  "activations": [
+    {
+      "stage": "paperclip_issue_created",
+      "route": "bookkeeping:extract_fields",
+      "assigneeAgentId": "ce1da1bc-9a98-4ca9-9a61-7b83e266c066",
+      "assigneeAgentName": "Document Ingestion",
+      "issueId": "30de99e5-1195-4864-958f-2dafb0a0d0a9",
+      "issueIdentifier": "DAT-101",
+      "issueTitle": "Telegram intake: ER-2026-0031_Eingangsrechnung_Buero-Mehr.pdf",
+      "createdAt": "2026-06-17T13:28:31.501Z"
+    }
+  ]
+}

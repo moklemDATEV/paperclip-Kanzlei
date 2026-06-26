@@ -1,0 +1,105 @@
+{
+  "document": {
+    "sourceIssue": "DAT-73",
+    "sourceIntakeIssue": "DAT-72",
+    "downstreamReconciliationIssue": "DAT-29",
+    "documentId": "888c6739-4d1f-489b-a37f-00f1394ac5bd",
+    "submissionId": "b5fb9229-b469-4414-afef-039810976047",
+    "mandantId": "berg-und-tal-eventtechnik-gmbh",
+    "fileName": "Anlage1_Kassenbuchauszug_20241122.pdf",
+    "sourcePdfPath": "deliverables/dat-73-Anlage1_Kassenbuchauszug_20241122-source.pdf",
+    "sourcePdfSha256": "f0de54404f85af030203735e493b3bcb85319c23dee97012e6a4f313b1a9a6f3",
+    "telegramChatId": "8695197922",
+    "telegramMessageId": "46",
+    "telegramFileId": "BQACAgIAAxkBAAMuaiQ63ICiXvrJRsEzUexr6vlZuDIAAsqWAAKVBCFJ8CyTF9inXkc7BA",
+    "recoveredAt": "2026-06-09T15:27:15Z",
+    "recoveryMethod": "Telegram getFile download using configured Mandant bot secret, followed by direct PDF content-stream decoding"
+  },
+  "classification": {
+    "submittedDocumentType": "supplier_invoice",
+    "extractedDocumentType": "cashbook_line_evidence",
+    "direction": "expense",
+    "currency": "EUR",
+    "confidence": "high",
+    "reason": "The document is titled Anlage 1 Kassenbuchauszug and contains the cashbook booking data for Kassenbeleg_20241122."
+  },
+  "issuer": {
+    "name": "Berg-und-Tal-Eventtechnik GmbH",
+    "address": "Stadtplatz 8, 83022 Rosenheim",
+    "taxNumber": "109/240/12345",
+    "vatId": "DE298765432",
+    "commercialRegister": "HRB 15234 AG Rosenheim"
+  },
+  "cashbookLine": {
+    "documentCreatedDate": "2026-06-06",
+    "relatedReceipt": "Kassenbeleg_20241122",
+    "bookingStatus": "verbucht",
+    "bookingDate": "2024-11-22",
+    "bookingNumberDatev": "BJ-2024-1147",
+    "accountingPeriod": {
+      "year": 2024,
+      "month": "November"
+    },
+    "mandantNumber": "58734",
+    "supplier": {
+      "name": "Büro & Mehr GmbH",
+      "address": "Kufsteiner Str. 45, 83022 Rosenheim"
+    },
+    "bookingText": "Bürobedarf",
+    "bookingType": "Barausgabe (Kassenausgang)",
+    "grossAmountEur": 87.80,
+    "netAmountEur": 73.78,
+    "vatRatePercent": 19,
+    "vatAmountEur": 14.02,
+    "expenseAccount": {
+      "chartType": "SKR03",
+      "account": "4780",
+      "label": "Bürobedarf"
+    },
+    "calculationCheck": {
+      "formula": "73.78 + 14.02 = 87.80",
+      "matchesDocument": true
+    }
+  },
+  "confirmation": {
+    "statement": "The document confirms that the stated data corresponds to Berg-und-Tal-Eventtechnik GmbH bookkeeping records as of 2024-11-22.",
+    "place": "Rosenheim",
+    "date": "2026-06-06",
+    "signatory": "Markus Bergmann",
+    "role": "Geschäftsführer - Berg-und-Tal-Eventtechnik GmbH"
+  },
+  "bookkeepingHandoff": {
+    "targetIssue": "DAT-29",
+    "resolvedEvidenceNeed": "Separate Anlage 1 cashbook line evidence for Kassenbeleg_20241122 on 2024-11-22.",
+    "pairedEvidence": "DAT-75 supplies the matching Anlage 2 cash movement support for account 1000 Kasse and cash balance movement.",
+    "recommendedNextOwner": "Bookkeeping Reconciliation Agent",
+    "recommendedNextAction": "Resume DAT-29 using this cashbook line plus DAT-75 cash movement evidence to complete the final ledger match or posting disposition."
+  },
+  "sourceEvidence": [
+    "ANLAGE 1 - KASSENBUCHAUSZUG",
+    "Erstellt am: 06.06.2026 | Beleg: Kassenbeleg_20241122 | Status: verbucht",
+    "Datum: 22.11.2024",
+    "Belegnummer: Kassenbeleg_20241122",
+    "Buchungsnummer (DATEV): BJ-2024-1147",
+    "Buchungsjahr / -monat: 2024 / November",
+    "Mandantennummer: 58734",
+    "Lieferant: Büro & Mehr GmbH, Kufsteiner Str. 45, 83022 Rosenheim",
+    "Buchungstext / Verwendungszweck: Bürobedarf",
+    "Buchungsart: Barausgabe (Kassenausgang)",
+    "Betrag (brutto): 87,80 EUR",
+    "Nettobetrag (19 % MwSt.): 73,78 EUR",
+    "Vorsteuer 19 %: 14,02 EUR",
+    "Buchungsstatus: Verbucht",
+    "Sachkonto (SKR03): 4780 - Bürobedarf",
+    "Rechenkontrolle: 73,78 EUR (Netto) + 14,02 EUR (MwSt. 19 %) = 87,80 EUR (Brutto)"
+  ],
+  "extractionMethod": {
+    "value": "direct PDF content-stream decode",
+    "confidence": "high",
+    "notes": [
+      "The source PDF was recovered from the Telegram file id recorded on DAT-72 / DAT-73.",
+      "The visible page text was decoded from PDF object 15, filtered with ASCII85Decode and FlateDecode.",
+      "No client follow-up is required for the cashbook-line fields extracted here."
+    ]
+  }
+}

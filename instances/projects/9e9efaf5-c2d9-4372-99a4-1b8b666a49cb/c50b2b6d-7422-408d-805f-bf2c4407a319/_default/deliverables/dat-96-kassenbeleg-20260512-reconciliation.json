@@ -1,0 +1,65 @@
+{
+  "issueIdentifier": "DAT-96",
+  "status": "reconciled",
+  "documentScope": {
+    "sourceFileName": "Kassenbeleg_20260512.pdf",
+    "documentId": "d735dbb0-6eac-4715-a0e8-6a974d6b22ed",
+    "submissionId": "476d9556-1fb2-4ecf-9a01-2b51deb055d2",
+    "telegramFileId": "BQACAgIAAxkBAAM1ajKLkDo_x8neLGb8Xw8HHwpW-JcAAoaYAALGnpFJPy_1mtsF4L08BA",
+    "sourceStoragePath": "/home/ubuntu/.paperclip/instances/default/projects/9e9efaf5-c2d9-4372-99a4-1b8b666a49cb/c50b2b6d-7422-408d-805f-bf2c4407a319/_default/showcase/runtime/telegram-files/BQACAgIAAxkBAAM1ajKLkDo_x8neLGb8Xw8HHwpW-JcAAoaYAALGnpFJPy_1mtsF4L08BA/Kassenbeleg_20260512.pdf",
+    "extractionArtifact": "deliverables/dat-94-kassenbeleg-20260512-extraction.json"
+  },
+  "bookingSummary": {
+    "bookingId": "058cdb36-8946-4ad6-bdbd-97bb0ad2d1f6",
+    "postingDate": "2026-05-12",
+    "counterparty": "Büro & Mehr GmbH",
+    "sourceReference": "DAT-94",
+    "grossAmountEur": 47.6,
+    "netAmountEur": 40,
+    "vatAmountEur": 7.6,
+    "vatRatePercent": 19,
+    "accounts": [
+      {
+        "purposeKey": "OFFICE_SUPPLIES",
+        "accountCode": "4930",
+        "accountName": "Buerobedarf",
+        "entryDirection": "debit",
+        "amountEur": 40
+      },
+      {
+        "purposeKey": "INPUT_VAT_19",
+        "accountCode": "1576",
+        "accountName": "Vorsteuer 19%",
+        "entryDirection": "debit",
+        "amountEur": 7.6
+      },
+      {
+        "purposeKey": "CASH",
+        "accountCode": "1000",
+        "accountName": "Kasse",
+        "entryDirection": "credit",
+        "amountEur": 47.6
+      }
+    ],
+    "linkedTelegramDocumentId": "d735dbb0-6eac-4715-a0e8-6a974d6b22ed"
+  },
+  "matchedRecords": [
+    {
+      "type": "telegram_documents",
+      "lookupKey": "id = d735dbb0-6eac-4715-a0e8-6a974d6b22ed",
+      "status": "enriched",
+      "details": "Document date, net/gross/VAT amounts, and counterparty were populated from the BAB extract, and linked_booking_id now points to the cash booking."
+    },
+    {
+      "type": "shared_store.buchungen",
+      "lookupKey": "source_reference = DAT-94",
+      "status": "added",
+      "details": "Booking 058cdb36... posts the 2026-05-12 cash outflow (Bürobedarf + Vorsteuer vs. Kasse) so the ledger matches the extracted field artifacts."
+    }
+  ],
+  "notes": [
+    "Added the CASH (1000 Kasse) purpose key to the account catalog so cash outflows can be posted directly in SKR03/SKR04, and seeded the catalog so the ledger enforces the new purpose key.",
+    "The booking references extraction issue DAT-94 to keep the evidence chain explicit for downstream posting verification."
+  ],
+  "nextAction": "Close DAT-96 once bookkeeping confirms the cash posting is reflected in the May 2026 overview document."
+}

@@ -1,0 +1,25 @@
+{
+  "update_id": 900100001,
+  "message": {
+    "message_id": 601,
+    "date": 1777662300,
+    "chat": {
+      "id": 8695197922,
+      "type": "private",
+      "username": "lisa_berg"
+    },
+    "from": {
+      "id": 8695197922,
+      "is_bot": false,
+      "first_name": "Lisa",
+      "last_name": "Berg",
+      "username": "lisa_berg"
+    },
+    "caption": "Bitte verbuchen: Amazon Rechnung fuer Buerobedarf",
+    "document": {
+      "file_id": "tg-live-amazon-601",
+      "file_name": "amazon-rechnung-mai.pdf",
+      "mime_type": "application/pdf"
+    }
+  }
+}

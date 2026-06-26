@@ -1,0 +1,81 @@
+{
+  "issueIdentifier": "DAT-161",
+  "status": "passed_to_steuerberater_review_with_conditions",
+  "decision": {
+    "gateResult": "pass_for_reviewer_handoff",
+    "filingReady": false,
+    "releaseBoundary": "This package may proceed to Steuerberater review only. It is not approved for unsupervised tax advice, filing, or client-facing tax conclusions.",
+    "rationale": "The source traceability, bookkeeping linkage, and draft tax treatment are coherent enough for supervised reviewer handling, but reviewer-visible assumptions and evidence gaps remain."
+  },
+  "documentScope": {
+    "sourceFileName": "Kassenbeleg_20260619.pdf",
+    "documentId": "68bcfdd7-8866-4ac2-84c9-1c734683489a",
+    "submissionId": "527e7f2f-af4a-409b-92cc-a261d90d2cc7",
+    "workflowRunId": "69b3628d-4207-46f2-8351-1dfc8b711493",
+    "mandantId": "berg-und-tal-eventtechnik-gmbh",
+    "period": {
+      "documentDate": "2026-06-19",
+      "bookingMonth": "2026-06",
+      "vatReturnPeriod": "2026-06"
+    }
+  },
+  "evidenceChain": {
+    "sourcePdf": {
+      "path": "showcase/runtime/telegram-files/BQACAgIAAxkBAANTajULs2ZAIS1werybrxaxSrBvP2UAAjWfAALZ7ahJQiiQPuSv6zg8BA/Kassenbeleg_20260619.pdf",
+      "sha256": "6f784f3f1e708f1035ec9bc9bfafbd8497daf35f4751659ff8f54c836eb8d522"
+    },
+    "extractionArtifact": "deliverables/dat-152-kassenbeleg-20260619-extraction.json",
+    "reconciliationArtifact": "deliverables/dat-156-kassenbeleg-20260619-reconciliation.json",
+    "taxDraftArtifact": "deliverables/dat-160-kassenbeleg-20260619-tax-draft.json",
+    "linkedBookingId": "dat-156-kassenbeleg-20260619-cash-revenue"
+  },
+  "gateChecks": [
+    {
+      "name": "source_traceability",
+      "result": "pass",
+      "evidence": "PDF path, SHA-256, Telegram file ID, documentId, submissionId, and workflowRunId are present across DAT-152, DAT-156, and DAT-160."
+    },
+    {
+      "name": "workflow_completeness",
+      "result": "pass",
+      "evidence": "Extraction, reconciliation, and tax draft artifacts exist and align on the same receipt number, date, customer, and 1000/8400/1776 posting basis."
+    },
+    {
+      "name": "approval_boundary",
+      "result": "pass_with_condition",
+      "evidence": "The tax draft is explicitly draft-only. This compliance handoff preserves that the package still requires Steuerberater review and human approval before any filing or client-facing use."
+    },
+    {
+      "name": "auditability",
+      "result": "pass",
+      "evidence": "Upstream issue comments on DAT-152, DAT-156, and DAT-160 describe what changed, the artifacts created, and the next owner at each stage."
+    },
+    {
+      "name": "unresolved_anomalies_visibility",
+      "result": "pass_with_condition",
+      "evidence": "The workflow-direction mismatch remains visible as DAT-159 and does not change the reconciled revenue treatment, but reviewer attention is still required for residual assumptions below."
+    }
+  ],
+  "reviewerVisibleAssumptions": [
+    "The cash receipt is the operative sales document for the 2026-06-19 service and is not duplicative of another separately recognized invoice.",
+    "The printed 19% domestic VAT treatment is correct and no special regime overrides apply.",
+    "The posted ledger entry dat-156-kassenbeleg-20260619-cash-revenue remains the intended bookkeeping record."
+  ],
+  "openReviewerQuestions": [
+    "Was a separate invoice issued for the same service, creating duplicate-revenue risk?",
+    "Are any additional cash-register or archival formalities required beyond the receipt, ledger linkage, and retained PDF for this workflow?"
+  ],
+  "nonBlockingFollowups": [
+    {
+      "issueIdentifier": "DAT-159",
+      "type": "workflow_classification_defect",
+      "detail": "The Telegram route initially treated the upload as an expense-side receipt before downstream correction."
+    }
+  ],
+  "requiredControls": [
+    "Do not treat this package as filing-ready.",
+    "Do not waive human Steuerberater review.",
+    "Any final tax judgment or client-facing conclusion must be made only after reviewer confirmation of the open questions."
+  ],
+  "nextOwner": "Steuerberater Review Copilot"
+}

@@ -1,0 +1,58 @@
+{
+  "id": "12250f95-bfc1-4f6e-af54-b1c449c0192f",
+  "workflow": "telegram_invoice_intake",
+  "routingRuleVersion": "dat-22-v1",
+  "createdAt": "2026-06-06T15:21:01.158Z",
+  "chartType": "SKR03",
+  "trigger": "telegram_webhook",
+  "source": {
+    "channel": "telegram",
+    "sourceLabel": "Telegram webhook intake",
+    "botKey": "mandant"
+  },
+  "submission": {
+    "id": "c9d5af09-b447-4784-a3a9-0aad77cec051",
+    "mandantId": "berg-und-tal-eventtechnik-gmbh",
+    "channel": "telegram",
+    "sourceLabel": "Telegram webhook intake",
+    "telegramChatId": "8695197922",
+    "senderName": "Moritz",
+    "submittedAt": "2026-06-06T15:21:00.000Z",
+    "documentCount": 1,
+    "createdAt": "2026-06-06T15:21:01.082Z",
+    "updatedAt": "2026-06-06T15:21:01.082Z"
+  },
+  "routes": [
+    {
+      "documentId": "6fa8fa7f-9ce8-4e73-9099-6d8b79aa02bd",
+      "fileName": "20260606_Anschreiben_Kassenbeleg_20241122.pdf",
+      "documentType": "receipt",
+      "direction": "expense",
+      "status": "ready",
+      "counterparty": "Unspecified counterparty",
+      "linkedBookingId": null,
+      "routedToAgent": "bookkeeping_agent",
+      "downstreamPath": "bookkeeping:extract_fields",
+      "queue": "extraction_queue",
+      "reason": "Telegram expense documents without a linked booking need bookkeeping extraction before posting."
+    }
+  ],
+  "summary": {
+    "documentCount": 1,
+    "queueCounts": {
+      "extraction_queue": 1
+    }
+  },
+  "activations": [
+    {
+      "stage": "paperclip_issue_created",
+      "route": "bookkeeping:extract_fields",
+      "assigneeAgentId": "ce1da1bc-9a98-4ca9-9a61-7b83e266c066",
+      "assigneeAgentName": "Document Ingestion",
+      "issueId": "da8910e5-f7c3-4d11-a77d-150484b751da",
+      "issueIdentifier": "DAT-71",
+      "issueTitle": "Telegram intake: 20260606_Anschreiben_Kassenbeleg_20241122.pdf",
+      "createdAt": "2026-06-06T15:21:01.187Z"
+    }
+  ]
+}

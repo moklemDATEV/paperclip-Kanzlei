@@ -1,0 +1,456 @@
+{
+  "runId": "a1e08f89-b843-461c-b628-c90873867df6",
+  "startedAt": "2026-05-27T08:58:31.066Z",
+  "completedAt": "2026-05-27T08:58:52.715Z",
+  "durationMs": 21649,
+  "sourceBundle": {
+    "sourceLabel": "April 2026 live source bundle",
+    "inputFiles": [
+      {
+        "fileName": "2026-04-bank.csv",
+        "type": "Bank export",
+        "countLabel": "9 posted lines",
+        "notes": "Primary reconciliation source for the month."
+      },
+      {
+        "fileName": "supplier-invoices.json",
+        "type": "Supplier invoice extract",
+        "countLabel": "4 documents",
+        "notes": "Representative supplier records for the live demo."
+      },
+      {
+        "fileName": "customer-invoices.json",
+        "type": "Customer invoice extract",
+        "countLabel": "3 documents",
+        "notes": "Receivables used to match incoming payments."
+      },
+      {
+        "fileName": "sales-summary-april.json",
+        "type": "Cross-check summary",
+        "countLabel": "1 reference file",
+        "notes": "Sanity check only, not treated as the source of truth."
+      }
+    ],
+    "note": "The live run executes on the CSV/JSON source files available in this workspace."
+  },
+  "stages": [
+    {
+      "name": "intake_agent",
+      "model": "gpt-4.1-mini",
+      "startedAt": "2026-05-27T08:58:31.066Z",
+      "completedAt": "2026-05-27T08:58:36.468Z",
+      "durationMs": 5402,
+      "responseId": "resp_03c7ac47bc7589c7006a16b238037081959a5825ed988e9909",
+      "summary": "The source bundle contains all essential documents for initial bookkeeping: bank transaction export, supplier and customer invoice extracts, and a sales summary for cross-checking. The JSON and CSV files provided represent the live demo source material and form a consistent basis for posting and reconciliation. No critical files appear missing for the specified period of April 2026.",
+      "output": {
+        "completeness": "Ready for review",
+        "operatorNote": "The source bundle contains all essential documents for initial bookkeeping: bank transaction export, supplier and customer invoice extracts, and a sales summary for cross-checking. The JSON and CSV files provided represent the live demo source material and form a consistent basis for posting and reconciliation. No critical files appear missing for the specified period of April 2026.",
+        "sourceRisks": [
+          "Limited number of documents may not cover all transactions if additional unprovided records exist.",
+          "Sales summary is for sanity check only and not a source of truth, so discrepancies should be verified."
+        ],
+        "bundle": [
+          {
+            "fileName": "2026-04-bank.csv",
+            "type": "Bank export",
+            "countLabel": "9 posted lines",
+            "notes": "Primary reconciliation source for the month."
+          },
+          {
+            "fileName": "supplier-invoices.json",
+            "type": "Supplier invoice extract",
+            "countLabel": "4 documents",
+            "notes": "Representative supplier records for the live demo."
+          },
+          {
+            "fileName": "customer-invoices.json",
+            "type": "Customer invoice extract",
+            "countLabel": "3 documents",
+            "notes": "Receivables used to match incoming payments."
+          },
+          {
+            "fileName": "sales-summary-april.json",
+            "type": "Cross-check summary",
+            "countLabel": "1 reference file",
+            "notes": "Sanity check only, not treated as the source of truth."
+          }
+        ]
+      }
+    },
+    {
+      "name": "bookkeeping_agent",
+      "model": "gpt-4.1-mini",
+      "startedAt": "2026-05-27T08:58:36.468Z",
+      "completedAt": "2026-05-27T08:58:47.540Z",
+      "durationMs": 11072,
+      "responseId": "resp_07ae298bade8d2ad006a16b23c9b948196adcae1df85310dbd",
+      "summary": "4 supplier documents classified, 3 receivables matched.",
+      "output": {
+        "transactions": [
+          {
+            "date": "2026-04-02",
+            "counterparty": "Stadtwerke Koeln",
+            "grossEur": 428.4,
+            "treatment": "Utilities expense input VAT 19%",
+            "match": "supplier invoice"
+          },
+          {
+            "date": "2026-04-03",
+            "counterparty": "Eventhaus Bonn GmbH",
+            "grossEur": 4165,
+            "treatment": "Customer payment output VAT 19%",
+            "match": "RE-24041"
+          },
+          {
+            "date": "2026-04-05",
+            "counterparty": "Amazon EU S.a r.l.",
+            "grossEur": 238.91,
+            "treatment": "Office supplies input VAT 19%",
+            "match": "beleg-2026-04-amazon.json"
+          },
+          {
+            "date": "2026-04-08",
+            "counterparty": "Telekom Deutschland GmbH",
+            "grossEur": 154.7,
+            "treatment": "Telecom expense input VAT 19%",
+            "match": "beleg-2026-04-telekom.json"
+          },
+          {
+            "date": "2026-04-12",
+            "counterparty": "Metro Deutschland GmbH",
+            "grossEur": 119.84,
+            "treatment": "Mixed expense requires review",
+            "match": "beleg-2026-04-metro.json"
+          },
+          {
+            "date": "2026-04-14",
+            "counterparty": "Hochzeit Mayer GbR",
+            "grossEur": 2975,
+            "treatment": "Customer payment output VAT 19%",
+            "match": "RE-24044"
+          },
+          {
+            "date": "2026-04-18",
+            "counterparty": "Van4Event GmbH",
+            "grossEur": 892.5,
+            "treatment": "Vehicle rental input VAT 19%",
+            "match": "beleg-2026-04-van-rental.json"
+          },
+          {
+            "date": "2026-04-24",
+            "counterparty": "Berg & Tal Eventtechnik GmbH",
+            "grossEur": 1500,
+            "treatment": "Owner cash injection no VAT",
+            "match": "none"
+          },
+          {
+            "date": "2026-04-28",
+            "counterparty": "Messebau Rhein AG",
+            "grossEur": 5950,
+            "treatment": "Customer payment output VAT 19%",
+            "match": "RE-24047"
+          }
+        ],
+        "extractions": [
+          {
+            "vendor": "Amazon EU S.a r.l.",
+            "fileName": "beleg-2026-04-amazon.json",
+            "date": "2026-04",
+            "netEur": 200.76,
+            "vatEur": 38.15,
+            "grossEur": 238.91,
+            "suggestedAccount": "Office Supplies & Input VAT 19%",
+            "confidence": "high",
+            "status": "ready"
+          },
+          {
+            "vendor": "Telekom Deutschland GmbH",
+            "fileName": "beleg-2026-04-telekom.json",
+            "date": "2026-04",
+            "netEur": 130,
+            "vatEur": 24.7,
+            "grossEur": 154.7,
+            "suggestedAccount": "Telecommunications Expense & Input VAT 19%",
+            "confidence": "high",
+            "status": "ready"
+          },
+          {
+            "vendor": "Metro Deutschland GmbH",
+            "fileName": "beleg-2026-04-metro.json",
+            "date": "2026-04",
+            "netEur": 100.71,
+            "vatEur": 19.13,
+            "grossEur": 119.84,
+            "suggestedAccount": "Mixed Expense (needs review)",
+            "confidence": "medium",
+            "status": "needs_review"
+          },
+          {
+            "vendor": "Van4Event GmbH",
+            "fileName": "beleg-2026-04-van-rental.json",
+            "date": "2026-04",
+            "netEur": 750,
+            "vatEur": 142.5,
+            "grossEur": 892.5,
+            "suggestedAccount": "Vehicle Rental Expense & Input VAT 19%",
+            "confidence": "high",
+            "status": "ready"
+          }
+        ],
+        "matchedReceivables": [
+          {
+            "invoiceNumber": "RE-24041",
+            "customer": "Eventhaus Bonn GmbH",
+            "grossEur": 4165,
+            "matchStatus": "matched"
+          },
+          {
+            "invoiceNumber": "RE-24044",
+            "customer": "Hochzeit Mayer GbR",
+            "grossEur": 2975,
+            "matchStatus": "matched"
+          },
+          {
+            "invoiceNumber": "RE-24047",
+            "customer": "Messebau Rhein AG",
+            "grossEur": 5950,
+            "matchStatus": "matched"
+          }
+        ],
+        "exception": {
+          "document": "beleg-2026-04-metro.json",
+          "reason": "Mixed expense requires review due to unclear split or classification; flagged in invoice status.",
+          "amountEur": 119.84,
+          "risk": "medium",
+          "suggestedAction": "Manual review for proper allocation and posting during month-end close."
+        }
+      }
+    },
+    {
+      "name": "closing_agent",
+      "model": "gpt-4.1-mini",
+      "startedAt": "2026-05-27T08:58:47.540Z",
+      "completedAt": "2026-05-27T08:58:52.715Z",
+      "durationMs": 5175,
+      "responseId": "resp_0c0c462f4b7b55b5006a16b2482fdc81a19c868837ce738777",
+      "summary": "Closing bookkeeping package for Berg & Tal Eventtechnik GmbH for April 2026, including bank exports, supplier and customer invoice extracts, and transactions posted with relevant VAT treatments and reconciliations.",
+      "output": {
+        "packageStatus": "Ready for review",
+        "packageDescription": "Closing bookkeeping package for Berg & Tal Eventtechnik GmbH for April 2026, including bank exports, supplier and customer invoice extracts, and transactions posted with relevant VAT treatments and reconciliations.",
+        "packageItems": [
+          "2026-04-bank.csv with 9 posted lines as primary reconciliation source",
+          "supplier-invoices.json with 4 representative documents",
+          "customer-invoices.json with 3 matched receivable documents",
+          "sales-summary-april.json for sanity cross-check",
+          "Bookkeeping transactions matching bank statements and invoices including customer payments, expenses with input VAT, and owner cash injection"
+        ],
+        "clerkTasks": [
+          "Perform manual review of Metro Deutschland GmbH invoice (beleg-2026-04-metro.json) due to mixed expense classification and medium risk",
+          "Verify any discrepancies found during review especially given sales summary is a sanity check and not source of truth",
+          "Confirm proper VAT postings and classifications before final month-end close"
+        ],
+        "finalNote": "All critical source files appear present to finalize bookkeeping for April 2026. The package includes reconciled postings and highlights one medium risk item requiring further clerk attention before close."
+      }
+    }
+  ],
+  "showcase": {
+    "client": {
+      "name": "Berg & Tal Eventtechnik GmbH",
+      "period": "April 2026",
+      "kanzleiContact": "Maria Schneider, Steuerfachangestellte",
+      "legalEntity": "GmbH",
+      "industry": "Event equipment rental",
+      "vatId": "DE342198765",
+      "accountingBasis": "Standard monthly bookkeeping with DATEV export",
+      "bank": "Sparkasse KoelnBonn business account"
+    },
+    "summary": {
+      "bankLines": 9,
+      "invoiceCount": 7,
+      "autoMatched": 6,
+      "exceptions": 1,
+      "documentsParsed": 7,
+      "completeness": "Ready for review",
+      "operatorNote": "The source bundle contains all essential documents for initial bookkeeping: bank transaction export, supplier and customer invoice extracts, and a sales summary for cross-checking. The JSON and CSV files provided represent the live demo source material and form a consistent basis for posting and reconciliation. No critical files appear missing for the specified period of April 2026.",
+      "sourceRisks": [
+        "Limited number of documents may not cover all transactions if additional unprovided records exist.",
+        "Sales summary is for sanity check only and not a source of truth, so discrepancies should be verified."
+      ]
+    },
+    "bundle": [
+      {
+        "fileName": "2026-04-bank.csv",
+        "type": "Bank export",
+        "countLabel": "9 posted lines",
+        "notes": "Primary reconciliation source for the month."
+      },
+      {
+        "fileName": "supplier-invoices.json",
+        "type": "Supplier invoice extract",
+        "countLabel": "4 documents",
+        "notes": "Representative supplier records for the live demo."
+      },
+      {
+        "fileName": "customer-invoices.json",
+        "type": "Customer invoice extract",
+        "countLabel": "3 documents",
+        "notes": "Receivables used to match incoming payments."
+      },
+      {
+        "fileName": "sales-summary-april.json",
+        "type": "Cross-check summary",
+        "countLabel": "1 reference file",
+        "notes": "Sanity check only, not treated as the source of truth."
+      }
+    ],
+    "coverage": {
+      "matchedAutomatically": 6,
+      "needsReview": 1,
+      "documentsParsed": 7
+    },
+    "transactions": [
+      {
+        "date": "2026-04-02",
+        "counterparty": "Stadtwerke Koeln",
+        "grossEur": 428.4,
+        "treatment": "Utilities expense input VAT 19%",
+        "match": "supplier invoice"
+      },
+      {
+        "date": "2026-04-03",
+        "counterparty": "Eventhaus Bonn GmbH",
+        "grossEur": 4165,
+        "treatment": "Customer payment output VAT 19%",
+        "match": "RE-24041"
+      },
+      {
+        "date": "2026-04-05",
+        "counterparty": "Amazon EU S.a r.l.",
+        "grossEur": 238.91,
+        "treatment": "Office supplies input VAT 19%",
+        "match": "beleg-2026-04-amazon.json"
+      },
+      {
+        "date": "2026-04-08",
+        "counterparty": "Telekom Deutschland GmbH",
+        "grossEur": 154.7,
+        "treatment": "Telecom expense input VAT 19%",
+        "match": "beleg-2026-04-telekom.json"
+      },
+      {
+        "date": "2026-04-12",
+        "counterparty": "Metro Deutschland GmbH",
+        "grossEur": 119.84,
+        "treatment": "Mixed expense requires review",
+        "match": "beleg-2026-04-metro.json"
+      },
+      {
+        "date": "2026-04-14",
+        "counterparty": "Hochzeit Mayer GbR",
+        "grossEur": 2975,
+        "treatment": "Customer payment output VAT 19%",
+        "match": "RE-24044"
+      },
+      {
+        "date": "2026-04-18",
+        "counterparty": "Van4Event GmbH",
+        "grossEur": 892.5,
+        "treatment": "Vehicle rental input VAT 19%",
+        "match": "beleg-2026-04-van-rental.json"
+      },
+      {
+        "date": "2026-04-24",
+        "counterparty": "Berg & Tal Eventtechnik GmbH",
+        "grossEur": 1500,
+        "treatment": "Owner cash injection no VAT",
+        "match": "none"
+      },
+      {
+        "date": "2026-04-28",
+        "counterparty": "Messebau Rhein AG",
+        "grossEur": 5950,
+        "treatment": "Customer payment output VAT 19%",
+        "match": "RE-24047"
+      }
+    ],
+    "extractions": [
+      {
+        "vendor": "Amazon EU S.a r.l.",
+        "fileName": "beleg-2026-04-amazon.json",
+        "date": "2026-04",
+        "netEur": 200.76,
+        "vatEur": 38.15,
+        "grossEur": 238.91,
+        "suggestedAccount": "Office Supplies & Input VAT 19%",
+        "confidence": "high",
+        "status": "ready"
+      },
+      {
+        "vendor": "Telekom Deutschland GmbH",
+        "fileName": "beleg-2026-04-telekom.json",
+        "date": "2026-04",
+        "netEur": 130,
+        "vatEur": 24.7,
+        "grossEur": 154.7,
+        "suggestedAccount": "Telecommunications Expense & Input VAT 19%",
+        "confidence": "high",
+        "status": "ready"
+      },
+      {
+        "vendor": "Metro Deutschland GmbH",
+        "fileName": "beleg-2026-04-metro.json",
+        "date": "2026-04",
+        "netEur": 100.71,
+        "vatEur": 19.13,
+        "grossEur": 119.84,
+        "suggestedAccount": "Mixed Expense (needs review)",
+        "confidence": "medium",
+        "status": "needs_review"
+      },
+      {
+        "vendor": "Van4Event GmbH",
+        "fileName": "beleg-2026-04-van-rental.json",
+        "date": "2026-04",
+        "netEur": 750,
+        "vatEur": 142.5,
+        "grossEur": 892.5,
+        "suggestedAccount": "Vehicle Rental Expense & Input VAT 19%",
+        "confidence": "high",
+        "status": "ready"
+      }
+    ],
+    "exception": {
+      "document": "beleg-2026-04-metro.json",
+      "reason": "Mixed expense requires review due to unclear split or classification; flagged in invoice status.",
+      "amountEur": 119.84,
+      "risk": "medium",
+      "suggestedAction": "Manual review for proper allocation and posting during month-end close."
+    },
+    "totals": {
+      "Revenue gross": 13090,
+      "Revenue net": 11000,
+      "Output VAT": 2090,
+      "Operating expenses gross": 1405.95,
+      "Operating expenses net": 1181.47,
+      "Input VAT": 224.48,
+      "Net VAT payable": 1865.52
+    },
+    "package": {
+      "status": "Ready for review",
+      "description": "Closing bookkeeping package for Berg & Tal Eventtechnik GmbH for April 2026, including bank exports, supplier and customer invoice extracts, and transactions posted with relevant VAT treatments and reconciliations.",
+      "items": [
+        "2026-04-bank.csv with 9 posted lines as primary reconciliation source",
+        "supplier-invoices.json with 4 representative documents",
+        "customer-invoices.json with 3 matched receivable documents",
+        "sales-summary-april.json for sanity cross-check",
+        "Bookkeeping transactions matching bank statements and invoices including customer payments, expenses with input VAT, and owner cash injection"
+      ],
+      "clerkTasks": [
+        "Perform manual review of Metro Deutschland GmbH invoice (beleg-2026-04-metro.json) due to mixed expense classification and medium risk",
+        "Verify any discrepancies found during review especially given sales summary is a sanity check and not source of truth",
+        "Confirm proper VAT postings and classifications before final month-end close"
+      ],
+      "finalNote": "All critical source files appear present to finalize bookkeeping for April 2026. The package includes reconciled postings and highlights one medium risk item requiring further clerk attention before close."
+    }
+  }
+}

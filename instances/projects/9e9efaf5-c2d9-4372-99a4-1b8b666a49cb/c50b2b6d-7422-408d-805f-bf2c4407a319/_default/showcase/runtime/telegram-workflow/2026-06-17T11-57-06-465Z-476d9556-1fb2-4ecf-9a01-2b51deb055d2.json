@@ -1,0 +1,59 @@
+{
+  "id": "cd6052b0-7c87-4544-93b7-8793e43daee0",
+  "workflow": "telegram_invoice_intake",
+  "routingRuleVersion": "dat-22-v1",
+  "createdAt": "2026-06-17T11:57:06.465Z",
+  "chartType": "SKR03",
+  "trigger": "telegram_webhook",
+  "source": {
+    "channel": "telegram",
+    "sourceLabel": "Telegram webhook intake",
+    "botKey": "mandant"
+  },
+  "submission": {
+    "id": "476d9556-1fb2-4ecf-9a01-2b51deb055d2",
+    "mandantId": "berg-und-tal-eventtechnik-gmbh",
+    "channel": "telegram",
+    "sourceLabel": "Telegram webhook intake",
+    "telegramChatId": "8695197922",
+    "senderName": "Moritz",
+    "submittedAt": "2026-06-17T11:57:04.000Z",
+    "documentCount": 1,
+    "createdAt": "2026-06-17T11:57:06.140Z",
+    "updatedAt": "2026-06-17T11:57:06.140Z"
+  },
+  "routes": [
+    {
+      "documentId": "d735dbb0-6eac-4715-a0e8-6a974d6b22ed",
+      "fileName": "Kassenbeleg_20260512.pdf",
+      "documentType": "receipt",
+      "direction": "expense",
+      "status": "ready",
+      "counterparty": "Unspecified counterparty",
+      "linkedBookingId": null,
+      "routedToAgent": "bookkeeping_agent",
+      "downstreamPath": "bookkeeping:extract_fields",
+      "queue": "extraction_queue",
+      "reason": "Telegram expense documents without a linked booking need bookkeeping extraction before posting.",
+      "sourceLink": "/home/ubuntu/.paperclip/instances/default/projects/9e9efaf5-c2d9-4372-99a4-1b8b666a49cb/c50b2b6d-7422-408d-805f-bf2c4407a319/_default/showcase/runtime/telegram-files/BQACAgIAAxkBAAM1ajKLkDo_x8neLGb8Xw8HHwpW-JcAAoaYAALGnpFJPy_1mtsF4L08BA/Kassenbeleg_20260512.pdf"
+    }
+  ],
+  "summary": {
+    "documentCount": 1,
+    "queueCounts": {
+      "extraction_queue": 1
+    }
+  },
+  "activations": [
+    {
+      "stage": "paperclip_issue_created",
+      "route": "bookkeeping:extract_fields",
+      "assigneeAgentId": "ce1da1bc-9a98-4ca9-9a61-7b83e266c066",
+      "assigneeAgentName": "Document Ingestion",
+      "issueId": "58a0b1d6-fee4-4171-baae-6e076d867a68",
+      "issueIdentifier": "DAT-94",
+      "issueTitle": "Telegram intake: Kassenbeleg_20260512.pdf",
+      "createdAt": "2026-06-17T11:57:06.579Z"
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "client": {
+    "mandantId": "berg-und-tal-eventtechnik-gmbh",
+    "name": "Berg & Tal Eventtechnik GmbH",
+    "legalName": "Berg & Tal Eventtechnik GmbH",
+    "contactChannel": "telegram",
+    "contactName": "Moritz",
+    "telegramChatId": "8695197922"
+  },
+  "entity": {
+    "type": "GmbH",
+    "country": "DE",
+    "vatId": "DE342198765",
+    "accountingBasis": "Standard monthly bookkeeping with DATEV export"
+  },
+  "period": {
+    "year": 2026,
+    "month": 5,
+    "label": "Mai 2026",
+    "servicePeriodStart": "2026-05-01",
+    "servicePeriodEnd": "2026-05-31"
+  },
+  "deadline": {
+    "filingDeadline": null,
+    "paymentDueDate": null,
+    "notes": "No explicit Fälligkeitsdatum on the DATEV sheet; rely on original Büro & Mehr invoice for payment terms."
+  },
+  "requestedService": {
+    "workflow": "bookkeeping:extract_fields",
+    "intent": "incoming_supplier_invoice",
+    "description": "Incoming Eingangsrechnung Büro & Mehr GmbH (Bürobedarf Mai 2026) to be extracted and prepared for DATEV booking and reconciliation."
+  },
+  "documents": {
+    "primary": {
+      "submissionId": "1283fc57-7fdf-4383-9b28-b0850bbad143",
+      "documentId": "1a98283d-f3fe-430e-aefe-1258e690e539",
+      "fileName": "ER-2026-0031_Eingangsrechnung_Buero-Mehr.pdf",
+      "sourceLink": "showcase/runtime/telegram-files/BQACAgIAAxkBAAM2ajKg_x56opBw1Nay7t1gi3MoDU8AAr6ZAALGnpFJuhOx4pfjewo8BA/ER-2026-0031_Eingangsrechnung_Buero-Mehr.pdf",
+      "storagePath": "showcase/runtime/telegram-files/BQACAgIAAxkBAAM2ajKg_x56opBw1Nay7t1gi3MoDU8AAr6ZAALGnpFJuhOx4pfjewo8BA/ER-2026-0031_Eingangsrechnung_Buero-Mehr.pdf",
+      "sha256": "fd0408bc27ff864dcaf74b2c26c8551cab1ad6d0948fcbfa79b6a8a42295e867"
+    },
+    "related": [],
+    "anomalies": [
+      {
+        "code": "summary_sheet_without_original_invoice",
+        "severity": "medium",
+        "description": "The ingested document is a DATEV 'EINGANGSRECHNUNG' booking sheet prepared by the mandant; the original supplier invoice from Büro & Mehr GmbH is referenced but not included in this upload.",
+        "impact": "Payment details (IBAN/BIC, Zahlungsziel, formale USt-IdNr.) cannot be verified from this file alone and should be cross-checked against the original invoice stored separately in the Kanzlei's DMS."
+      }
+    ]
+  },
+  "bookingProposal": {
+    "chartType": {
+      "value": "SKR03",
+      "confidence": "high",
+      "evidence": "DATEV-Buchungsvorschlag (SKR03) header explicitly present."
+    },
+    "suggestedBooking": {
+      "value": [
+        {
+          "sh": "Soll",
+          "account": "4780",
+          "accountName": "Bürobedarf",
+          "amount": 148,
+          "currency": "EUR",
+          "evidence": "DATEV-Buchungsvorschlag Zeile: 'Soll 4780 Bürobedarf 148,00 EUR'."
+        },
+        {
+          "sh": "Soll",
+          "account": "1576",
+          "accountName": "Abziehbare Vorsteuer 19 %",
+          "amount": 28.12,
+          "currency": "EUR",
+          "evidence": "DATEV-Buchungsvorschlag Zeile: 'Soll 1576 Abziehbare Vorsteuer 19 % 28,12 EUR'."
+        },
+        {
+          "sh": "Haben",
+          "account": "70200",
+          "accountName": "Kreditor Büro & Mehr GmbH",
+          "amount": 176.12,
+          "currency": "EUR",
+          "evidence": "DATEV-Buchungsvorschlag Zeile: 'Haben 70200 Kreditor Büro & Mehr GmbH 176,12 EUR'."
+        }
+      ],
+      "confidence": "high",
+      "evidence": "All three booking lines are printed in the DATEV-Buchungsvorschlag (SKR03) section."
+    },
+    "purposeKey": {
+      "value": "BUEROBEDARF",
+      "confidence": "medium",
+      "evidence": "Buchungstext: 'Bürobedarf Mai 2026 / LF-BT-0200 / BM-2026-8834'."
+    }
+  },
+  "receivedDataQuality": {
+    "status": "partial",
+    "notes": "Mandant uploaded DATEV Eingangsrechnung summary sheet without the original Büro & Mehr invoice. Booking data is complete; payment details must be checked against Kanzlei DMS."
+  },
+  "missingItems": [
+    "Original Lieferantenrechnung Büro & Mehr GmbH (BM-2026-8834) with Zahlungsziel and payment account details (IBAN/BIC).",
+    "Confirmation whether this invoice has already been paid, and via which account (bank/cash)."
+  ],
+  "openQuestions": [
+    "Bitte bestätigen: Wurde die Rechnung BM-2026-8834 bereits bezahlt? Falls ja, an welchem Datum und über welches Konto (Bank/Kasse)?",
+    "Liegt die Originalrechnung von Büro & Mehr GmbH bereits der Kanzlei vor (z.B. im DMS), oder sollen wir Sie bitten, diese zusätzlich zu übermitteln?"
+  ],
+  "nextOwner": {
+    "documentIngestion": {
+      "owner": "Document Ingestion Agent",
+      "status": "ready",
+      "notes": "All intake fields present for ER-2026-0031; handoff includes submissionId, documentId, fileName, and sourceLink from Telegram runtime."
+    },
+    "bookkeeping": {
+      "owner": "Bookkeeping Reconciliation Agent",
+      "status": "pending_intake",
+      "notes": "Wait for Document Ingestion to complete extraction/normalization; booking proposal from DATEV sheet is in brief."
+    },
+    "clientCommunication": {
+      "owner": "Client Communication Agent",
+      "status": "needs_outbound_after_reconciliation",
+      "notes": "Use open questions to request missing original invoice / payment confirmation from mandant if bookkeeping reconciliation flags discrepancies."
+    }
+  }
+}

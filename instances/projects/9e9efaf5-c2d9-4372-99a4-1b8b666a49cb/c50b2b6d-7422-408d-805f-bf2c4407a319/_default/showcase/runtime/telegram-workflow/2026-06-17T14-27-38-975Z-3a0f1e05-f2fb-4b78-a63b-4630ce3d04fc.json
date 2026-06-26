@@ -1,0 +1,69 @@
+{
+  "id": "a1bfa28a-60c3-4889-b842-4385307a35b2",
+  "workflow": "telegram_invoice_intake",
+  "routingRuleVersion": "dat-22-v1",
+  "createdAt": "2026-06-17T14:27:38.975Z",
+  "chartType": "SKR03",
+  "trigger": "telegram_webhook",
+  "source": {
+    "channel": "telegram",
+    "sourceLabel": "Telegram webhook intake",
+    "botKey": "mandant"
+  },
+  "submission": {
+    "id": "3a0f1e05-f2fb-4b78-a63b-4630ce3d04fc",
+    "mandantId": "berg-und-tal-eventtechnik-gmbh",
+    "channel": "telegram",
+    "sourceLabel": "Telegram webhook intake",
+    "telegramChatId": "8695197922",
+    "senderName": "Moritz",
+    "submittedAt": "2026-06-17T14:27:38.000Z",
+    "documentCount": 1,
+    "createdAt": "2026-06-17T14:27:38.833Z",
+    "updatedAt": "2026-06-17T14:27:38.833Z"
+  },
+  "routes": [
+    {
+      "documentId": "ab41ffe4-842b-435c-8b18-a609a2dca4d0",
+      "fileName": "ER-2026-0031_Eingangsrechnung_Buero-Mehr.pdf",
+      "sourceLink": "/home/ubuntu/.paperclip/instances/default/projects/9e9efaf5-c2d9-4372-99a4-1b8b666a49cb/c50b2b6d-7422-408d-805f-bf2c4407a319/_default/showcase/runtime/telegram-files/BQACAgIAAxkBAANBajKu2u9REzS9UpiZ6OSXmxnvcdEAAleaAALGnpFJBiOQ04tumP08BA/ER-2026-0031_Eingangsrechnung_Buero-Mehr.pdf",
+      "documentType": "supplier_invoice",
+      "direction": "expense",
+      "status": "ready",
+      "counterparty": "Unspecified counterparty",
+      "linkedBookingId": null,
+      "routedToAgent": "bookkeeping_agent",
+      "downstreamPath": "bookkeeping:extract_fields",
+      "queue": "extraction_queue",
+      "reason": "Telegram expense documents without a linked booking need bookkeeping extraction before posting."
+    }
+  ],
+  "summary": {
+    "documentCount": 1,
+    "queueCounts": {
+      "extraction_queue": 1
+    }
+  },
+  "activations": [
+    {
+      "stage": "paperclip_issue_created",
+      "route": "bookkeeping:extract_fields",
+      "attachments": [
+        {
+          "fileName": "ER-2026-0031_Eingangsrechnung_Buero-Mehr.pdf",
+          "sourceLink": "/home/ubuntu/.paperclip/instances/default/projects/9e9efaf5-c2d9-4372-99a4-1b8b666a49cb/c50b2b6d-7422-408d-805f-bf2c4407a319/_default/showcase/runtime/telegram-files/BQACAgIAAxkBAANBajKu2u9REzS9UpiZ6OSXmxnvcdEAAleaAALGnpFJBiOQ04tumP08BA/ER-2026-0031_Eingangsrechnung_Buero-Mehr.pdf"
+        }
+      ],
+      "assigneeAgentId": "ce1da1bc-9a98-4ca9-9a61-7b83e266c066",
+      "assigneeAgentName": "Document Ingestion",
+      "issueId": "eb4b8f63-1236-4c47-bcaf-96fb185927bb",
+      "issueIdentifier": "DAT-124",
+      "issueTitle": "Telegram intake: ER-2026-0031_Eingangsrechnung_Buero-Mehr.pdf",
+      "createdAt": "2026-06-17T14:27:39.000Z"
+    }
+  ],
+  "artifacts": {
+    "relativePath": "./runtime/telegram-workflow/2026-06-17T14-27-38-975Z-3a0f1e05-f2fb-4b78-a63b-4630ce3d04fc.json",
+    "latestRelativePath": "./runtime/telegram-workflow/latest.json"
+  }
+}

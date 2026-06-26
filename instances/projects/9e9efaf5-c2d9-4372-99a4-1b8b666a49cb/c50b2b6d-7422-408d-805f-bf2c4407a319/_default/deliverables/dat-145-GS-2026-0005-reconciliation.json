@@ -1,0 +1,127 @@
+{
+  "issueIdentifier": "DAT-145",
+  "status": "posted_and_reconciled_against_ledger",
+  "document": {
+    "extractionArtifact": "deliverables/dat-127-telegram-intake-GS-2026-0005-extraction.json",
+    "creditNoteNumber": "GS-2026-0005",
+    "creditNoteDate": "2026-05-19",
+    "referenceInvoiceNumber": "RE-2026-0023",
+    "mandantId": "berg-und-tal-eventtechnik-gmbh",
+    "debitorAccount": "10182",
+    "customerName": "Hotel Alpenpanorama GmbH & Co. KG",
+    "bookingMonth": "2026-05",
+    "bookingScheme": "SKR03",
+    "currency": "EUR"
+  },
+  "bookingProposal": {
+    "netAmountEur": 550,
+    "vatAmountEur": 104.5,
+    "grossAmountEur": 654.5,
+    "vatRatePercent": 19,
+    "lines": [
+      {
+        "entryDirection": "debit",
+        "accountCode": "8400",
+        "accountName": "Erlöse aus Lieferungen/Leistungen 19 %",
+        "amountEur": 550,
+        "evidence": "Per DATEV-Buchungsvorschlag in extraction JSON (Soll 8400 550,00 EUR)."
+      },
+      {
+        "entryDirection": "debit",
+        "accountCode": "1776",
+        "accountName": "Umsatzsteuer 19 %",
+        "amountEur": 104.5,
+        "evidence": "Per DATEV-Buchungsvorschlag in extraction JSON (Soll 1776 104,50 EUR)."
+      },
+      {
+        "entryDirection": "credit",
+        "accountCode": "10182",
+        "accountName": "Debitor Hotel Alpenpanorama GmbH & Co. KG",
+        "amountEur": 654.5,
+        "evidence": "Per DATEV-Buchungsvorschlag in extraction JSON (Haben 10182 654,50 EUR)."
+      }
+    ]
+  },
+  "ledgerReconciliation": {
+    "period": "2026-05",
+    "sharedLedgerStore": "showcase/runtime/shared-buchungsdaten.sqlite",
+    "customerInvoicesEvidence": "showcase/data/customer-invoices.json",
+    "additionalLedgerSeedEvidence": "showcase/data/ledger-seed-bookings.json",
+    "referenceInvoice": {
+      "source": "showcase/data/customer-invoices.json",
+      "referenceInvoiceNumber": "RE-2026-0023",
+      "referenceInvoiceDate": "2026-05-12",
+      "customerName": "Hotel Alpenpanorama GmbH & Co. KG",
+      "debitorAccount": "10182",
+      "grossAmountEur": 654.5,
+      "ledgerBookingId": "seed-2026-05-12-re-2026-0023",
+      "notes": [
+        "Customer invoices fixture now lists RE-2026-0023 with the same 654,50 EUR gross amount, so the reference invoice is present in the May 2026 data.",
+        "The live shared ledger now contains booking seed-2026-05-12-re-2026-0023 from showcase/data/ledger-seed-bookings.json.",
+        "The operational ledger stores the receivable on SKR03 account 1400 and preserves Debitor 10182 in the booking annotation and source evidence."
+      ]
+    },
+    "postings": [
+      {
+        "bookingId": "seed-2026-05-19-gs-2026-0005",
+        "postingDate": "2026-05-19",
+        "description": "Customer credit note GS-2026-0005 - partial reversal of RE-2026-0023",
+        "lines": [
+          {
+            "purposeKey": "REVENUE_19",
+            "entryDirection": "debit",
+            "amountEur": 550,
+            "taxRate": 19,
+            "mappedAccountSKR03": "8400"
+          },
+          {
+            "purposeKey": "OUTPUT_VAT_19",
+            "entryDirection": "debit",
+            "amountEur": 104.5,
+            "taxRate": 19,
+            "mappedAccountSKR03": "1776"
+          },
+          {
+            "purposeKey": "TRADE_RECEIVABLES",
+            "entryDirection": "credit",
+            "amountEur": 654.5,
+            "taxRate": 0,
+            "mappedAccountSKR03": "1400 (Debitor 10182 preserved in annotation/source evidence)"
+          }
+        ],
+        "evidence": [
+          "Amounts and SKR03 account mapping per deliverables/dat-127-telegram-intake-GS-2026-0005-extraction.json bookingProposal.",
+          "Posting date aligned to credit note date 2026-05-19 within May 2026 tax period.",
+          "DAT-150 synchronized booking seed-2026-05-19-gs-2026-0005 from showcase/data/ledger-seed-bookings.json into the live shared ledger."
+        ]
+      }
+    ],
+    "debitor10182Reconciliation": {
+      "openingBalanceEur": null,
+      "movements": [
+        {
+          "type": "invoice_reference",
+          "reference": "RE-2026-0023",
+          "postingDate": "2026-05-12",
+          "direction": "debit",
+          "grossAmountEur": 654.5,
+          "evidence": "Live booking seed-2026-05-12-re-2026-0023 now makes the 654,50 EUR receivable explicit; the store uses account 1400 with Debitor 10182 preserved in annotation/source evidence."
+        },
+        {
+          "type": "credit_note",
+          "reference": "GS-2026-0005",
+          "postingDate": "2026-05-19",
+          "direction": "credit",
+          "grossAmountEur": 654.5,
+          "evidence": "Live booking seed-2026-05-19-gs-2026-0005 mirrors the credit-note booking proposal and clears the matching receivable amount."
+        }
+      ],
+      "closingBalanceEur": 0.0,
+      "notes": [
+        "Shared ledger now stores both RE-2026-0023 and GS-2026-0005, so the receivable for Debitor 10182 nets to zero for May 2026.",
+        "Future workspace rebuilds should retain these rows because the fixture source now lives in showcase/data/ledger-seed-bookings.json."
+      ]
+    }
+  },
+  "nextAction": "Use this artifact plus showcase/data/ledger-seed-bookings.json as the ledger proof that RE-2026-0023 and GS-2026-0005 both exist in the May 2026 shared posting batch without requiring a second duplicate booking."
+}

@@ -1,0 +1,148 @@
+{
+  "client": {
+    "name": "Berg & Tal Eventtechnik GmbH",
+    "period": "April 2026",
+    "kanzleiContact": "Maria Schneider, Steuerfachangestellte",
+    "vatId": "DE342198765"
+  },
+  "summary": {
+    "bankLines": 41,
+    "invoiceCount": 19,
+    "autoMatched": 18,
+    "exceptions": 1,
+    "documentsParsed": 19,
+    "completeness": "Ready for clerk review",
+    "operatorNote": "Only the Metro expense needs tax judgment before DATEV export."
+  },
+  "bundle": [
+    {
+      "fileName": "2026-04-bank.csv",
+      "type": "Bank statement export",
+      "countLabel": "41 transactions",
+      "notes": "Sparkasse KoelnBonn account activity for April."
+    },
+    {
+      "fileName": "supplier-invoices.json",
+      "type": "Structured supplier documents",
+      "countLabel": "12 invoices",
+      "notes": "Normalized invoice records used by the review screen."
+    },
+    {
+      "fileName": "customer-invoices.json",
+      "type": "Structured outgoing invoices",
+      "countLabel": "7 invoices",
+      "notes": "Used for payment matching and revenue totals."
+    },
+    {
+      "fileName": "sales-summary-april.json",
+      "type": "Internal cross-check",
+      "countLabel": "1 workbook export",
+      "notes": "Soft control only, not the source of record."
+    }
+  ],
+  "transactions": [
+    {
+      "date": "2026-04-02",
+      "counterparty": "Stadtwerke Koeln",
+      "grossEur": 428.4,
+      "treatment": "Utilities expense, input VAT 19%",
+      "match": "Supplier invoice"
+    },
+    {
+      "date": "2026-04-03",
+      "counterparty": "Eventhaus Bonn GmbH",
+      "grossEur": 4165,
+      "treatment": "Customer payment, output VAT 19%",
+      "match": "RE-24041"
+    },
+    {
+      "date": "2026-04-05",
+      "counterparty": "Amazon EU S.a r.l.",
+      "grossEur": 238.91,
+      "treatment": "Office supplies, input VAT 19%",
+      "match": "beleg-2026-04-amazon"
+    },
+    {
+      "date": "2026-04-12",
+      "counterparty": "Metro Deutschland GmbH",
+      "grossEur": 119.84,
+      "treatment": "Mixed expense, requires review",
+      "match": "beleg-2026-04-metro"
+    },
+    {
+      "date": "2026-04-18",
+      "counterparty": "Van4Event GmbH",
+      "grossEur": 892.5,
+      "treatment": "Vehicle rental, input VAT 19%",
+      "match": "beleg-2026-04-van-rental"
+    },
+    {
+      "date": "2026-04-28",
+      "counterparty": "Messebau Rhein AG",
+      "grossEur": 5950,
+      "treatment": "Customer payment, output VAT 19%",
+      "match": "RE-24047"
+    }
+  ],
+  "extractions": [
+    {
+      "fileName": "beleg-2026-04-amazon.json",
+      "vendor": "Amazon EU S.a r.l.",
+      "date": "2026-04-05",
+      "netEur": 200.76,
+      "vatEur": 38.15,
+      "grossEur": 238.91,
+      "suggestedAccount": "4930",
+      "confidence": "98%",
+      "status": "ready"
+    },
+    {
+      "fileName": "beleg-2026-04-telekom.json",
+      "vendor": "Telekom Deutschland GmbH",
+      "date": "2026-04-08",
+      "netEur": 130,
+      "vatEur": 24.7,
+      "grossEur": 154.7,
+      "suggestedAccount": "4925",
+      "confidence": "97%",
+      "status": "ready"
+    },
+    {
+      "fileName": "beleg-2026-04-metro.json",
+      "vendor": "Metro Deutschland GmbH",
+      "date": "2026-04-12",
+      "netEur": 100.71,
+      "vatEur": 19.13,
+      "grossEur": 119.84,
+      "suggestedAccount": "4650",
+      "confidence": "84%",
+      "status": "needs_review"
+    }
+  ],
+  "exception": {
+    "document": "beleg-2026-04-metro.json",
+    "amountEur": 119.84,
+    "reason": "The invoice is parsed correctly, but the drinks and snacks look like internal celebration spend rather than a straightforward deductible operating expense.",
+    "risk": "Potentially non-deductible hospitality or partially private consumption.",
+    "suggestedAction": "Hold the posting, ask the clerk to classify the event, and split or mark non-deductible before export."
+  },
+  "totals": {
+    "Revenue gross": 18742,
+    "Revenue net": 15749.58,
+    "Output VAT": 2992.42,
+    "Operating expenses gross": 4382.65,
+    "Operating expenses net": 3689.62,
+    "Input VAT": 693.03,
+    "Net VAT payable": 2299.39
+  },
+  "package": {
+    "status": "DATEV-ready once the Metro item is classified",
+    "description": "The monthly packet is prepared as a review package rather than a loose upload folder.",
+    "items": [
+      "Booking proposals for 18 automatically matched items",
+      "VAT summary with 2,299.39 EUR payable",
+      "One open clerk task for Metro expense classification",
+      "Export payload ready after final review decision"
+    ]
+  }
+}

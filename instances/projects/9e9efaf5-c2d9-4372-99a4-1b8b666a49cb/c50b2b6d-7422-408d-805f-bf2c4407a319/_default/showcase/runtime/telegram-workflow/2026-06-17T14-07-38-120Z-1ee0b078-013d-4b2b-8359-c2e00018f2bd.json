@@ -1,0 +1,48 @@
+{
+  "id": "1b1a9a6c-b51e-4ef2-aa06-2b1057b8e1f5",
+  "workflow": "telegram_invoice_intake",
+  "routingRuleVersion": "dat-22-v1",
+  "createdAt": "2026-06-17T14:07:38.120Z",
+  "chartType": "SKR03",
+  "trigger": "telegram_intake_api",
+  "source": {
+    "channel": "telegram",
+    "sourceLabel": "Runtime validation",
+    "botKey": null
+  },
+  "submission": {
+    "id": "1ee0b078-013d-4b2b-8359-c2e00018f2bd",
+    "mandantId": "berg-und-tal-eventtechnik-gmbh",
+    "channel": "telegram",
+    "sourceLabel": "Runtime validation",
+    "telegramChatId": "heartbeat-validation",
+    "senderName": "CTO validation",
+    "submittedAt": "2026-06-17T14:07:38.089Z",
+    "documentCount": 1,
+    "createdAt": "2026-06-17T14:07:38.094Z",
+    "updatedAt": "2026-06-17T14:07:38.094Z"
+  },
+  "routes": [
+    {
+      "documentId": "de7d1a99-1ae5-4569-9f1b-46fefcd79fb5",
+      "fileName": "validation-invoice.pdf",
+      "sourceLink": "/tmp/validation-invoice.pdf",
+      "documentType": "supplier_invoice",
+      "direction": "expense",
+      "status": "ready",
+      "counterparty": "Unspecified counterparty",
+      "linkedBookingId": "ce0b278d-7af4-43d7-9e4f-4ec2abb04d19",
+      "routedToAgent": "bookkeeping_agent",
+      "downstreamPath": "bookkeeping:auto_post",
+      "queue": "accounts_payable",
+      "reason": "Supplier-side expense documents with linked bookings can move into bookkeeping directly."
+    }
+  ],
+  "summary": {
+    "documentCount": 1,
+    "queueCounts": {
+      "accounts_payable": 1
+    }
+  },
+  "activations": []
+}

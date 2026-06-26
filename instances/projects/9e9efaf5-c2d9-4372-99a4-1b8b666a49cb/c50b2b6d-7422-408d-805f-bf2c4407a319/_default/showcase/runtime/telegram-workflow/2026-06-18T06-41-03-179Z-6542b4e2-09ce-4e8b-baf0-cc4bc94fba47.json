@@ -1,0 +1,52 @@
+{
+  "id": "c461a6c4-2570-4f7c-b855-c68620d25e30",
+  "workflow": "telegram_invoice_intake",
+  "routingRuleVersion": "dat-22-v1",
+  "createdAt": "2026-06-18T06:41:03.179Z",
+  "chartType": "SKR03",
+  "trigger": "telegram_webhook",
+  "source": {
+    "channel": "telegram",
+    "sourceLabel": "Telegram webhook intake",
+    "botKey": "mandant"
+  },
+  "submission": {
+    "id": "6542b4e2-09ce-4e8b-baf0-cc4bc94fba47",
+    "mandantId": "berg-und-tal-eventtechnik-gmbh",
+    "channel": "telegram",
+    "sourceLabel": "Telegram webhook intake",
+    "telegramChatId": "8695197922",
+    "senderName": "Moritz",
+    "submittedAt": "2026-06-18T06:41:02.000Z",
+    "documentCount": 1,
+    "createdAt": "2026-06-18T06:41:03.055Z",
+    "updatedAt": "2026-06-18T06:41:03.055Z"
+  },
+  "routes": [
+    {
+      "documentId": "2e6dd340-e2af-43bf-92fc-32de1253b058",
+      "fileName": "RE-2026-0023_Ausgangsrechnung.pdf",
+      "sourceLink": "/home/ubuntu/.paperclip/instances/default/projects/9e9efaf5-c2d9-4372-99a4-1b8b666a49cb/c50b2b6d-7422-408d-805f-bf2c4407a319/_default/showcase/runtime/telegram-files/BQACAgIAAxkBAANLajOS_qZMtd46fw4SksiaSZvR3jAAAliSAALGnplJOpjr9tnZCEI8BA/RE-2026-0023_Ausgangsrechnung.pdf",
+      "documentType": "customer_invoice",
+      "direction": "revenue",
+      "status": "ready",
+      "counterparty": "Unspecified counterparty",
+      "linkedBookingId": null,
+      "routedToAgent": "receivables_agent",
+      "downstreamPath": "receivables:extract_fields",
+      "queue": "receivables_extraction",
+      "reason": "Customer invoices without a linked booking first need receivables extraction."
+    }
+  ],
+  "summary": {
+    "documentCount": 1,
+    "queueCounts": {
+      "receivables_extraction": 1
+    }
+  },
+  "activations": [],
+  "artifacts": {
+    "relativePath": "./runtime/telegram-workflow/2026-06-18T06-41-03-179Z-6542b4e2-09ce-4e8b-baf0-cc4bc94fba47.json",
+    "latestRelativePath": "./runtime/telegram-workflow/latest.json"
+  }
+}

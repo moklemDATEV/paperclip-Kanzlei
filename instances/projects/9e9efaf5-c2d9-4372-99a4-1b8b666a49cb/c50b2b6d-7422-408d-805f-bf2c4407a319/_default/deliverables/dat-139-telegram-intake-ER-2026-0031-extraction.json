@@ -1,0 +1,184 @@
+{
+  "issueIdentifier": "DAT-139",
+  "status": "ready_for_downstream_handoff",
+  "document": {
+    "documentId": "e84376b0-55cf-47cc-8c04-68075f95a3e3",
+    "submissionId": "67b532e2-ea21-430b-b2cc-c38176689e77",
+    "mandantId": "berg-und-tal-eventtechnik-gmbh",
+    "sourceFileName": "ER-2026-0031_Eingangsrechnung_Buero-Mehr.pdf",
+    "sourcePdfPath": "showcase/runtime/telegram-files/BQACAgIAAxkBAANNajOp2Pc-svSRb3wBS_9PhAfzzLIAAjKTAALGnplJ-JCqSycRk4k8BA/ER-2026-0031_Eingangsrechnung_Buero-Mehr.pdf",
+    "sourcePdfSha256": "fd0408bc27ff864dcaf74b2c26c8551cab1ad6d0948fcbfa79b6a8a42295e867",
+    "sourceStoragePath": "showcase/runtime/telegram-files/BQACAgIAAxkBAANNajOp2Pc-svSRb3wBS_9PhAfzzLIAAjKTAALGnplJ-JCqSycRk4k8BA/ER-2026-0031_Eingangsrechnung_Buero-Mehr.pdf",
+    "sourceLink": "/home/ubuntu/.paperclip/instances/default/projects/9e9efaf5-c2d9-4372-99a4-1b8b666a49cb/c50b2b6d-7422-408d-805f-bf2c4407a319/_default/showcase/runtime/telegram-files/BQACAgIAAxkBAANNajOp2Pc-svSRb3wBS_9PhAfzzLIAAjKTAALGnplJ-JCqSycRk4k8BA/ER-2026-0031_Eingangsrechnung_Buero-Mehr.pdf",
+    "telegramChatId": "8695197922",
+    "telegramMessageId": null,
+    "telegramFileId": "BQACAgIAAxkBAANNajOp2Pc-svSRb3wBS_9PhAfzzLIAAjKTAALGnplJ-JCqSycRk4k8BA",
+    "receivedAt": "2026-06-18T08:18:32.000Z",
+    "recoveredAt": "2026-06-18T08:19:08.129Z",
+    "recoveryMethod": "PDF read from the Telegram runtime store as part of the DAT-139 bookkeeping extraction run and parsed with pdftotext to capture the DATEV booking sheet for ER-2026-0031."  
+  },
+  "classification": {
+    "documentType": {
+      "value": "supplier_invoice",
+      "confidence": "high",
+      "evidence": "Header labels the form as an Eingangsrechnung with supplier details and a DATEV booking proposal for Büro & Mehr GmbH."
+    },
+    "direction": {
+      "value": "incoming_expense",
+      "confidence": "high",
+      "evidence": "Document documents an incoming supplier invoice for office supplies and the routing metadata routes it to bookkeeping:extract_fields."
+    },
+    "workflowAssignedType": {
+      "value": "receipt",
+      "confidence": "low",
+      "evidence": "The Telegram intake uses the generic expense receipt workflow even though the file is the structured EINGANGSRECHNUNG summary sheet."
+    }
+  },
+  "mandant": {
+    "displayName": "Berg & Tal Eventtechnik GmbH",
+    "legalName": "Berg & Tal Eventtechnik GmbH",
+    "vatId": "DE342198765",
+    "accountingBasis": "Standard monthly bookkeeping with DATEV export"
+  },
+  "invoice": {
+    "invoiceNumber": {
+      "value": "BM-2026-8834",
+      "confidence": "high",
+      "evidence": "Orig. Rechnungsnr. field on the DATEV booking sheet."
+    },
+    "invoiceDate": {
+      "value": "2026-05-16",
+      "confidence": "high",
+      "evidence": "Orig. Rechnungsdatum: 16.05.2026."
+    },
+    "servicePeriodStart": {
+      "value": "2026-05-01",
+      "confidence": "medium",
+      "evidence": "Leistungszeitraum Mai 2026 interpreted as the full calendar month."
+    },
+    "servicePeriodEnd": {
+      "value": "2026-05-31",
+      "confidence": "medium",
+      "evidence": "Leistungszeitraum Mai 2026 interpreted as the full calendar month."
+    },
+    "supplierName": {
+      "value": "Büro & Mehr GmbH",
+      "confidence": "high",
+      "evidence": "Supplier line shows the name with the Rosenheim address."
+    },
+    "supplierVatId": {
+      "value": null,
+      "confidence": "unknown",
+      "evidence": "DATEV sheet lists address and creditor account but not the supplier's USt-IdNr."
+    },
+    "supplierAddress": {
+      "value": "Kufsteiner Str. 45, 83022 Rosenheim",
+      "confidence": "high",
+      "evidence": "Supplier line embeds the street, number, postal code, and city."
+    },
+    "currency": {
+      "value": "EUR",
+      "confidence": "high",
+      "evidence": "All amounts are printed with EUR suffix and the DATEV booking lines use EUR."
+    },
+    "netAmount": {
+      "value": 148.0,
+      "confidence": "high",
+      "evidence": "Nettobetrag: 148,00 EUR."
+    },
+    "vatAmount": {
+      "value": 28.12,
+      "confidence": "high",
+      "evidence": "zzgl. 19 % MwSt.: 28,12 EUR."
+    },
+    "grossAmount": {
+      "value": 176.12,
+      "confidence": "high",
+      "evidence": "Gesamtbetrag: 176,12 EUR."
+    },
+    "vatRatePercent": {
+      "value": 19,
+      "confidence": "high",
+      "evidence": "The line 'zzgl. 19 % MwSt.' plus booking entry for Abziehbare Vorsteuer 19 %."
+    },
+    "dueDate": {
+      "value": null,
+      "confidence": "unknown",
+      "evidence": "No Fälligkeitsdatum on the DATEV summary; the original supplier invoice holds the payment terms."
+    },
+    "paymentReference": {
+      "value": null,
+      "confidence": "unknown",
+      "evidence": "The prepared booking sheet lacks any payment reference or Verwendungszweck."
+    },
+    "iban": {
+      "value": null,
+      "confidence": "unknown",
+      "evidence": "No IBAN is printed on this DATEV Aufbereitungsbogen."
+    },
+    "bic": {
+      "value": null,
+      "confidence": "unknown",
+      "evidence": "No BIC is printed on this DATEV Aufbereitungsbogen."
+    }
+  },
+  "booking": {
+    "purposeKey": {
+      "value": "BUEROBEDARF",
+      "confidence": "medium",
+      "evidence": "Buchungstext: Bürobedarf Mai 2026 / LF-BT-0200 / BM-2026-8834."
+    },
+    "chartType": {
+      "value": "SKR03",
+      "confidence": "high",
+      "evidence": "DATEV-Buchungsvorschlag (SKR03) header explicitly shown on the sheet."
+    },
+    "suggestedBooking": {
+      "value": [
+        {
+          "sh": "Soll",
+          "account": "4780",
+          "accountName": "Bürobedarf",
+          "amount": 148.0,
+          "currency": "EUR",
+          "evidence": "DATEV-Buchungsvorschlag line: 'Soll 4780 Bürobedarf 148,00 EUR'."
+        },
+        {
+          "sh": "Soll",
+          "account": "1576",
+          "accountName": "Abziehbare Vorsteuer 19 %",
+          "amount": 28.12,
+          "currency": "EUR",
+          "evidence": "DATEV-Buchungsvorschlag line: 'Soll 1576 Abziehbare Vorsteuer 19 % 28,12 EUR'."
+        },
+        {
+          "sh": "Haben",
+          "account": "70200",
+          "accountName": "Kreditor Büro & Mehr GmbH",
+          "amount": 176.12,
+          "currency": "EUR",
+          "evidence": "DATEV-Buchungsvorschlag line: 'Haben 70200 Kreditor Büro & Mehr GmbH 176,12 EUR'."
+        }
+      ],
+      "confidence": "high",
+      "evidence": "All three posting lines are printed in the DATEV booking suggestion section."
+    }
+  },
+  "anomalies": [
+    {
+      "code": "summary_sheet_without_original_invoice",
+      "severity": "medium",
+      "description": "This document is a DATEV 'EINGANGSRECHNUNG' booking sheet created by the mandant; the original supplier invoice from Büro & Mehr GmbH is referenced but not attached.",
+      "impact": "Payment details (IBAN/BIC, Zahlungsziel, USt-IdNr.) and formal signature must be confirmed against the original invoice that resides in the Kanzlei's DMS."
+    }
+  ],
+  "downstreamHandoff": {
+    "ready": true,
+    "recommendedNextOwner": "Bookkeeping Reconciliation Agent",
+    "notes": [
+      "Treat this extraction as the DATEV booking proposal for ER-2026-0031 (Bürobedarf: BM-2026-8834).",
+      "Use the SKR03 lines above when reconciling the creditor, ensuring the net/VAT/gross totals reconcile with the corresponding bank or cash movement.",
+      "If payment confirmation is missing, trigger the Client Communication Agent to request payment evidence or an unpaid confirmation for this invoice rather than inferring payment details from this summary sheet."
+    ]
+  }
+}
