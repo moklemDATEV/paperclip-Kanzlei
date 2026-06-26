@@ -12,13 +12,5 @@ node_modules/
 *.log
 *.pid
 
-# Database files
-**/db/
-**/data/backups/
-
-# Project data (generated during runtime)
-**/projects/
-**/workspaces/memory/
-
 # OS files
 .DS_Store
